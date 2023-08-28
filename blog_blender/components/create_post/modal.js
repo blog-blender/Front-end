@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import CreatePost from "@/components/create_post/create-post";
 
-export default function BlogModal() {
+export default function CreatePostModal() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
