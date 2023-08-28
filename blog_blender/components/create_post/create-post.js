@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-
+import { blog_data } from '@/data_samples/blog_list';
 const CreateBlogForm = ({ onSave, onClose }) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [selectedCategories, setSelectedCategories] = useState([]);
-  const [bannerImage, setBannerImage] = useState(null);
+
   const [blogImage, setBlogImage] = useState(null);
 
   const handleSubmit = (e) => {
@@ -13,15 +13,11 @@ const CreateBlogForm = ({ onSave, onClose }) => {
       name,
       description,
       selectedCategories,
-      bannerImage,
       blogImage,
     };
     onSave(formData);
   };
 
-  const handleBannerImageChange = (e) => {
-    setBannerImage(e.target.files[0]);
-  };
 
   const handleBlogImageChange = (e) => {
     setBlogImage(e.target.files[0]);
@@ -64,24 +60,27 @@ const CreateBlogForm = ({ onSave, onClose }) => {
               id="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="border rounded-lg p-2 w-full h-40"
+              className="border rounded-lg p-2 w-full h-20 overflow-y-auto"
             />
           </div>
           <div className="mb-4">
             <label>Select Categories:</label>
-            {/* Render checkboxes for categories */}
-            {/* Use handleCategoryChange to manage selected categories */}
-          </div>
-          <div className="mb-4">
-            <label htmlFor="bannerImage">Banner Image:</label>
-            <input
-              type="file"
-              id="bannerImage"
-              accept="image/*"
-              onChange={handleBannerImageChange}
+            <select
+              multiple
+              value={selectedCategories}
+              onChange={(e) =>
+                setSelectedCategories(Array.from(e.target.selectedOptions, (option) => option.value))
+              }
               className="border rounded-lg p-2 w-full"
-            />
+            >
+              {blog_data[0].categories.map((category, index) => (
+                <option key={index} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
           </div>
+
           <div className="mb-4">
             <label htmlFor="blogImage">Blog Image:</label>
             <input
@@ -99,12 +98,6 @@ const CreateBlogForm = ({ onSave, onClose }) => {
               onClick={handleSubmit}
             >
               Save
-            </button>
-            <button
-              type="button"
-              className="bg-green-500 text-white rounded-lg px-4 py-2"
-            >
-              Review
             </button>
           </div>
         </form>
