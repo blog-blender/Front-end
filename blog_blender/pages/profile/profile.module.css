@@ -1,0 +1,27 @@
+.banner{
+    width: 94vw;
+    height: 300px;
+    object-fit: cover;
+    object-position: 25% 25%;
+    margin: auto;
+}
+
+.user_photo{
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    position: relative;
+    top: -65px;
+    margin-left: 3%;
+}
+
+.user_info{
+    display: flex;
+    flex-direction: row;
+    gap: 10%;
+}
+
+.profile_nav{
+    display: flex;
+    justify-content: space-around;
+}
