@@ -1,15 +1,19 @@
-import BlogList from "@/components/blog_list/blog_list"
-import Blog from "@/components/blog_list/blog/blog"
-import Comment from "@/components/comment_list/comment/comment"
 import CommentList from "@/components/comment_list/comment_list"
-import { blog_data } from "@/data_samples/blog_list"
-import { comment_data } from "@/data_samples/comment_list"
+import Header from "@/components/header/header"
+import Footer from "@/components/footer/footer"
+import LoginPage from "@/components/loginpage/login"
+import RejesterPage from "@/components/loginpage/regester"
+
 export default function Home() {
   return (
     <main>
-      <p>Home</p>
-      {/* <BlogList/> */}
-      {/* <CommentList/> */}
+    <div style={{display:'grid', gap:'20px'}}>      
+      <Header />
+      <CommentList/>
+      <Footer />
+      <LoginPage/>     
+      <RejesterPage />
+      </div>
     </main>
   )
 }
