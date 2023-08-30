@@ -1,33 +1,29 @@
 import React, { useState } from 'react';
 import Checkbox from './Checkbox';
+import Axios from 'axios';
 
 const CreateBlogForm = ({ onSave, onClose }) => {
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
   const [selectedCategories, setSelectedCategories] = useState([]);
-  const [bannerImage, setBannerImage] = useState(null);
-  const [blogImage, setBlogImage] = useState(null);
 
-  const handleCategoryChange = (category) => {
-    if (selectedCategories.includes(category)) {
-      setSelectedCategories(selectedCategories.filter((cat) => cat !== category));
-    } else {
-      setSelectedCategories([...selectedCategories, category]);
+  let formData = new FormData();
+
+  
+  function onChange(event){
+    if(event.target && event.target.files[0]){
+      formData.append("file", event.target.files[0])
+      console.log(formData);
     }
-  };
+  }
 
-  // const categoryOptions = ['Category 1', 'Category 2', 'Category 3'];
-
-  const handleSubmit = (e) => {
+  async function handleSubmit(e){
     e.preventDefault();
-    const formData = {
-      name,
-      description,
-      selectedCategories,
-      bannerImage,
-      blogImage,
-    };
-    onSave(formData);
+    Axios.post("http://127.0.0.1:8000/api/v1/posts/create/", {formData})
+    .then(res =>{
+      console.log(res);
+    })
+    .catch(error =>{
+      console.log(error);
+    })
   };
 
   return (
@@ -50,8 +46,7 @@ const CreateBlogForm = ({ onSave, onClose }) => {
             <input
               type="text"
               id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={onChange}
               className="border rounded-lg p-2 w-full"
             />
           </div>
@@ -61,15 +56,14 @@ const CreateBlogForm = ({ onSave, onClose }) => {
             </label>
             <textarea
               id="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              onChange={onChange}
               className="border rounded-lg p-2 w-full h-20 overflow-y-auto"
             />
           </div>
           <div className="mb-4">
             <Checkbox
               selectedOptions={selectedCategories}
-              onOptionChange={handleCategoryChange}
+              onOptionChange={onChange}
             />
             </div>
           <div className="mb-4 flex">
@@ -81,7 +75,7 @@ const CreateBlogForm = ({ onSave, onClose }) => {
                 type="file"
                 id="bannerImage"
                 accept="image/*"
-                onChange={(e) => setBannerImage(e.target.files[0])}
+                onChange={onChange}
                 className="border rounded-lg p-2 w-40"
               />
             </div>
@@ -93,7 +87,7 @@ const CreateBlogForm = ({ onSave, onClose }) => {
                 type="file"
                 id="blogImage"
                 accept="image/*"
-                onChange={(e) => setBlogImage(e.target.files[0])}
+                onChange={onChange}
                 className="border rounded-lg p-2 w-40"
               />
             </div>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { comment_data } from "@/data_samples/comment_list";
 import Modal from "@/components/modal";
 import BlogList from "@/components/blog_list/blog_list";
+import CommentList from "@/components/comment_list/comment_list";
 
 
 import styles from './post.module.css'
@@ -11,7 +12,7 @@ export default function Post(props) {
     let user = props.user
     const [liked, setLiked] = useState(data.likes.includes(user.id));
     const [commentsVisibility, setCommentsVisibility] = useState(false);
-    const target = <BlogList/>
+    const target = <CommentList/>
     function likeOnClick(event) {
     setLiked(!liked)
     }

@@ -40,11 +40,11 @@ export default function Home() {
       </div>
 
     <div style={{display:'grid', gap:'20px'}}>      
-      <Header />
-      <CommentList/>
-      <Footer />
-      <LoginPage/>     
-      <RejesterPage />
+      {/* <Header /> */}
+      {/* <CommentList/> */}
+      {/* <Footer /> */}
+      {/* <LoginPage/>      */}
+      {/* <RejesterPage /> */}
       </div>
     </main>
   )
