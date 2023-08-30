@@ -1,9 +1,8 @@
 import React from 'react'; 
-export default function Footer() { 
-
+export default function Footer(props) { 
 
 return ( 
-  <footer class="footer-1 bg-gray-100 py-8 sm:py-12">
+  <footer class={props.className}>
   <div class="container mx-auto px-4">
     <div class="sm:flex sm:flex-wrap sm:-mx-4 md:py-4">
       <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6">
@@ -68,7 +67,7 @@ return (
             <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">0790474945</a>
           </li>
           <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">mohammedshiyab1996@gmail.com</a>
+            {/* <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">mohammedshiyab1996@gmail.com</a> */}
           </li>
         </ul>
       </div>

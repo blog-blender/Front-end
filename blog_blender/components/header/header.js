@@ -1,8 +1,10 @@
-export default function Header() {
+import Link from "next/link"
+
+export default function Header(props) {
 
  	return (
-        <>
-        <header style={{backgroundColor:'#e5e7eb'}} className="bg-#e5e7eb-600">
+        
+<header style={{backgroundColor:'#e5e7eb'}} className={props.className}>
   <div
     className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8"
   >
@@ -24,16 +26,13 @@ export default function Header() {
     <div className="flex flex-1 items-center justify-end md:justify-between">
       <nav aria-label="Global" className="hidden md:block">
         <ul className="flex items-center gap-6 text-sm">
+
           <li>
-            <a className="text-gray-500 transition hover:text-gray-500/75" href="/">
-              About
-            </a>
+            <Link href="./">Home </Link>
           </li>
 
           <li>
-            <a className="text-gray-500 transition hover:text-gray-500/75" href="/">
-              Blog
-            </a>
+            <Link href="./profile/">Profile </Link>
           </li>
 
           <li>
@@ -103,5 +102,4 @@ export default function Header() {
   </div>
 </header>
 
-        </>
     )}

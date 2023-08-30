@@ -5,19 +5,37 @@ import Axios from 'axios';
 const CreateBlogForm = ({ onSave, onClose }) => {
   const [selectedCategories, setSelectedCategories] = useState([]);
 
+  let state = {
+    title:"ayman",
+    owner:1,
+    banner:"temp",
+    blog_pic:"temp",
+    description:"aaaaa",
+    category:["gym"]
+  }
   let formData = new FormData();
 
   
   function onChange(event){
     if(event.target && event.target.files[0]){
-      formData.append("file", event.target.files[0])
-      console.log(formData);
+      state.banner=event.target.files[0]
+      state.blog_pic=event.target.files[0]
     }
   }
 
   async function handleSubmit(e){
     e.preventDefault();
-    Axios.post("http://127.0.0.1:8000/api/v1/posts/create/", {formData})
+    formData.append('title', state.title);
+    formData.append('owner', state.owner);
+    formData.append('banner', state.banner, "temp");
+    formData.append('blog_pic', state.blog_pic, "temp");
+    formData.append('description', state.description);
+    formData.append('category', state.category);
+    Axios.post("http://127.0.0.1:8000/api/v1/blogs/createblog/", {formData}, {
+      headers: {
+        'content-type': 'multipart/form-data'
+      }
+    })
     .then(res =>{
       console.log(res);
     })

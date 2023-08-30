@@ -16,8 +16,7 @@ import Styles from "./home.module.css"
 import CommentList from "@/components/comment_list/comment_list"
 import Header from "@/components/header/header"
 import Footer from "@/components/footer/footer"
-import LoginPage from "@/components/loginpage/login"
-import RejesterPage from "@/components/loginpage/regester"
+
 
 export default function Home() {
   const [selectedBlog, setSelectedBlog] = useState(null);
@@ -27,12 +26,6 @@ export default function Home() {
   };
   return (
     <main>
-      <div className="z-10 sticky self-start top-0 bg-gray-700 bg-opacity-100">
-        <Link href="./profile/">profile</Link>
-        <Link href="./blog/">blog</Link>
-        <Link href="./">Home</Link>
-        <h1>Home</h1>
-      </div>
       <div className={Styles.mainContent}>
       <BlogList className="w-1/4 overflow-auto overscroll-contain h-full sticky left-0 top-56 " onClick={handleBlogClick} />
       {selectedBlog && <BlogDetailPage blog={selectedBlog} />}
@@ -40,7 +33,6 @@ export default function Home() {
       </div>
 
     <div style={{display:'grid', gap:'20px'}}>      
-      {/* <Header /> */}
       {/* <CommentList/> */}
       {/* <Footer /> */}
       {/* <LoginPage/>      */}
