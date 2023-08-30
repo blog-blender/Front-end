@@ -1,19 +1,16 @@
 import React from 'react';
 
-
-
-
 export default function Blog(props) {
     const handleBlogClick = () => {
         if (props.onClick) {
-            props.onClick(); // Call the onClick function from the parent component
+            props.onClick(); 
         }
     };
 
     return (
         <div
             className="border rounded-lg shadow-md p-4 mb-4 w-80 h-40 flex bg-blue-50 cursor-pointer"
-            onClick={handleBlogClick} // Call the function when the component is clicked
+            onClick={handleBlogClick} 
         >
             {props.banner && <img src={props.banner} alt="Blog Cover" className="w-24 h-24 rounded mr-4" />}
             <img src={props.blog_photo} alt="Blog Cover" className="w-24 h-24 rounded mr-4" />

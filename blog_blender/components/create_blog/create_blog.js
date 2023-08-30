@@ -16,7 +16,6 @@ const CreateBlogForm = ({ onSave, onClose }) => {
     }
   };
 
-  // const categoryOptions = ['Category 1', 'Category 2', 'Category 3'];
 
   const handleSubmit = (e) => {
     e.preventDefault();
