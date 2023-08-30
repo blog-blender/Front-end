@@ -12,7 +12,6 @@ import CreatePostModal from "@/components/create_post/modal"
 import BlogDetailPage from "@/components/BlogDetailPage/BlogDetailPage";
 import CreateBlogModal from '@/components/create_blog/modal'
 
-import Styles from "./home.module.css"
 import CommentList from "@/components/comment_list/comment_list"
 import Header from "@/components/header/header"
 import Footer from "@/components/footer/footer"
@@ -26,17 +25,10 @@ export default function Home() {
   };
   return (
     <main>
-      <div className={Styles.mainContent}>
-      <BlogList className="w-1/4 overflow-auto overscroll-contain h-full sticky left-0 top-56 " onClick={handleBlogClick} />
+      <div className="flex sticky top-0 self-start">
+      <BlogList className="w-1/4 overflow-auto overscroll-contain h-full sticky left-0 top-16 " onClick={handleBlogClick} />
       {selectedBlog && <BlogDetailPage blog={selectedBlog} />}
       <PostList className="w-3/4"  posts={post_data} user={{id:1}}/>
-      </div>
-
-    <div style={{display:'grid', gap:'20px'}}>      
-      {/* <CommentList/> */}
-      {/* <Footer /> */}
-      {/* <LoginPage/>      */}
-      {/* <RejesterPage /> */}
       </div>
     </main>
   )
