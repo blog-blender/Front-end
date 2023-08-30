@@ -13,6 +13,11 @@ import BlogDetailPage from "@/components/BlogDetailPage/BlogDetailPage";
 import CreateBlogModal from '@/components/create_blog/modal'
 
 import Styles from "./home.module.css"
+import CommentList from "@/components/comment_list/comment_list"
+import Header from "@/components/header/header"
+import Footer from "@/components/footer/footer"
+import LoginPage from "@/components/loginpage/login"
+import RejesterPage from "@/components/loginpage/regester"
 
 export default function Home() {
   const [selectedBlog, setSelectedBlog] = useState(null);
@@ -34,6 +39,13 @@ export default function Home() {
       <PostList className="w-3/4"  posts={post_data} user={{id:1}}/>
       </div>
 
+    <div style={{display:'grid', gap:'20px'}}>      
+      <Header />
+      <CommentList/>
+      <Footer />
+      <LoginPage/>     
+      <RejesterPage />
+      </div>
     </main>
   )
 
