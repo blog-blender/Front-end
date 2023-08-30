@@ -7,9 +7,11 @@ import BlogList from "@/components/blog_list/blog_list"
 import CreatePostModal from "@/components/create_post/modal"
 import BlogDetailPage from "@/components/BlogDetailPage/BlogDetailPage";
 import CreateBlogModal from '@/components/create_blog/modal'
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import Photo from '../components/image_slider/image';
 import AccountSettingsForm from "@/components/setting/setting";
+import EditPostForm from "@/components/edit_post/edit_post";
+import PostList from "@/components/edit_post/PostList";
 
 
 export default function Home() {
@@ -26,8 +28,21 @@ export default function Home() {
     "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
     
 ];
+const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+   
+    const placeholderPosts = [
+      { id: 1, name: 'Post 1', description: 'Description 1' },
+      { id: 2, name: 'Post 2', description: 'Description 2' },
+      { id: 3, name: 'Post 3', description: 'Description 3' },
+    ];
+    setPosts(placeholderPosts);
+  }, []);
   return (
     <main>
+       <PostList posts={posts} />
+      
       <Photo photos={photoUrls} />
       {/* <CreateBlogModal/>
       <CreatePostModal/>
