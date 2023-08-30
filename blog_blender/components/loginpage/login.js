@@ -42,7 +42,8 @@ const LoginPage = () => {
   type="button"
 >
   Register
-</button>            </div>
+</button>        
+    </div>
           </div>
       
           <div class="md:block hidden w-1/2">
