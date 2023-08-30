@@ -23,7 +23,7 @@ margin-bottom: 30px;
 
 .content{
     margin-left: 1%;
-    width: 90vw;
+    width: 90%;
     margin-bottom: 30px;
 }
 
@@ -59,10 +59,10 @@ width: 200px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    margin-bottom: 10px;
+    /* margin-bottom: 5px; */
     border-bottom: 2px solid #ddd;
     padding: 5px;
-    width: 95vw;
+    width: 95%;
     margin-left: 2.5%;
 }
 
@@ -77,6 +77,6 @@ width: 200px;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     padding: 5px;
-    width: 95vw;
+    width: 95%;
     margin-left: 2.5%;
 }
