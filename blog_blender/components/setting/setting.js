@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import AppContext from "@/components/AppContext"
+import AppContext from "@/components/AuthContext"
 
 const AccountSettingsForm = () => {
     const appContext = useContext(AppContext)

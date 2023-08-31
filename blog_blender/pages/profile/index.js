@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import { useState, useContext } from "react";
-import AppContext from '@/components/AppContext';
 import styles from './profile.module.css'
 import AccountSettingsForm from '@/components/setting/setting';
+import { user_data } from '@/data_samples/user_data';
 
 export default function Profile() {
-  const appContext = useContext(AppContext)
-  let data = appContext.globalData
+
+  let data = user_data[0]
   const [viewState, setViewState] = useState("recent posts");
   function changeViewState(event){
     setViewState(event.target.value)
