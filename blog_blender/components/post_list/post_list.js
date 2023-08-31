@@ -1,6 +1,5 @@
-import { post_data } from "@/data_samples/post_list"
 import Post from "./post/post"
-post_data
+
 export default function PostList(props) {
     return(
     <div className={props.className}>

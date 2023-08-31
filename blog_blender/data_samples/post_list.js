@@ -1,3 +1,5 @@
+import { comment_data } from "./comment_list"
+
 export const post_data = [
     {
         content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Adipiscing vitae proin sagittis nisl. Mattis rhoncus urna neque viverra justo nec. Felis donec et odio pellentesque diam volutpat commodo. Scelerisque felis imperdiet proin fermentum. Tincidunt praesent semper feugiat nibh sed pulvinar proin gravida. Eros donec ac odio tempor orci dapibus ultrices in iaculis. Ultricies lacus sed turpis tincidunt id aliquet. Nibh tortor id aliquet lectus proin nibh nisl condimentum id. A scelerisque purus semper eget. Lobortis mattis aliquam faucibus purus in massa. Ac turpis egestas sed tempus. Ut sem nulla pharetra diam sit amet nisl suscipit. Tempus egestas sed sed risus pretium quam."+
@@ -15,6 +17,7 @@ export const post_data = [
             
         ],
         likes:[1,2,3,4],
+        comments:comment_data,
     },
     {
         content:"post content 2",
@@ -27,6 +30,7 @@ export const post_data = [
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-QisR7ODD3s3uDB1ymPSiSvgK4noxTCfWPYxiqW2kGjqTKB7fDjrOkpy5AKcmUXrTXjk&usqp=CAU",
         ],
         likes:[2,3,4],
+        comments:comment_data,
     },
     {
         content:"post content 3",
@@ -39,6 +43,7 @@ export const post_data = [
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-QisR7ODD3s3uDB1ymPSiSvgK4noxTCfWPYxiqW2kGjqTKB7fDjrOkpy5AKcmUXrTXjk&usqp=CAU",
         ],
         likes:[2,3,4],
+        comments:comment_data,
     },
     {
         content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Adipiscing vitae proin sagittis nisl. Mattis rhoncus urna neque viverra justo nec. Felis donec et odio pellentesque diam volutpat commodo. Scelerisque felis imperdiet proin fermentum. Tincidunt praesent semper feugiat nibh sed pulvinar proin gravida. Eros donec ac odio tempor orci dapibus ultrices in iaculis. Ultricies lacus sed turpis tincidunt id aliquet. Nibh tortor id aliquet lectus proin nibh nisl condimentum id. A scelerisque purus semper eget. Lobortis mattis aliquam faucibus purus in massa. Ac turpis egestas sed tempus. Ut sem nulla pharetra diam sit amet nisl suscipit. Tempus egestas sed sed risus pretium quam."+
@@ -56,6 +61,7 @@ export const post_data = [
             
         ],
         likes:[1,2,3,4],
+        comments:comment_data,
     },
     {
         content:"post content 2",
@@ -68,6 +74,7 @@ export const post_data = [
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-QisR7ODD3s3uDB1ymPSiSvgK4noxTCfWPYxiqW2kGjqTKB7fDjrOkpy5AKcmUXrTXjk&usqp=CAU",
         ],
         likes:[2,3,4],
+        comments:comment_data,
     },
     {
         content:"post content 3",
@@ -80,6 +87,7 @@ export const post_data = [
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-QisR7ODD3s3uDB1ymPSiSvgK4noxTCfWPYxiqW2kGjqTKB7fDjrOkpy5AKcmUXrTXjk&usqp=CAU",
         ],
         likes:[2,3,4],
+        comments:comment_data,
     },
     {
         content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Adipiscing vitae proin sagittis nisl. Mattis rhoncus urna neque viverra justo nec. Felis donec et odio pellentesque diam volutpat commodo. Scelerisque felis imperdiet proin fermentum. Tincidunt praesent semper feugiat nibh sed pulvinar proin gravida. Eros donec ac odio tempor orci dapibus ultrices in iaculis. Ultricies lacus sed turpis tincidunt id aliquet. Nibh tortor id aliquet lectus proin nibh nisl condimentum id. A scelerisque purus semper eget. Lobortis mattis aliquam faucibus purus in massa. Ac turpis egestas sed tempus. Ut sem nulla pharetra diam sit amet nisl suscipit. Tempus egestas sed sed risus pretium quam."+
@@ -97,6 +105,7 @@ export const post_data = [
             
         ],
         likes:[1,2,3,4],
+        comments:comment_data,
     },
     {
         content:"post content 2",
@@ -109,6 +118,7 @@ export const post_data = [
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-QisR7ODD3s3uDB1ymPSiSvgK4noxTCfWPYxiqW2kGjqTKB7fDjrOkpy5AKcmUXrTXjk&usqp=CAU",
         ],
         likes:[2,3,4],
+        comments:comment_data,
     },
     {
         content:"post content 3",
@@ -121,5 +131,6 @@ export const post_data = [
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-QisR7ODD3s3uDB1ymPSiSvgK4noxTCfWPYxiqW2kGjqTKB7fDjrOkpy5AKcmUXrTXjk&usqp=CAU",
         ],
         likes:[2,3,4],
+        comments:comment_data,
     },
 ]

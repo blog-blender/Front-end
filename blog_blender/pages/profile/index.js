@@ -1,19 +1,12 @@
-import BlogList from "@/components/blog_list/blog_list"
-import Blog from "@/components/blog_list/blog/blog"
-import Comment from "@/components/comment_list/comment/comment"
-import CommentList from "@/components/comment_list/comment_list"
-import PostList from "@/components/post_list/post_list"
 import Link from 'next/link'
-import { blog_data } from "@/data_samples/blog_list"
-import { comment_data } from "@/data_samples/comment_list"
-import { post_data } from "@/data_samples/post_list"
-import { user_data } from "@/data_samples/user_data"
-import { useState } from "react";
-
+import { useState, useContext } from "react";
+import AppContext from '@/components/AppContext';
 import styles from './profile.module.css'
+import AccountSettingsForm from '@/components/setting/setting';
 
 export default function Profile() {
-  let data = user_data[0]
+  const appContext = useContext(AppContext)
+  let data = appContext.globalData
   const [viewState, setViewState] = useState("recent posts");
   function changeViewState(event){
     setViewState(event.target.value)
@@ -42,7 +35,7 @@ export default function Profile() {
         </div>
 
         <div>
-          {viewState == "recent posts" ?<p>recent</p>:viewState == "settings"? <p>settings</p>:<p>my blogs</p>}
+          {viewState == "recent posts" ?<p>recent</p>:viewState == "settings"? <AccountSettingsForm/>:<p>my blogs</p>}
         </div>
       </div>
 

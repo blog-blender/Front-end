@@ -1,18 +1,17 @@
 import { useState } from "react";
-import { comment_data } from "@/data_samples/comment_list";
 import Modal from "@/components/modal";
-import BlogList from "@/components/blog_list/blog_list";
+import Photo from "@/components/image_slider/image";
 import CommentList from "@/components/comment_list/comment_list";
 
 
 import styles from './post.module.css'
-export default function Post(props) {
+export default function Post(props){
 
     let data = props.data
     let user = props.user
     const [liked, setLiked] = useState(data.likes.includes(user.id));
     const [commentsVisibility, setCommentsVisibility] = useState(false);
-    const target = <CommentList/>
+    const target = <CommentList data={data.comments}/>
     function likeOnClick(event) {
     setLiked(!liked)
     }
@@ -32,12 +31,12 @@ export default function Post(props) {
         <p className={styles.content}>{data.content}</p>
 
         <div className={styles.post_photos}>
-            {data.post_photos.map(image => { return <div className={styles.photo_frame}><img className={styles.post_photo} src={image}></img></div>})}
+            <Photo photos={data.post_photos}/>
         </div>
         
         <div className={styles.post_summary}>
             <p>likes {data.likes.length}</p>
-            <p>Comments {comment_data.length}</p>
+            <p>Comments {data.comments.length}</p>
         </div>
 
         <div className={styles.post_interactions}>

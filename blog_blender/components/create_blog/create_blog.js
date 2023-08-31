@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Checkbox from './Checkbox';
 import Axios from 'axios';
 
@@ -82,6 +82,7 @@ const CreateBlogForm = ({ onSave, onClose }) => {
             <Checkbox
               selectedOptions={selectedCategories}
               onOptionChange={onChange}
+              categories={["temp1","temp2"]}
             />
             </div>
           <div className="mb-4 flex">

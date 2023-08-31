@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import{ useState } from 'react';
 import { blog_data } from '@/data_samples/blog_list';
+
 const CreateBlogForm = ({ onSave, onClose }) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');

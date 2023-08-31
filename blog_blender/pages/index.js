@@ -3,32 +3,29 @@ import PostList from "@/components/post_list/post_list"
 import Link from 'next/link'
 
 import { blog_data } from "@/data_samples/blog_list"
-import { comment_data } from "@/data_samples/comment_list"
 import { post_data } from "@/data_samples/post_list"
-import { useState } from "react";
 
+import { useState, useContext } from "react";
 
-import CreatePostModal from "@/components/create_post/modal"
+import AppContext from "@/components/AppContext"
+
 import BlogDetailPage from "@/components/BlogDetailPage/BlogDetailPage";
-import CreateBlogModal from '@/components/create_blog/modal'
-
-import CommentList from "@/components/comment_list/comment_list"
-import Header from "@/components/header/header"
-import Footer from "@/components/footer/footer"
 
 
 export default function Home() {
+  const appContext = useContext(AppContext)
   const [selectedBlog, setSelectedBlog] = useState(null);
 
   const handleBlogClick = (blog) => {
     setSelectedBlog(blog);
   };
+
   return (
     <main>
       <div className="flex sticky top-0 self-start">
-      <BlogList className="w-1/4 overflow-auto overscroll-contain h-full sticky left-0 top-16 " onClick={handleBlogClick} />
+      <BlogList className="w-1/4 overflow-auto overscroll-contain h-full sticky left-0 top-16" onClick={handleBlogClick} data={blog_data}/>
       {selectedBlog && <BlogDetailPage blog={selectedBlog} />}
-      <PostList className="w-3/4"  posts={post_data} user={{id:1}}/>
+      <PostList className="w-3/4"  posts={post_data} user={appContext.globalData}/>
       </div>
     </main>
   )
