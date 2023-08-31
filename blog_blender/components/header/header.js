@@ -1,6 +1,9 @@
 import Link from "next/link"
+import { useAuth } from "../AppContext"
 
 export default function Header(props) {
+
+  const {login, user,logout}= useAuth()
 
  	return (
         
@@ -65,7 +68,7 @@ export default function Header(props) {
         <div className="sm:flex sm:gap-4">
           <a
             className="block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"
-            href="/"
+            onClick={()=>login("admin","admin")}
           >
             Login
           </a>
@@ -100,6 +103,17 @@ export default function Header(props) {
       </div>
     </div>
   </div>
+  { user ? (
+      <>
+     <h2>welcome {user.username} your email is : {user.email} and your id is :  {user.id}</h2>
+     <button className="p-2 text-white bg-gray-500 rounded" onClick={()=>logout()}>Logout</button>
+      </>
+     ) : 
+     (<>
+     </>
+     )
+      
+     }
 </header>
 
     )}
