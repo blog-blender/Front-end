@@ -1,10 +1,14 @@
 import { createContext,useContext,useState } from "react";
 import jwt from 'jsonwebtoken';
 
+// const AppContext = createContext()
+// export default AppContext
+
 
 //////////////////////////////////////
 const AuthContext= createContext()
-// export default AuthContext
+export default AuthContext
+
 export function useAuth(){
     const auth = useContext(AuthContext)
     if (!auth){
@@ -38,7 +42,6 @@ export function AuthProvider(props){
         }
         const response = await fetch(url,options )
         const data = await response.json()
-        console.log(data)
         const decodedToken = jwt.decode(data.access)
         console.log(111111111111,decodedToken)
 
@@ -64,7 +67,7 @@ export function AuthProvider(props){
 
 
     return(
-        <AuthContext.Provider value={{state}}>
+        <AuthContext.Provider value={{state,setState}}>
             {props.children}
 
         </AuthContext.Provider>

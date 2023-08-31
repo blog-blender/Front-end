@@ -1,48 +1,31 @@
 import { useState } from 'react';
 import Checkbox from './Checkbox';
-import Axios from 'axios';
+import axios from 'axios';
 
-const CreateBlogForm = ({ onSave, onClose }) => {
+const CreateBlogForm = ({ onSave, onClose, userState }) => {
+  // const [photo, setPhoto] = useState
   const [selectedCategories, setSelectedCategories] = useState([]);
-
-  let state = {
-    title:"ayman",
-    owner:1,
-    banner:"temp",
-    blog_pic:"temp",
-    description:"aaaaa",
-    category:["gym"]
-  }
-  let formData = new FormData();
-
   
-  function onChange(event){
-    if(event.target && event.target.files[0]){
-      state.banner=event.target.files[0]
-      state.blog_pic=event.target.files[0]
-    }
-  }
-
-  async function handleSubmit(e){
-    e.preventDefault();
-    formData.append('title', state.title);
-    formData.append('owner', state.owner);
-    formData.append('banner', state.banner, "temp");
-    formData.append('blog_pic', state.blog_pic, "temp");
-    formData.append('description', state.description);
-    formData.append('category', state.category);
-    Axios.post("http://127.0.0.1:8000/api/v1/blogs/createblog/", {formData}, {
-      headers: {
-        'content-type': 'multipart/form-data'
-      }
-    })
-    .then(res =>{
-      console.log(res);
-    })
-    .catch(error =>{
-      console.log(error);
-    })
+  const [selectedImage, setSelectedImage] = useState(null);
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    setSelectedImage(file);
   };
+
+  const handleOrderSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+    formData.append("photo", selectedImage);
+
+    const config = {
+      headers: {
+        Authorization : `Bearer ${userState.token.access}`,
+      },
+  };
+    const url='http://127.0.0.1:8000/api/v1/posts/test/'
+    const data=await axios.post(url ,formData,config)
+  };
+
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-800 bg-opacity-50">
@@ -50,7 +33,7 @@ const CreateBlogForm = ({ onSave, onClose }) => {
         <div className="flex justify-end mb-2">
           <button
             className="bg-blue-500 text-white rounded-lg px-4 py-2 mr-2"
-            onClick={onClose}
+            onClick={handleImageChange}
           >
             Close
           </button>
@@ -64,7 +47,7 @@ const CreateBlogForm = ({ onSave, onClose }) => {
             <input
               type="text"
               id="name"
-              onChange={onChange}
+              onChange={handleImageChange}
               className="border rounded-lg p-2 w-full"
             />
           </div>
@@ -74,14 +57,14 @@ const CreateBlogForm = ({ onSave, onClose }) => {
             </label>
             <textarea
               id="description"
-              onChange={onChange}
+              onChange={handleImageChange}
               className="border rounded-lg p-2 w-full h-20 overflow-y-auto"
             />
           </div>
           <div className="mb-4">
             <Checkbox
               selectedOptions={selectedCategories}
-              onOptionChange={onChange}
+              onOptionChange={handleImageChange}
               categories={["temp1","temp2"]}
             />
             </div>
@@ -94,7 +77,7 @@ const CreateBlogForm = ({ onSave, onClose }) => {
                 type="file"
                 id="bannerImage"
                 accept="image/*"
-                onChange={onChange}
+                onChange={handleImageChange}
                 className="border rounded-lg p-2 w-40"
               />
             </div>
@@ -106,7 +89,7 @@ const CreateBlogForm = ({ onSave, onClose }) => {
                 type="file"
                 id="blogImage"
                 accept="image/*"
-                onChange={onChange}
+                onChange={handleImageChange}
                 className="border rounded-lg p-2 w-40"
               />
             </div>
@@ -115,7 +98,7 @@ const CreateBlogForm = ({ onSave, onClose }) => {
             <button
               type="button"
               className="bg-blue-500 text-white rounded-lg px-4 py-2"
-              onClick={handleSubmit}
+              onClick={handleOrderSubmit}
             >
               Save
             </button>

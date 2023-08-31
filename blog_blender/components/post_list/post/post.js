@@ -9,9 +9,9 @@ export default function Post(props){
 
     let data = props.data
     let user = props.user
-    const [liked, setLiked] = useState(data.likes.includes(user.id));
+    const [liked, setLiked] = useState((data.likes)?data.likes.includes(user.id):false);
     const [commentsVisibility, setCommentsVisibility] = useState(false);
-    const target = <CommentList data={data.comments}/>
+    const target = (data.comments)?<CommentList data={data.comments}/>:<></>
     function likeOnClick(event) {
     setLiked(!liked)
     }
@@ -31,12 +31,12 @@ export default function Post(props){
         <p className={styles.content}>{data.content}</p>
 
         <div className={styles.post_photos}>
-            <Photo photos={data.post_photos}/>
+            {(data.likes)?<Photo photos={data.post_photos}/>:<p>no photos</p>}
         </div>
         
         <div className={styles.post_summary}>
-            <p>likes {data.likes.length}</p>
-            <p>Comments {data.comments.length}</p>
+            <p>likes {(data.likes)?data.likes.length:69}</p>
+            <p>Comments {(data.likes)?data.comments.length:69}</p>
         </div>
 
         <div className={styles.post_interactions}>

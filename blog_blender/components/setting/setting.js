@@ -1,9 +1,8 @@
 import React, { useState, useContext } from 'react';
-import AppContext from "@/components/AuthContext"
+import { user_data } from '@/data_samples/user_data';
 
 const AccountSettingsForm = () => {
-    const appContext = useContext(AppContext)
-    const [user, setUser] = useState(appContext.globalData);
+    const [user, setUser] = useState(user_data[0]);
     const [newFirstName, setNewFirstName] = useState('');
     const [newLastName, setNewLastName] = useState('');
     const [newUsername, setNewUsername] = useState('');
