@@ -2,7 +2,7 @@ import BlogList from "@/components/blog_list/blog_list"
 // import Blog from "@/components/blog_list/blog/blog"
 // import Comment from "@/components/comment_list/comment/comment"
 // import CommentList from "@/components/comment_list/comment_list"
-// import { blog_data } from "@/data_samples/blog_list"
+import { blog_data } from "@/data_samples/blog_list"
 // import { comment_data } from "@/data_samples/comment_list"
 import CreatePostModal from "@/components/create_post/modal"
 import BlogDetailPage from "@/components/BlogDetailPage/BlogDetailPage";
@@ -41,14 +41,13 @@ const [posts, setPosts] = useState([]);
   }, []);
   return (
     <main>
-       <PostList posts={posts} />
-      
-      <Photo photos={photoUrls} />
+      <BlogList className="w-1/4 overflow-auto overscroll-contain h-full  left-0 top-16" onClick={handleBlogClick} data={blog_data}/>
+      {selectedBlog && <BlogDetailPage blog={selectedBlog} />}
       {/* <CreateBlogModal/>
       <CreatePostModal/>
-      <BlogList onBlogClick={handleBlogClick} />
-      {selectedBlog && <BlogDetailPage blog={selectedBlog} />} */}
-      <AccountSettingsForm/>
+      <PostList posts={posts} />
+      <Photo photos={photoUrls} />
+      <AccountSettingsForm/> */}
     </main>
   )
 
