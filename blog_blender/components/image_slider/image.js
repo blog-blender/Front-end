@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 
 const Photo = ({ photos }) => {
+    if (!photos) {
+        return<></>
+    }
+    if (photos.length == 0) {
+        return<></>
+    }
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
     const [activeIndicator, setActiveIndicator] = useState(0);
@@ -41,7 +47,7 @@ const Photo = ({ photos }) => {
                     <div className="w-full overflow-hidden rounded-lg shadow">
                         <img
                             className="object-contain  h-full"
-                            src={photo}
+                            src={photo.data}
                             alt={`Photo ${index + 1}`}
                         />
                     </div>
@@ -90,7 +96,7 @@ const Photo = ({ photos }) => {
                 <img
                     className="h-full w-auto"
                     style={{ maxHeight: '100vh', maxWidth: '100vw' }}
-                    src={photos[currentPhotoIndex]}
+                    src={photos[currentPhotoIndex].data}
                     alt={`Photo ${currentPhotoIndex + 1}`}
                 />
                 <button

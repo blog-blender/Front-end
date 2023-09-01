@@ -1,10 +1,10 @@
 import Link from "next/link"
-import AuthContext from "../AuthContext";
+import {AuthContext} from "../AuthContext";
 import { useContext } from "react";
 
 export default function Header(props) {
   let AuthData = useContext(AuthContext)
-  const {login, user,logout}= AuthData.state
+  const {login, user,logout}= AuthData
 
  	return (
         

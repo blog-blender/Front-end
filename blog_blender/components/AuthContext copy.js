@@ -6,10 +6,10 @@ import jwt from 'jsonwebtoken';
 
 
 //////////////////////////////////////
-export const AuthContext = createContext();
+const AuthContext= createContext()
+export default AuthContext
 
-
-export function ueAuth(){
+export function useAuth(){
     const auth = useContext(AuthContext)
     if (!auth){
         return(null)
@@ -68,7 +68,7 @@ export function AuthProvider(props){
     // TODO add token refresh function
 
     return(
-        <AuthContext.Provider value={state}>
+        <AuthContext.Provider value={{state,setState}}>
             {props.children}
         </AuthContext.Provider>
     )

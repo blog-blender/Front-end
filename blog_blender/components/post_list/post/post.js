@@ -8,6 +8,7 @@ import styles from './post.module.css'
 export default function Post(props){
 
     let data = props.data
+    console.log(data,"post data");
     let user = props.user
     const [liked, setLiked] = useState((data.likes)?data.likes.includes(user.id):false);
     const [commentsVisibility, setCommentsVisibility] = useState(false);
@@ -31,7 +32,7 @@ export default function Post(props){
         <p className={styles.content}>{data.content}</p>
 
         <div className={styles.post_photos}>
-            {(data.likes)?<Photo photos={data.post_photos}/>:<p>no photos</p>}
+            {(data.photo)?<Photo photos={data.photo}/>:<p>no photos</p>}
         </div>
         
         <div className={styles.post_summary}>
