@@ -5,7 +5,7 @@ import axios from 'axios';
 import { AuthContext } from '../AuthContext';
 
 
-export default function CreatePostForm({ onSave, onClose }) {
+export default function CreatePostForm({ onSave, closeHandeler }) {
   const [blogImages, setPostImages] = useState({
     upload: [],
     display: [],
@@ -22,6 +22,8 @@ export default function CreatePostForm({ onSave, onClose }) {
 
   const handlePostImageChange = (event) => {
     const uploadedImage = event.target.files[0];
+    if(!uploadedImage)
+    return
     const imageUrl = URL.createObjectURL(uploadedImage);
     setPostImages({
       upload: [
@@ -61,27 +63,26 @@ export default function CreatePostForm({ onSave, onClose }) {
     event.preventDefault();
     const formData = new FormData();
     const payload ={
-      title: "Sample Post Title",
-      Auther_id: 1, 
-      content: "This// Replace with a valid user ID is the content of the sample post.",
+      title: initialData.title,
+      Auther_id: user.id, 
+      content: initialData.content,
       blog_id: 1,
-      photos: blogImages.upload,
+      photos: blogImages.upload.length>0?blogImages.upload:blogImages,
       }
     formData.append("title", payload.title);
     formData.append("Auther_id", payload.Auther_id);
     formData.append("content", payload.content);
     formData.append("blog_id", payload.blog_id);
-    // formData.append("photo_data", ...payload.photos);
     for (const image of payload.photos) {
-      formData.append("photo_data", image);
+      formData.append("photos", image);
     }
     const config = {
       headers: {
         Authorization : `Bearer ${token.access}`,
       },
   };
-    // const url='http://127.0.0.1:8000/api/v1/posts/create/'
-    const url='http://127.0.0.1:8000/api/v1/posts/test/'
+    const url='http://127.0.0.1:8000/api/v1/posts/create/'
+    // const url='http://127.0.0.1:8000/api/v1/posts/test/'
     const data=await axios.post(url ,formData,config)
   };
 
@@ -92,7 +93,7 @@ export default function CreatePostForm({ onSave, onClose }) {
         <div className="flex justify-end mb-2">
           <button
             className="bg-blue-500 text-white rounded-lg px-4 py-2 mr-2"
-            onClick={onClose}
+            onClick={closeHandeler}
           >
             Close
           </button>

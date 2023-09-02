@@ -30,7 +30,6 @@ export function AuthProvider(props){
         logout
     })
 
-    console.log("render");
     async function login(username,password){
   
         const url = "http://127.0.0.1:8000/api/token/"
@@ -43,7 +42,7 @@ export function AuthProvider(props){
         const response = await fetch(url,options )
         const data = await response.json()
         const decodedToken = jwt.decode(data.access)
-        console.log(111111111111,decodedToken)
+        console.log(decodedToken)
 
         const newState = {
             token : data,

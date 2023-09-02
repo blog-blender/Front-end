@@ -4,14 +4,9 @@ import { useContext } from "react";
 
 const LoginPage = () => {
   let context = useContext(AuthContext)
-  // const {token, user, login} = useAuth().state
-  // console.log(useAuth());
   const [openModal, setOpenModal] = useState(false)
   const [email, setEmail] = useState('')
-  // const [firstName,setFirstName]= useState('')
-  // const [lastName , setLastName] = useState('')
   const [password, setPassword] = useState('')
-  console.log(openModal)
   return (
     <section class="bg-gray-50 min-h-screen flex items-center justify-center">
       <div class="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">

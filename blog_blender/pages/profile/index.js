@@ -1,13 +1,42 @@
 import Link from 'next/link'
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import styles from './profile.module.css'
 import AccountSettingsForm from '@/components/setting/setting';
 import { user_data } from '@/data_samples/user_data';
+import { AuthContext } from '@/components/AuthContext';
+import axios from 'axios';
 
 export default function Profile() {
-
   let data = user_data[0]
   const [viewState, setViewState] = useState("recent posts");
+  let AuthData = useContext(AuthContext);
+
+  const [siteCategories, setSiteCategories] = useState(null);
+  const siteCategorieslUrl = 'http://127.0.0.1:8000/api/v1/blogs/categories'
+  
+  const [userDatail, setUserDetail] = useState(null);
+  const userDeatailUrl = 'http://127.0.0.1:8000/api/v1/accounts/users'
+  const userDeatailParams = {username:AuthData.user.username,}
+
+  async function getData(url, token, setter, params){
+    const config = {headers: {
+      Authorization : `Bearer ${token}`},
+      params : params,};
+    let result
+    axios.get(url ,config)
+    .then((response)=>{console.log(response);setter(response)})
+    .catch((error)=>{setter(error)})
+    setter(result)
+  }
+
+  useEffect(() => {
+    if (AuthData.token){
+      console.log("profile fetch");
+      getData(userDeatailUrl,AuthData.token.access,setUserDetail,userDeatailParams)
+      getData(siteCategorieslUrl,AuthData.token.access,setSiteCategories)
+    }
+  },[])
+  console.log(siteCategories);
   function changeViewState(event){
     setViewState(event.target.value)
   }
@@ -35,7 +64,7 @@ export default function Profile() {
         </div>
 
         <div>
-          {viewState == "recent posts" ?<p>recent</p>:viewState == "settings"? <AccountSettingsForm/>:<p>my blogs</p>}
+          {viewState == "recent posts" ?<p>recent</p>:viewState == "settings"? <AccountSettingsForm userDatail={userDatail}/>:<p>my blogs</p>}
         </div>
       </div>
 

@@ -1,16 +1,26 @@
 import React, { useState, useContext } from 'react';
 import { user_data } from '@/data_samples/user_data';
 
-const AccountSettingsForm = () => {
-    const [user, setUser] = useState(user_data[0]);
-    const [newFirstName, setNewFirstName] = useState('');
-    const [newLastName, setNewLastName] = useState('');
-    const [newUsername, setNewUsername] = useState('');
-    const [newEmail, setNewEmail] = useState('');
-    const [newPassword, setNewPassword] = useState('');
-
-    const handleSaveChanges = (e) => {
-        e.preventDefault();
+const AccountSettingsForm = (props) => {
+    const [userDatail, setUserDatail] = useState(props.userData);
+    const [submittedImages, setSubmittedImages] = useState({
+        upload:{userBanner,userPic},
+        display:{userBanner,userPic},
+    });
+    
+    const imageChangeHandeler = (event) => {
+        const uploadedImage = event.target.files[0];
+        if(!uploadedImage)
+            return
+        const imageUrl = URL.createObjectURL(uploadedImage);
+        let temp = {...setSubmittedImages}
+        temp.upload[event.target.id] = uploadedImage
+        temp.display[event.target.id] = imageUrl
+        setPostImages(temp);
+    }
+    
+    const submitHandeler = (event) => {
+        event.preventDefault();
 
         if (newPassword === user.password) {
 

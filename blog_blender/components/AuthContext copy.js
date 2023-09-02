@@ -30,7 +30,6 @@ export function AuthProvider(props){
         logout
     })
 
-    console.log("render");
     async function login(username,password){
   
         const url = "http://127.0.0.1:8000/api/token/"
