@@ -16,8 +16,7 @@ import Styles from "./home.module.css"
 import CommentList from "@/components/comment_list/comment_list"
 import Header from "@/components/header/header"
 import Footer from "@/components/footer/footer"
-
-
+import Image from 'next/image';
 export default function Home() {
   const [selectedBlog, setSelectedBlog] = useState(null);
 
@@ -25,14 +24,40 @@ export default function Home() {
     setSelectedBlog(blog);
   };
   return (
+    
     <main>
-      <div className={Styles.mainContent}>
-      <BlogList className="w-1/4 overflow-auto overscroll-contain h-full sticky left-0 top-56 " onClick={handleBlogClick} />
+        <Image 
+          src="/images/img1.png" 
+          alt="Header Image"
+          className="img"
+          width={1000}
+          height={100} 
+        />
+      <section class={Styles.boxes}>
+          <div class={Styles.box}>
+          <Image src="/images/img2.jpg" alt="Box 2" width={400} height={400}/>
+          
+          </div>
+          <div class={Styles.box}>
+          <Image src="/images/img3.jpg" alt="Box 2" width={400} height={400}/>
+          </div>
+          <div class={Styles.box}>
+          <Image src="/images/img4.jpg" alt="Box 3" width={400} height={400}/>
+          </div>
+          <div class={Styles.box}>
+          <Image src="/images/img5.jpg" alt="Box 4" width={400} height={400}/>
+          </div>
+      </section>
+
+        <div className={Styles.mainContent}>
+      <BlogList className={Styles.customsticky} onClick={handleBlogClick} />
       {selectedBlog && <BlogDetailPage blog={selectedBlog} />}
-      <PostList className="w-3/4"  posts={post_data} user={{id:1}}/>
+      
+      <PostList className={Styles.postList}  posts={post_data} user={{id:1}}/>
+      
       </div>
 
-    <div style={{display:'grid', gap:'20px'}}>      
+    <div className={Styles.test}>      
       {/* <CommentList/> */}
       {/* <Footer /> */}
       {/* <LoginPage/>      */}

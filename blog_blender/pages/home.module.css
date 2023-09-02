@@ -4,4 +4,80 @@
     align-self: flex-start;
     top:0;
     /* height: 77vh; */
+    /* background-color: #1d6385; */
+    /* border: 5px solid #fcfdfd; */
+    
 }
+
+    .customsticky {
+        width: 20%; 
+        overflow: auto; 
+        overscroll-behavior: contain; 
+        height: 100%; 
+        position: sticky; 
+        left: 0; 
+        top: 56px; 
+        grid-area: leftbar;
+        color: #6d7c84;
+        background-color: #BAC7CD;
+        margin: 2%;
+      }
+      
+    .postList{
+        color: #000000;
+        line-height: 1.5;
+        letter-spacing: 1px;
+        word-spacing: 1px;
+        text-align: left;
+        text-decoration: none;
+        text-transform: none;
+        width: 75%;
+        border: 2px solid #ADC4CE;
+        margin-top: 2%;
+        border-radius: 15px; 
+        height: 20%;       
+    }
+    .test{
+        box-shadow: -1px -2px 6px 4px rgba(30, 40, 179, 0.1);
+        display:'grid';
+        gap:'20px'
+    }
+    .individual-post {
+        margin: 20px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+    }
+    .boxes {
+        /* background-image: url('common-background.jpg'); Add your common background image path */
+        background-size: cover;
+        background-position: center;
+        padding: 40px 0;
+        display: flex;
+        justify-content: space-between;
+        }
+    
+    /* Style individual boxes */
+    .box {
+        background-color: rgba(54, 51, 68, 0.295); /* Adjust the background color and opacity as needed */
+        padding: 20px;
+        margin: 20px;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+    }
+    
+    /* Style the images within the boxes */
+    .box img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    .posts{
+margin: 2px;
+    }
+    
+    
+    
+    
+    
