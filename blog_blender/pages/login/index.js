@@ -26,7 +26,6 @@ export default function Profile() {
       
       <div>
         <img className={styles.banner} src={data.banner}/>
-        
         <div className={styles.user_info}>
             <img className={styles.user_photo} src={data.user_photo}/>
             <div>

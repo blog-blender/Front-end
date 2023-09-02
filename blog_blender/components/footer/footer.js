@@ -40,7 +40,7 @@ return (
         <h5 class="text-xl font-bold mb-6">About</h5>
         <ul class="list-none footer-links">
           <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Mohammad Shiyyab</a>
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Eman Obeidat</a>
           </li>
           <li class="mb-2">
             <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Ayman Malkawe</a>
@@ -55,7 +55,7 @@ return (
             <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Mones Saeed</a>
           </li>
           <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Eman Obeidat</a>
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Mohammed shiyab</a>
           </li>
           
         </ul>

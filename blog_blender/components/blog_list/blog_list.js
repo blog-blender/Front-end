@@ -6,7 +6,7 @@ import Blog from "./blog/blog";
 export default function BlogList(props) {
   return (
     <div className={props.className}>
-      <div className="rounded-lg shadow-md p-2 w-full">
+      <div className="rounded-lg shadow-md p-2 w-full ">
         <h2 className="w-full text-2xl font-semibold mb-2 text-gray-800 border-b pb-2 flex items-center justify-center border-2 border-gray-300 rounded bg-blue-100">Blog List</h2>
         <div className="grid gap-4">
           {blog_data.map((blog, index) => (
