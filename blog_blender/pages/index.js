@@ -19,6 +19,10 @@ import Footer from "@/components/footer/footer"
 import Image from 'next/image';
 import Carousel from "@/components/homeslider/home_image"
 import FriendList from "@/components/friend/friend_list"
+
+
+
+
 export default function Home() {
   const [selectedBlog, setSelectedBlog] = useState(null);
 
@@ -31,8 +35,8 @@ export default function Home() {
 
       <Carousel />
       <div className={Styles.mainContent}>
-        <BlogList className={Styles.customsticky} onClick={handleBlogClick} />
-        {selectedBlog && <BlogDetailPage blog={selectedBlog} />}
+      <BlogList className="w-1/4 overflow-auto overscroll-contain h-full  left-0 top-16" onClick={handleBlogClick} data={blog_data}/>
+      {selectedBlog && <BlogDetailPage blog={selectedBlog} />}
 
         <PostList className={Styles.postList} posts={post_data} user={{ id: 1 }} />
         <FriendList />

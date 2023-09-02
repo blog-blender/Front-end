@@ -1,26 +1,86 @@
+// import React from 'react';
+
+// export default function Blog(props) {
+//     const handleBlogClick = () => {
+//         if (props.onClick) {
+//             props.onClick(); 
+//         }
+//     };
+
+    // return (
+    //     <div
+    //         className="border rounded-lg shadow-md p-4 mb-4 w-80 h-40 flex bg-blue-50 cursor-pointer"
+    //         onClick={handleBlogClick} 
+    //     >
+    //         {props.banner && <img src={props.banner} alt="Blog Cover" className="w-24 h-24 rounded mr-4" />}
+    //         <img src={props.blog_photo} alt="Blog Cover" className="w-24 h-24 rounded mr-4" />
+    //         <div>
+    //             <h3 className="font-semibold">{props.group_name}</h3>
+    //             <br /><hr />
+    //             <p className="text-gray-600">{props.description}</p>
+    //         </div>
+    //         <div>
+    //             {props.categories && props.categories.length > 0 && (
+    //                 <ul className="mt-2">
+    //                     {props.categories.map((category, index) => (
+    //                         <li key={index} className="text-gray-500">{category}</li>
+    //                     ))}
+    //                 </ul>
+    //             )}
+    //         </div>
+    //     </div>
+    // );
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import React from 'react';
-
-
 
 
 export default function Blog(props) {
     const handleBlogClick = () => {
         if (props.onClick) {
-            props.onClick(); // Call the onClick function from the parent component
+            props.onClick(); 
         }
     };
 
     return (
         <div
-            className="justify-around  rounded-lg shadow-md p-3 mb-2 flex bg-blue-50 cursor-pointer w-fit lg:w-full"
-            onClick={handleBlogClick} >
-
-            <img src={props.blog_photo} alt="Blog Cover" className="rounded-full h-16 w-16 object-cover br-1/2 " />
-             <h3 className="font-semibold self-center hidden md:block">{props.group_name}</h3>   
+            className="border rounded-lg shadow-md p-4 mb-4 w-80 h-40 flex bg-blue-50 cursor-pointer"
+            onClick={handleBlogClick} 
+        >
+            {props.banner && <img src={props.banner} alt="Blog Cover" className="w-24 h-24 rounded mr-4" />}
+            <img src={props.blog_photo} alt="Blog Cover" className="w-24 h-24 rounded mr-4" />
+            <div>
+                <h3 className="font-semibold">{props.group_name}</h3>
+                <br /><hr />
+                <p className="text-gray-600">{props.description}</p>
+            </div>
+            <div>
+                {props.categories && props.categories.length > 0 && (
+                    <ul className="mt-2">
+                        {props.categories.map((category, index) => (
+                            <li key={index} className="text-gray-500">{category}</li>
+                        ))}
+                    </ul>
+                )}
+            </div>
         </div>
     );
 }
-
 
 
 
