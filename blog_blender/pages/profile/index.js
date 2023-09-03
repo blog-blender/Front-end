@@ -9,6 +9,9 @@ import { comment_data } from "@/data_samples/comment_list"
 import { post_data } from "@/data_samples/post_list"
 import { user_data } from "@/data_samples/user_data"
 import { useState } from "react";
+import Profile_info from './Profile_info'; // Assuming both files are in the same directory
+
+import Content from "@/pages/profile/Page_content"
 
 import styles from './profile.module.css'
 
@@ -19,33 +22,34 @@ export default function Profile() {
     setViewState(event.target.value)
   }
   return (
+    <div>
+     
     <main>
-      <Link href="./profile/">profile </Link>
+      {/* <Link href="./profile/">profile </Link>
       <Link href="./blog/">blog </Link>
-      <Link href="./">Home </Link>
+      <Link href="./">Home </Link> */}
       
       <div>
-        <img className={styles.banner} src={data.banner}/>
+        <Profile_info/>
+        {/* <Content/> */}
+        {/* <img className={styles.banner} src={data.banner}/> */}
         
-        <div className={styles.user_info}>
-            <img className={styles.user_photo} src={data.user_photo}/>
-            <div>
-              <h1 className="text-4xl font-bold">{data.first_name + " " + data.last_name}</h1>
-              <h3 className="font-thin">{data.user_name}</h3>
-            </div>
-        </div>
-        
+
+{/*         
         <div className={styles.profile_nav}>
           <button onClick={changeViewState} value="my blogs">My Blogs</button>
           <button onClick={changeViewState} value="recent posts">recent posts</button>
           <button onClick={changeViewState} value="settings">Settings</button>
-        </div>
+        </div> */}
 
-        <div>
+        {/* <div>
           {viewState == "recent posts" ?<p>recent</p>:viewState == "settings"? <p>settings</p>:<p>my blogs</p>}
-        </div>
+        </div> */}
       </div>
 
     </main>
+    </div>
   )
-}
+  
+
+    };

@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }) {
       <AppContext.Provider value={{appData,setAppData}}>
         <Header className="sticky top-0 bg-#e5e7eb-600 z-30"/>
         <Component {...pageProps} />
-        <Footer className="bg-#e5e7eb-600 z-30 bg-gray-100 h-1/4 sm:py-12"/>
+        {/* <Footer className="bg-#e5e7eb-600 z-30 bg-gray-100 h-1/4 sm:py-12"/> */}
       </AppContext.Provider>
     </AuthProvider>
   )
