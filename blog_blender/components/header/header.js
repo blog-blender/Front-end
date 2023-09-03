@@ -7,7 +7,7 @@ export default function Header(props) {
 
  	return (
         
-<header style={{backgroundColor:'#e5e7eb'}} className={props.className}>
+<header style={{background: 'linear-gradient(45deg, #553c9a, #ee4b2n)',}} className={props.className}>
   <div
     className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8"
   >
@@ -39,25 +39,25 @@ export default function Header(props) {
           </li>
 
           <li>
-            <a className="text-gray-500 transition hover:text-gray-500/75" href="/">
+            <a className="text-black-500 transition hover:text-gray-500/75" href="/">
               Post
             </a>
           </li>
 
           <li>
-            <a className="text-gray-500 transition hover:text-gray-500/75" href="/">
+            <a className="text-black-500 transition hover:text-gray-500/75" href="/">
               Catigory
             </a>
           </li>
 
           <li>
-            <a className="text-gray-500 transition hover:text-gray-500/75" href="/">
+            <a className="text-black-500 transition hover:text-gray-500/75" href="/">
               Projects
             </a>
           </li>
 
           <li>
-            <a className="text-gray-500 transition hover:text-gray-500/75" href="/">
+            <a className="text-black-500 transition hover:text-gray-500/75" href="/">
               Blog
             </a>
           </li>
