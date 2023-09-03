@@ -11,7 +11,7 @@ export default function Send(props) {
 
     
 <div className="bg-gray-100 p-4 rounded-lg shadow-lg">
-       <div className="mb-4">
+       {/* <div className="mb-4">
          <img
            className="h-40 w-full object-cover rounded-lg"
            src="https:images.unsplash.com/photo-1483232539664-d89822fb5d3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGhvdG8lMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww&w=1000&q=80"
@@ -56,7 +56,7 @@ export default function Send(props) {
               </div>
             ))
           }
-        </div>
+        </div> */}
         <div style={{ width: '70%' }}>
           <div style={{ width: '100%' }} class="font-sans leading-none bg-grey-lighter">
 
@@ -67,7 +67,7 @@ export default function Send(props) {
                   <div >
                     <div class="bg-white shadow">
 
-                      <div style={{ width: '100%' }}>
+                      {/* <div style={{ width: '100%' }}>
                         <div style={{ height: '100px' }} class="flex items-center border-b  ">
                           <img alt="" class="block w-10 h-10 rounded-full" src="https://media.istockphoto.com/id/1205703732/photo/social-media-concept.jpg?b=1&s=612x612&w=0&k=20&c=54biMNO-fB73AM4Qt2QQ3_FCOBwFUPr4oFXC_7fHTgk=" />
                           <textarea class="appearance-none flex-1 ml-2 mt-4" id="body" name="body" rows={4} placeholder="What's on your mind?"></textarea>
@@ -92,12 +92,12 @@ export default function Send(props) {
                           Post
                         </button>
 
-                      </div> 
+                      </div>  */}
                     </div>
-                    <div class="bg-white shadow mt-4 p-3 pb-0 relative">
+                    <div class=" bg-white shadow mt-4 p-3 pb-0 relative">
                       <div class="flex items-center">
                         <div>
-                          <img alt="" class="w-10 h-10 rounded-full" src="https://media.istockphoto.com/id/1205703732/photo/social-media-concept.jpg?b=1&s=612x612&w=0&k=20&c=54biMNO-fB73AM4Qt2QQ3_FCOBwFUPr4oFXC_7fHTgk=" />
+                          <img alt="" class="w-full h-50 flex items-center justify-center w-10 h-10 rounded-full" src="https://media.istockphoto.com/id/1205703732/photo/social-media-concept.jpg?b=1&s=612x612&w=0&k=20&c=54biMNO-fB73AM4Qt2QQ3_FCOBwFUPr4oFXC_7fHTgk=" />
                         </div>
                         <div class="ml-2">
                           <h5>
@@ -143,7 +143,7 @@ export default function Send(props) {
           </div>
         </div>
       </div>
-    </div>
+    // </div>
   )
 
 
@@ -154,3 +154,79 @@ export default function Send(props) {
 
 
 
+// import CommentList from "../comment_list/comment_list";
+// import { postData } from "./data";
+
+// export default function Send(props) {
+
+//   return (
+
+    
+// <div className="bg-gray-100 p-4 rounded-lg shadow-lg">
+       
+//         <div style={{ width: '70%' }}>
+//           <div style={{ width: '100%' }} class="font-sans leading-none bg-grey-lighter">
+
+
+//             <div >
+//               <div>
+//                 <div>
+//                   <div >
+//                     <div class="bg-white shadow">
+
+                      
+//                     </div>
+//                     <div class="bg-white shadow mt-4 p-3 pb-0 relative">
+//                       <div class="flex items-center">
+//                         <div>
+//                           <img alt="" class="w-10 h-10 rounded-full" src="https://media.istockphoto.com/id/1205703732/photo/social-media-concept.jpg?b=1&s=612x612&w=0&k=20&c=54biMNO-fB73AM4Qt2QQ3_FCOBwFUPr4oFXC_7fHTgk=" />
+//                         </div>
+//                         <div class="ml-2">
+//                           <h5>
+//                             <a class="text-blue no-underline hover:underline" href="#" />
+//                             Mohammad Shiyyab
+//                           </h5>
+//                           <p class="text-xs font-normal text-grey mt-1">
+//                             <span class="cursor-pointer hover:underline">
+//                               December 8, 2023
+//                             </span>
+//                           </p>
+//                         </div>
+//                       </div>
+//                       <h5 class="text-sm font-normal my-3">
+//                         im happy because im working in the final project in ltuc course.
+
+//                       </h5>
+//                       <div class="border">
+//                         <img style={{ height: '300px', width: '100%' }} alt="hello" src="https://legacy.alghad.com/wp-content/uploads/2021/07/210704_ASAC_ServerBannerDiscord_03a.png" />
+//                       </div>
+//                       <div class="flex py-1">
+//                         <button class="appearance-none flex-1 flex items-center justify-center py-2 text-center text-red hover:bg-grey-lighter">
+//                           Love
+//                         </button>
+//                         <button class="appearance-none flex-1 flex items-center justify-center py-2 text-center text-grey-darker hover:bg-grey-lighter">
+//                           Comment
+//                         </button>
+//                         <button class="appearance-none flex-1 flex items-center justify-center py-2 text-center text-grey-darker hover:bg-grey-lighter">
+//                           Share
+//                         </button>
+//                       </div>
+//                       <div style={{ backgroundColor: '#e5e7eb' }} class=" flex flex-between py-3 -mx-3 p-2">
+//                         <img class="w-8 h-8 rounded-full" src="https://media.istockphoto.com/id/1205703732/photo/social-media-concept.jpg?b=1&s=612x612&w=0&k=20&c=54biMNO-fB73AM4Qt2QQ3_FCOBwFUPr4oFXC_7fHTgk=" alt="" />
+
+//                         <textarea name="body" placeholder="Write a comment..." class="appearance-none w-full mx-2 bg-grey-lighter rounded-full border bg-white h-8 px-2 pt-2 text-xs"></textarea>
+//                       </div>
+//                     </div>
+//                   </div>
+//                 </div>
+//                 <CommentList />
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     // </div>
+//   )
+
+
+// }

@@ -1,4 +1,5 @@
 import React from 'react'; 
+import 'font-awesome/css/font-awesome.min.css';
 export default function Footer() { 
 
 
@@ -7,6 +8,29 @@ return (
   <footer style={{backgroundColor:'#e5e7eb'}} className="footer-1  py-8 sm:py-12">
   <div class="container mx-auto px-4">
     <div class="sm:flex sm:flex-wrap sm:-mx-4 md:py-4">
+     
+      {/* <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 sm:mt-0">
+        <h5 class="text-xl font-bold mb-6">Tools use in project</h5>
+        <ul class="list-none footer-links">
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">React-NextJs</a>
+          </li>
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Python </a>
+          </li>
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Talwind</a>
+          </li>
+        </ul>
+      </div> */}
+      <div style={{width:'44%'}} class="px-4 mt-8 md:mt-0">
+        <h5 class="text-xl font-bold mb-6">About</h5>
+        <ul style={{width:'90%' }}  class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">
+          <p>Welcome to Blog Blender, your ultimate destination for a diverse blend of insightful and engaging blogs on a wide range of topics. Here at Blog Blender, we believe in the power of knowledge and diversity. Our platform brings together passionate writers and experts from various fields, all eager to share their expertise and perspectives.
+We believe in the beauty of different voices and perspectives, and that’s why our blogosphere is a vibrant tapestry of ideas. So, dive in, explore our eclectic collection of blogs, and let Blog Blender enrich your online reading experience. Join us in celebrating the richness of knowledge and the joy of discovering something new every day.</p>
+          
+        </ul>
+      </div>
       <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6">
         <h5 class="text-xl font-bold mb-6">Features</h5>
         <ul class="list-none footer-links">
@@ -24,55 +48,19 @@ return (
           </li>
         </ul>
       </div>
-      {/* <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 sm:mt-0">
-        <h5 class="text-xl font-bold mb-6">Tools use in project</h5>
+      <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6">
+        <h5 class="text-xl font-bold mb-6">Contact Us</h5>
         <ul class="list-none footer-links">
+        
           <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">React-NextJs</a>
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Amman-Jordan</a>
           </li>
-          <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Python </a>
-          </li>
-          <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Talwind</a>
-          </li>
-        </ul>
-      </div> */}
-      <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 md:mt-0">
-        <h5 class="text-xl font-bold mb-6">About</h5>
-        <ul class="list-none footer-links">
-          <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Mohammad Shiyyab</a>
-          </li>
-          <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Ayman Malkawe</a>
-          </li>
-          <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Firas awadallah</a>
-          </li>
-          <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Ibraheem Areeda</a>
-          </li>
-          <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Mones Saeed</a>
-          </li>
-          <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Eman Obeidat</a>
-          </li>
-          
-        </ul>
-      </div>
-      <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 md:mt-0">
-        <h5 class="text-xl font-bold mb-6">Help</h5>
-        <ul class="list-none footer-links">
-          <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">0790474945</a>
-          </li>
-          <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">mohammedshiyab1996@gmail.com</a>
+          <li>
+          <p><i class="fas fa-phone me-3 text-secondary"></i> + 01 234 567 88</p>
           </li>
         </ul>
       </div>
+      
       <div class="px-4 mt-4 sm:w-1/3 xl:w-1/6 sm:mx-auto xl:mt-0 xl:ml-auto">
         <h5 class="text-xl font-bold mb-6 sm:text-center xl:text-left">Stay connected</h5>
         <div class="flex sm:justify-center xl:justify-start">
@@ -115,12 +103,25 @@ return (
                 fillRule="evenodd"
                 d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
                 clipRule="evenodd"
+                
               />
+        
+              
             </svg>
           </a>
         </div>
       </div>
     </div>
   </div>
+  <br></br>
+  <div
+    class="w-full  p-8 text-center ">
+    © 2023 Copyright  :
+    <a
+      class="text-neutral-800 dark:text-neutral-400"
+      href="https://tailwind-elements.com/"
+      >    Blog Plender</a>
+  </div>
 </footer>
+              
 )}

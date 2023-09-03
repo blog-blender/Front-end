@@ -12,8 +12,8 @@ export default function Home() {
       <Header />
       <Send/>
       <Footer />
-      {/* <LoginPage/>     
-      <RejesterPage /> */}
+      <LoginPage/>     
+      <RejesterPage /> 
       </div>
     </main>
   )
