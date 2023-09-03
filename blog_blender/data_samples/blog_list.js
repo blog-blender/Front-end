@@ -17,7 +17,7 @@ export const blog_data = [
     },
     {
         id: 2, 
-        banner:"https://www.vyond.com/wp-content/uploads/2013/03/The_Best_Banner-Making_Tools_1.png",
+        banner:"https://t3.ftcdn.net/jpg/02/68/48/86/360_F_268488616_wcoB2JnGbOD2u3bpn2GPmu0KJQ4Ah66T.jpg",
         blog_photo:"https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
         description:"this is the blog discription 3",
         group_name:"group name 3",

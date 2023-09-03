@@ -12,6 +12,9 @@ import Photo from '../components/image_slider/image';
 import AccountSettingsForm from "@/components/setting/setting";
 import EditPostForm from "@/components/edit_post/edit_post";
 import PostList from "@/components/edit_post/PostList";
+import RejesterPage from '@/components/register/regester'
+import LoginPage from "@/components/register/login";
+
 
 
 export default function Home() {
@@ -41,16 +44,17 @@ const [posts, setPosts] = useState([]);
   }, []);
   return (
     <main>
-      <BlogList className="w-1/4 overflow-auto overscroll-contain h-full  left-0 top-16" onClick={handleBlogClick} data={blog_data}/>
+      <LoginPage/>
+      {/* <RejesterPage/> */}
+      {/* <BlogList className="w-1/4 overflow-auto overscroll-contain h-full  left-0 top-16" onClick={handleBlogClick} data={blog_data}/>
       {selectedBlog && <BlogDetailPage blog={selectedBlog} />}
-      {/* <CreateBlogModal/>
+      <CreateBlogModal/>
       <CreatePostModal/>
       <PostList posts={posts} />
       <Photo photos={photoUrls} />
       <AccountSettingsForm/> */}
     </main>
   )
-
 }
 
 
