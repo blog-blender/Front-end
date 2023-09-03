@@ -40,7 +40,7 @@ export default function Home() {
     <main>
       <div className="flex sticky top-0 self-start">
       <BlogList className="w-1/4 overflow-auto overscroll-contain h-full sticky left-0 top-16"  data={blog_data}/>
-      <PostList className="w-3/4"  posts={postData?postData.data:post_data} user={user_data[0]}/>
+      <PostList className="w-3/4"  posts={postData?postData.data:post_data} AuthData={AuthData}/>
       </div>
     </main>
   )

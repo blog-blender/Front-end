@@ -4,34 +4,28 @@ import { post_data } from '@/data_samples/post_list';
 import axios from 'axios';
 import { AuthContext } from '../AuthContext';
 
-
-export default function CreatePostForm({ onSave, closeHandeler }) {
-  const [blogImages, setPostImages] = useState({
+export default function CreatePostForm({ onSave, closeHandeler, initialData }) {
+  const [postImages, setPostImages] = useState({
     upload: [],
-    display: [],
+    display: initialData?initialData.photos:[],
   });
 
-  const [initialData, setInitialData] = useState(
-    {
-      title:"old title",
-      content:"old content",
-      blogImages:"",
-    });
+  const [postData, setInitialData] = useState(initialData?initialData:{});
 
   const {token, user, login} = useContext(AuthContext);
 
-  const handlePostImageChange = (event) => {
+  const imageChangeHandler = (event) => {
     const uploadedImage = event.target.files[0];
     if(!uploadedImage)
     return
     const imageUrl = URL.createObjectURL(uploadedImage);
     setPostImages({
       upload: [
-        ...blogImages.upload,
+        ...postImages.upload,
         uploadedImage
       ],
       display: [
-        ...blogImages.display,
+        ...postImages.display,
         imageUrl
       ],
     });
@@ -40,10 +34,10 @@ export default function CreatePostForm({ onSave, closeHandeler }) {
 
   const imageDiscardHandler = (event) =>{
       const deletedImageIndex = event.target.id
-      const newDisplayImages = blogImages.display.filter(
+      const newDisplayImages = postImages.display.filter(
         (item, index)=>index != deletedImageIndex
         )
-        const newUploadImages =  blogImages.display.filter(
+        const newUploadImages =  postImages.display.filter(
         (item, index)=>index != deletedImageIndex
         )
 
@@ -53,26 +47,26 @@ export default function CreatePostForm({ onSave, closeHandeler }) {
       })
   }
 
-  const handlePostTextChange = (event) => {
-    const newFormData = {...initialData}
+  const textChangeHandler = (event) => {
+    const newFormData = {...postData}
     newFormData[event.target.id] = event.target.value
     setInitialData(newFormData)
   };
   
-  const handleSubmit = async (event)=>{
+  const submitHandler = async (event)=>{
     event.preventDefault();
     const formData = new FormData();
     const payload ={
-      title: initialData.title,
+      title: postData.title,
       Auther_id: user.id, 
-      content: initialData.content,
-      blog_id: 1,
-      photos: blogImages.upload.length>0?blogImages.upload:blogImages,
+      content: postData.content,
+      post_id: 1,
+      photos: postImages.upload.length>0?postImages.upload:initialData.photos,
       }
     formData.append("title", payload.title);
     formData.append("Auther_id", payload.Auther_id);
     formData.append("content", payload.content);
-    formData.append("blog_id", payload.blog_id);
+    formData.append("blog_id", payload.post_id);
     for (const image of payload.photos) {
       formData.append("photos", image);
     }
@@ -81,9 +75,11 @@ export default function CreatePostForm({ onSave, closeHandeler }) {
         Authorization : `Bearer ${token.access}`,
       },
   };
-    const url='http://127.0.0.1:8000/api/v1/posts/create/'
-    // const url='http://127.0.0.1:8000/api/v1/posts/test/'
-    const data=await axios.post(url ,formData,config)
+    const createUrl = 'http://127.0.0.1:8000/api/v1/posts/create/'
+    const updateUrl = 'http://127.0.0.1:8000/api/v1/posts/[blog_id]/update/'
+    const resultUrl = initialData?updateUrl:createUrl
+    const method = initialData?"put":"post"
+    const data=await axios[method](resultUrl ,formData,config)
   };
 
 
@@ -106,8 +102,8 @@ export default function CreatePostForm({ onSave, closeHandeler }) {
               type="text"
               id="title"
               name='title'
-              value={initialData.title}
-              onChange={handlePostTextChange}
+              value={postData.title}
+              onChange={textChangeHandler}
               className="border rounded-lg p-2 w-full"
             />
 
@@ -116,26 +112,26 @@ export default function CreatePostForm({ onSave, closeHandeler }) {
             <label htmlFor="content">Post Content:</label>
             <textarea
               id="content"
-              onChange={handlePostTextChange}
+              onChange={textChangeHandler}
               className="border rounded-lg p-2 w-full h-20 overflow-y-auto"
-            >{initialData.content}</textarea>
+            >{postData.content}</textarea>
           </div>
           
 
           <div className="mb-4 overflow-scroll h-60">
-            <label htmlFor="blogImage">Post Images:</label>
+            <label htmlFor="postImage">Post Images:</label>
             <input
               type="file"
-              id="blogImage"
+              id="postImage"
               accept="image/*"
-              onChange={handlePostImageChange}
+              onChange={imageChangeHandler}
               className="border rounded-lg p-2 w-full"
             />
             {
-              blogImages.display.map((url,index) => 
+              postImages.display.map((url,index) => 
                 <div>
                   <span id={index} onClick={imageDiscardHandler}>X</span>
-              <img src={url} />
+                  <img src={url} />
               </div>
               )
             }
@@ -144,7 +140,7 @@ export default function CreatePostForm({ onSave, closeHandeler }) {
             <button
               type="button"
               className="bg-blue-500 text-white rounded-lg px-4 py-2"
-              onClick={handleSubmit}
+              onClick={submitHandler}
             >
               Save
             </button>

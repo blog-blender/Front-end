@@ -6,13 +6,12 @@ import CommentList from "@/components/comment_list/comment_list";
 
 import styles from './post.module.css'
 export default function Post(props){
-
+    
     let data = props.data
-    console.log(data,"post data");
-    let user = props.user
+    let user = props.AuthData.user
     const [liked, setLiked] = useState((data.likes)?data.likes.includes(user.id):false);
     const [commentsVisibility, setCommentsVisibility] = useState(false);
-    const target = (data.comments)?<CommentList data={data.comments}/>:<></>
+    const target = (data.comments)?<CommentList data={data.comments} AuthData={props.AuthData} postId={data.id} blogId={data.blog_id}/>:<></>
     function likeOnClick(event) {
     setLiked(!liked)
     }
