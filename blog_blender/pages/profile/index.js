@@ -11,7 +11,7 @@ import { user_data } from "@/data_samples/user_data"
 import { useState } from "react";
 import Profile_info from './Profile_info'; // Assuming both files are in the same directory
 
-import Content from "@/pages/profile/Page_content"
+import Post from "@/pages/profile/Post"
 
 import styles from './profile.module.css'
 
