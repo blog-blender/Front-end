@@ -4,7 +4,7 @@ import Coment from "./commint-form"
 export default function CommentList(props) {
     return(
     <div style={{display:'grid' , gap:'5px'}}>
-      <Coment />
+      {/* <Coment /> */}
       {comment_data?.map((i) =>(
         <Comment props={i} />
      ))}
