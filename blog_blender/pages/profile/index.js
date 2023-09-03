@@ -6,7 +6,7 @@ import { post_data } from "@/data_samples/post_list"
 import { user_data } from "@/data_samples/user_data"
 import Profile_info from './Profile_info'; // Assuming both files are in the same directory
 
-import Content from "@/pages/profile/Page_content"
+import Post from "@/pages/profile/Post"
 
 import styles from './profile.module.css'
 import AccountSettingsForm from '@/components/setting/setting';
