@@ -1,7 +1,9 @@
 import BlogList from "@/components/blog_list/blog_list"
 import PostList from "@/components/post_list/post_list"
 import Link from 'next/link'
-
+import { blog_data } from "@/data_samples/blog_list";
+import { post_data } from "@/data_samples/post_list";
+import { comment_data } from "@/data_samples/comment_list";
 import axios from "axios";
 import { useState, useContext, useEffect } from "react";
 import {AuthContext} from '@/components/AuthContext';
@@ -76,10 +78,10 @@ export default function Home() {
 
       <Carousel />
       <div className={Styles.mainContent}>
-      <BlogList className="w-1/4 overflow-auto overscroll-contain h-full  left-0 top-16" onClick={handleBlogClick} data={blog_data}/>
-      {selectedBlog && <BlogDetailPage blog={selectedBlog} />}
+      <BlogList className="w-1/4 overflow-auto overscroll-contain h-full  left-0 top-16" onClick={()=>{}} data={blog_data}/>
+      {/* {selectedBlog && <BlogDetailPage blog={selectedBlog} />} */}
 
-        <PostList className={Styles.postList} posts={post_data} user={{ id: 1 }} />
+        <PostList className={Styles.postList} user={{ id: 1 }} posts={postData?postData.data:post_data} AuthData={AuthData} />
         <FriendList />
       </div>
 

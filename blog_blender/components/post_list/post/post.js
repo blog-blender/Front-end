@@ -26,7 +26,7 @@ export default function Post(props) {
     };
 
 
-    
+
         // <div className={styles.post_photos}>
         //     {(data.photo)?<Photo photos={data.photo}/>:<p>no photos</p>}
         // </div>
@@ -67,7 +67,7 @@ export default function Post(props) {
                     <ul className="flex-container wrap">
                     </ul>
                 </div>
-                <p className={styles['card-title']}>Product Name</p>
+                <p className={styles['card-title']}>{data.content}</p>
                 <p className={styles['small-desc']}>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat
                     veritatis nobis saepe itaque rerum nostrum aliquid obcaecati odio
@@ -95,7 +95,7 @@ export default function Post(props) {
                         aria-hidden="true"
                     /> {data.likes.length}
                     </p>
-                    <p><i className="fa fa-comment-o" aria-hidden="true" />{comment_data.length}</p>
+                    <p><i className="fa fa-comment-o" aria-hidden="true" />{(data.likes)?data.comments.length:-1}</p>
                 </div>
 
 
