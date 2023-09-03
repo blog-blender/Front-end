@@ -1,0 +1,55 @@
+.mainContent{
+    display: flex;
+    position: sticky;
+    align-self: flex-start;
+    top:0;
+background-color: #93B1A6;
+    
+}
+
+.customsticky {
+    width: 25%;
+    overflow: auto;
+    overscroll-behavior: contain;
+    height: 100%;
+    position: sticky;
+    left: 0;
+    top: 56px;
+    grid-area: leftbar;
+    color: #6d7c84;
+    background-color: #bac7cd;
+    margin: 2%;
+    border-radius: 10px; /* Add this line to apply rounded corners */
+  }
+      
+    .postList{
+        color: #000000;
+        line-height: 1.5;
+        letter-spacing: 1px;
+        word-spacing: 1px;
+        text-align: left;
+        text-decoration: none;
+        text-transform: none;
+        width: 75%;
+        /* border: 2px solid #ADC4CE; */
+        margin-top: 2%;
+        /* border-radius: 15px;  */
+        height: 20%;       
+    }
+    .test{
+        box-shadow: -1px -2px 6px 4px rgba(30, 40, 179, 0.1);
+        display:'grid';
+        gap:'20px'
+    }
+    .individual-post {
+        margin: 20px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+    }
+
+    
+    
+    
+    
+    

@@ -1,0 +1,63 @@
+/* FriendList.css */
+
+/* Container styles */
+.friend-list-container {
+    margin: 7rem;
+    width: 25%;
+    padding: 1rem;
+    background-color: #ffff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Header styles */
+  .friend-list-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  
+  .friend-list-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333; /* Adjust the color as needed */
+  }
+  
+  .friend-list-view-all {
+    font-size: 1rem;
+    font-weight: medium;
+    color: #007bff; /* Blue color, adjust as needed */
+    text-decoration: none;
+  }
+  
+  .friend-list-view-all:hover {
+    text-decoration: underline;
+  }
+  
+  /* List styles */
+  .friend-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .friend-list li {
+    padding: 1rem 0;
+  }
+  
+  .friend-list-avatar {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+  }
+  
+  .friend-list-name {
+    font-size: 1rem;
+    font-weight: medium;
+    color: #333; /* Adjust the color as needed */
+  }
+  
+  .friend-list-email {
+    font-size: 0.875rem;
+    color: #777; /* Adjust the color as needed */
+  }
+  

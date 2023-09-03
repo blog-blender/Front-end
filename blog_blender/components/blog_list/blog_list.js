@@ -1,19 +1,35 @@
-import Blog from "./blog/blog";
 
+import Blog from "@/components/blog_list/blog/blog";
+import Link from 'next/link';
+import styles from '@/pages/profile/profile.module.css'
 export default function BlogList(props) {
   let data = props.data
+  const divStyle = {
+    backgroundColor:'#687E8D'
+  };
+  const text = {
+    fontSize: '30px',
+    color: 'white',
+  };
+  
   return (
     <div className={props.className}>
-      <div className="rounded-lg shadow-md p-2 w-full">
+      <div style={{ marginTop: '20px' }} className="rounded-lg shadow-md p-2 w-full  ">
         <div className="grid gap-4">
+        <div className={styles.cards} >
+        <div className={styles.cardo} style={divStyle}>  
+          <p className={styles.tip} style={text}>Blog List</p>
+        </div>
+      </div>
           {data.map((blog, index) => (
-            <Blog
-              key={index}
-              blog_photo={blog.blog_photo}
-              group_name={blog.group_name}
-              description={blog.description}
-              onClick={() => props.onClick(blog)} 
-            />
+            <Link key={index} href={`/render_blog_detalis/${blog.id}`}>
+              
+              <Blog
+                blog_photo={blog.banner}
+                group_name={blog.group_name}
+                // description={blog.description}
+              />
+            </Link>
           ))}
         </div>
       </div>
@@ -32,46 +48,6 @@ export default function BlogList(props) {
 
 
 
-
-
-////////////For BackEnd///////////////
-// import React, { useState, useEffect } from 'react'; // Import useState and useEffect
-// import Blog from "./blog/blog";
-
-// export default function BlogList(props) {
-//   const [blogData, setBlogData] = useState([]);
-
-//   useEffect(() => {
-//     fetch('URL')
-//       .then(response => response.json())
-//       .then(data => {
-//         setBlogData(data);
-//       })
-//       .catch(error => {
-//         console.error('Error fetching blog data:', error);
-//       });
-//   }, []);
-
-//   return (
-//     <div className="bg-gray-100 py-8">
-//       <div className="border rounded-lg shadow-md p-4 mb-4 bg-white">
-//         <h2 className="text-2xl font-semibold mb-2 text-gray-800 border-b pb-2 w-80 h-10 flex items-center justify-center border-2 border-gray-300 rounded bg-blue-100">Blog List</h2>
-//         <div className="grid gap-4">
-//           {blogData.map((blog, index) => (
-//             <Blog
-//               key={index}
-//               blog_photo={blog.blog_photo}
-//               group_name={blog.group_name}
-//               description={blog.description}
-//               banner={blog.banner}
-//               categories={blog.categories}
-//             />
-//           ))}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
 
 
 
