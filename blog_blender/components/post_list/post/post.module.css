@@ -16,6 +16,7 @@
     flex-direction: row;
     justify-content: space-around;
 
+
 }
 .user_photoPost{
     width: 5%;
@@ -41,7 +42,7 @@ margin-right: 100%;
 font-size: 10px;
 }
 .card-title {
-    color: #777777;
+    color: #2e2929;
     font-size: 1.5em;
     line-height: normal;
     font-weight: 700;
@@ -54,8 +55,8 @@ font-size: 10px;
     line-height: 1.5em;
     color: #333333;
     line-height: 1.45;
-    letter-spacing: 4px;
-    word-spacing: 3px;
+    letter-spacing: 1px;
+    word-spacing: 1px;
     text-align: left;
     text-decoration: none;
     text-transform: none;
@@ -95,7 +96,8 @@ font-size: 10px;
     font-family: Arial, Helvetica, sans-serif;
     margin-left: 4%;
     margin-right: 4%;
-    margin-bottom: 10%;
+    margin-bottom: 1%;
+    
   }
   .card:before {
     content: '';
@@ -103,7 +105,7 @@ font-size: 10px;
     z-index: -1;
     top: -16px;
     right: -16px;
-    background: linear-gradient(135deg, #C2BCA0, #687E8D);
+    background: linear-gradient(135deg, #C2BCA0, #93B1A6);
     height: 32px;
     width: 32px;
     border-radius: 32px;
@@ -114,7 +116,7 @@ font-size: 10px;
   .card:hover:before {
     transform: scale(28);
   }
-  .card:hover .small-desc {
+  /* .card:hover .small-desc {
     transition: all 0.5s ease-out;
     color: rgba(255, 255, 255, 0.8);
     color: #000000;
@@ -124,33 +126,45 @@ font-size: 10px;
     text-align: left;
     text-decoration: none;
     text-transform: none;
-  }
+  } */
   .card:hover .card-title {
     transition: all 0.5s ease-out;
-    color: #000000;
+    color: #5C8374;
   }
   .photocontainer {
     display: flex;
     gap: 10px;
-    /* Add any other styling you want for the photo container */
+   
   }
   .postbanner {
-    flex-grow: 1; /* Allow images to evenly fill the available space */
-    min-width: 0; /* Ensure images can shrink if necessary */
+    flex-grow: 1; 
+    min-width: 0; 
     height: auto;
     border-radius: 5%;
-    /* Add any other styles you want for the images */
+
   }
   .buttons{
-    border-bottom:  2px solid #ddd;
-    border-left:  2px solid #ddd;
-    border-right: 2px solid #ddd;
+
     margin-bottom: 20px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    padding: 5px;
-    width: 25%;
-    margin-left: 2.5%;
-    background-color: rgb(160, 160, 189);
-    margin: 1%;
+    border-radius: 3px;
+    padding: 1px;
+    width: 25%;   
+    margin-left: 1px; 
+  }
+  .numbers{
+    display: flex;
+    margin-bottom: 1%;
+  }
+  .leftButtonsContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: 10px; 
+  }
+  .leftButtonsContainer button{
+    margin-left: 1%;
+  }
+  .post_interactions button{
+    margin-left: 1%;
+  
   }

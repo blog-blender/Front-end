@@ -7,7 +7,8 @@ const Carousel = () => {
     'https://mdbcdn.b-cdn.net/img/new/slides/044.webp',
     'https://mdbcdn.b-cdn.net/img/new/slides/045.webp',
     'https://mdbcdn.b-cdn.net/img/new/slides/047.webp',
-    'https://mdbcdn.b-cdn.net/img/new/slides/040.webp',
+    // 'https://mdbcdn.b-cdn.net/img/new/slides/050.webp',
+    // 'https://mdbcdn.b-cdn.net/img/new/slides/014.webp',
 
   ];
 
@@ -26,7 +27,7 @@ const Carousel = () => {
 
     return (
         <div className="relative" >
-          <div className="w-full overflow-hidden" style={{ width: '100%', height: '400px' }}> 
+          <div className="w-full overflow-hidden" style={{ width: '100%', height: '500px' }}> 
             {images.map((image, index) => (
               <div
                 key={index}

@@ -17,11 +17,13 @@
     color: white;
     cursor: pointer;
     transition: 400ms;
+
   }
   
   .cards .card p.tip {
     font-size: 1em;
     font-weight: 700;
+  
   }
   
   .cards .card p.second-text {

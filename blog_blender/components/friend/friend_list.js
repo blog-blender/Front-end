@@ -2,7 +2,7 @@ export default function FriendList(){
 
 
     return(
-        <div className="m-7 w-1/4 p-4 bg-[#BAC7CD] rounded-lg shadow sm:p-8  dark:border-gray-700 ">
+        <div className="m-7 w-1/4 p-4 bg-[#ffff] rounded-lg shadow sm:p-8  dark:border-gray-700 ">
     <div className="flex items-center justify-between mb-4">
         <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">Friends</h5>
         <a href="#" className="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
