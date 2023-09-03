@@ -84,16 +84,8 @@ export default function Home() {
         <PostList className={Styles.postList} user={{ id: 1 }} posts={postData?postData.data:post_data} AuthData={AuthData} />
         <FriendList />
       </div>
-
-      <div className={Styles.test}>
-        {/* <CommentList/> */}
-        {/* <Footer /> */}
-        {/* <LoginPage/>      */}
-        {/* <RejesterPage /> */}
-      </div>
     </main>
   )
-
 }
 
 

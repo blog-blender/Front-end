@@ -17,7 +17,7 @@ import React from 'react'
 export default function App({ Component, pageProps }) {
   return (
     <AuthProvider>
-<Routes Component={Component} pageProps={pageProps}/>
+      <Routes Component={Component} pageProps={pageProps}/>
     </AuthProvider>
   )
 }

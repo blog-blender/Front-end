@@ -1,7 +1,6 @@
-
-
 import React from 'react';
 import styles from '@/pages/profile/profile.module.css'
+
 
 
 export default function Blog(props) {
