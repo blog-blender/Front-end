@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import React from "react";
 import { AuthContext } from "./AuthContext";
-import Header from '@/components/header/header';
+import NavBar from "./nav_bar/nav_bar";
 import Footer from '@/components/footer/footer';
 import AuthorizedRoute from '@/components/authorized_route/authorized_route';
 import PublicRoute from '@/components/public_route/public_route';

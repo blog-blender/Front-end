@@ -1,6 +1,8 @@
-import React, { useState } from "react";
-
-function Header() {
+import React, { useState,useContext } from "react";
+import { AuthContext } from '@/components/AuthContext';
+import Link from 'next/link'
+function NavBar() {
+  let AuthData = useContext(AuthContext)
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -13,37 +15,40 @@ function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo on the left */}
           <div className="flex items-center">
-            <a href="/" className="text-[#0D9488] text-lg font-semibold">
+            <Link href="./" className="text-[#0D9488] text-lg font-semibold">
               Social Media
-            </a>
+            </Link>
           </div>
 
           {/* Menu on the right */}
           <div className="hidden md:flex space-x-4">
-            <a
-              href="#"
+          <Link
+              href="./"
               className="text-[#0D9488] hover:bg-[#e5e7eb] hover:text-[#0D9488] px-3 py-2 rounded-md text-sm font-medium"
             >
               Home
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              href="./profile"
+              className="text-[#0D9488] hover:bg-[#e5e7eb] hover:text-[#0D9488] px-3 py-2 rounded-md text-sm font-medium"
+            >
+              Profile
+            </Link>
+
+             <Link
+              href="./"
+              onClick={()=>AuthData.logout()}
+              className="text-[#0D9488] hover:bg-[#e5e7eb] hover:text-[#0D9488] px-3 py-2 rounded-md text-sm font-medium"
+            >
+              Logout
+            </Link>
+
+             <Link
+              href="./"
               className="text-[#0D9488] hover:bg-[#e5e7eb] hover:text-[#0D9488] px-3 py-2 rounded-md text-sm font-medium"
             >
               About
-            </a>
-            <a
-              href="#"
-              className="text-[#0D9488] hover:bg-[#e5e7eb] hover:text-[#0D9488] px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Services
-            </a>
-            <a
-              href="#"
-              className="text-[#0D9488] hover:bg-[#e5e7eb] hover:text-[#0D9488] px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Contact
-            </a>
+            </Link>   
           </div>
 
           {/* Mobile Menu */}
@@ -85,34 +90,34 @@ function Header() {
         } md:hidden bg-[#e5e7eb]`}
       >
         <div className="px-2 pt-2 pb-3 space-y-1">
-          <a
+          <Link
             href="#"
             className="text-[#0D9488] block px-3 py-2 rounded-md text-base font-medium"
           >
             Home
-          </a>
-          <a
+          </Link>
+          <Link
             href="#"
             className="text-[#0D9488] hover:bg-gray-600 hover:text-[#0D9488] block px-3 py-2 rounded-md text-base font-medium"
           >
             About
-          </a>
-          <a
+          </Link>
+          <Link
             href="#"
             className="text-[#0D9488] hover:bg-gray-600 hover:text-[#0D9488] block px-3 py-2 rounded-md text-base font-medium"
           >
             Services
-          </a>
-          <a
+          </Link>
+          <Link
             href="#"
             className="text-[#0D9488] hover:bg-gray-600 hover:text-[#0D9488] block px-3 py-2 rounded-md text-base font-medium"
           >
             Contact
-          </a>
+          </Link>
         </div>
       </div>
     </nav>
   );
 }
 
-export default Header;
+export default NavBar;

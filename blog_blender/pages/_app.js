@@ -1,6 +1,4 @@
 import '@/styles/globals.css'
-import Header from '@/components/header/header';
-import Footer from '@/components/footer/footer';
 import AuthorizedRoute from '@/components/authorized_route/authorized_route';
 import PublicRoute from '@/components/public_route/public_route';
 import { Routes } from '@/components/route';

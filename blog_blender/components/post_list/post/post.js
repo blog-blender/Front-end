@@ -77,14 +77,16 @@ export default function Post(props) {
                     officia deleniti. Expedita iste et illum, quaerat pariatur consequatur
                     eum nihil itaque!
                 </p>
+                    <Photo photos={data.photo?data.photo:data.post_photos}/>
                 <div className={styles['go-corner']}>
                     <div className={styles['go-arrow']}>→</div>
                 </div>
-                <div className={styles.photocontainer}>
+                {/* <div className={styles.photocontainer}>
                     <img className={styles.postbanner} src={data.banner} alt="User Banner1" />
                     <img className={styles.postbanner} src={data.banner} alt="User Banner" />
                     <img className={styles.postbanner} src={data.banner} alt="User Banner" />
-                </div>
+                </div> */}
+
                 <div className={styles.numbers}>
 
                     <p><i

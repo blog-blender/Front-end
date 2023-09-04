@@ -1,7 +1,3 @@
-
-
-
-
 import CommentList from "../comment_list/comment_list";
 import { postData } from "./data";
 

@@ -23,29 +23,27 @@ export default function Home() {
   const [postData, setPostData] = useState(null);
   const [blogData, setBlogData] = useState(null);
 
-  const postsUrl = 'http://127.0.0.1:8000/api/v1/posts/'
+  const postsUrl = `http://127.0.0.1:8000/api/v1/posts/home/`
+  const postsParams = {user_id:3,num_of_posts:10}
   const blogsUrl = 'http://127.0.0.1:8000/api/v1/posts/?blog_id=1'
 
   async function getData(url, token, setter, params){
     const config = {headers: {
-      Authorization : `Bearer ${token}`,
-      params : params},};
-    let result
+      Authorization : `Bearer ${token}`},
+      params : params,};
     axios.get(url ,config)
     .then((response)=>{console.log(response);setter(response)})
     .catch((error)=>{setter(error)})
-    setter(result)
   }
 
   useEffect(() => {
     if (AuthData.token){
-      getData(postsUrl,AuthData.token.access,setPostData)
+      getData(postsUrl,AuthData.token.access,setPostData,postsParams)
       getData(blogsUrl,AuthData.token.access,setBlogData)
     }
   },[])
 
   return (
-
     <main>
       {/* <div className="flex sticky top-0 self-start">
       <BlogList className="w-1/4 overflow-auto overscroll-contain h-full sticky left-0 top-16"  data={blog_data}/>

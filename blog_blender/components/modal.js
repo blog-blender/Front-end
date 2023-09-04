@@ -9,11 +9,12 @@ export default function Modal(props) {
   };
   
   const handleCloseModal = (event) => {
+    event.preventDefault();
     setIsModalOpen(false);
     document.body.style.overflow = "auto"
   };
   return (isModalOpen && 
-    <div  className="flex flex-col items-center">
+    <div  className={"flex flex-col items-center " + props.className}>
       
       <div className="fixed inset-0 flex items-center justify-center z-30 bg-gray-800 bg-opacity-50 ">
         <div className="z-40 bg-white p-1 pt-0 rounded-lg shadow-lg lg:w-1/2 h-3/4 overflow-auto overscroll-contain overflow-x-hidden">

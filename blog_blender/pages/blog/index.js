@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import Example from '@/components/test'
 import CreateBlogForm from '@/components/create_blog/create_blog'
+import CreatePostForm from '@/components/create_post/create_post';
 import { AuthContext } from '@/components/AuthContext';
 import { useContext, useState, useEffect } from "react";
 import axios from 'axios';
@@ -67,8 +67,8 @@ export default function Blog() {
       <Link href="./profile/">profile</Link>
       <Link href="./blog/">blog</Link>
       <Link href="./">Home</Link>
-      <Example />
       {siteCategories?<CreateBlogForm AuthData={AuthData} categories={siteCategories.data.map((category)=>{return category.category_name})} initialData={mock}/>:<p>empty</p>}
+      {/* <CreatePostForm /> */}
       
     </main>
   )
