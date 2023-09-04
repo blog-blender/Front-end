@@ -19,33 +19,41 @@
 
 }
 .user_photoPost{
-    width: 5%;
-    height: 5%;
+    width: 6%;
+    height: 6%;
     border-radius: 50%;
-    /* position: relative; */
-    /* top: -65px; */
+    /* position: relative;  */
+     top: -65px; 
     margin-bottom: 3%;
+    justify-content: space-between;
+   
 }
 .user_infoPost{
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    margin-top: 3%;
+    /* flex-wrap: wrap; */
+    /* flex-direction: row; */
+    margin-top: 1%;
+    
 }
 .namePost{
     font-weight: bold;
     font-size: 20px;
+
       }
+
+
+
 .usernamePost{
 font-weight: lighter;
 margin-right: 100%;
 font-size: 10px;
+color: #333333;
 }
 .card-title {
     color: #2e2929;
-    font-size: 1.5em;
+    font-size: 1.1em;
     line-height: normal;
-    font-weight: 700;
+    font-weight: 500;
     margin-bottom: 0.5em;
     text-align: left;
   }
@@ -93,10 +101,12 @@ font-size: 10px;
     z-index: 0;
     overflow: hidden;
     background: linear-gradient(to bottom, #FFFFFF, #DAE3EB);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:'Times New Roman';
     margin-left: 4%;
     margin-right: 4%;
     margin-bottom: 1%;
+    font-size: 20px;
+    color: #000000;
     
   }
   .card:before {
@@ -116,17 +126,7 @@ font-size: 10px;
   .card:hover:before {
     transform: scale(28);
   }
-  /* .card:hover .small-desc {
-    transition: all 0.5s ease-out;
-    color: rgba(255, 255, 255, 0.8);
-    color: #000000;
-    line-height: 1.45;
-    letter-spacing: 4px;
-    word-spacing: 3px;
-    text-align: left;
-    text-decoration: none;
-    text-transform: none;
-  } */
+
   .card:hover .card-title {
     transition: all 0.5s ease-out;
     color: #5C8374;
@@ -143,28 +143,41 @@ font-size: 10px;
     border-radius: 5%;
 
   }
-  .buttons{
+  /* .buttons{
 
     margin-bottom: 20px;
     border-radius: 3px;
     padding: 1px;
     width: 25%;   
     margin-left: 1px; 
-  }
+  } */
   .numbers{
     display: flex;
     margin-bottom: 1%;
   }
   .leftButtonsContainer {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     margin-left: 10px; 
   }
-  .leftButtonsContainer button{
+  .leftButtonsContainer .icondiv{
     margin-left: 1%;
+    padding: 20;
+    display: flex;
+  }
+  .icondiv button{
+    display: flex;
+    /* justify-content: space-between; */
+    margin-right: 3px;
+
   }
   .post_interactions button{
     margin-left: 1%;
-  
+    
   }
+ .user_photoPost{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+ }

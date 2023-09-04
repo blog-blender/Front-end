@@ -194,6 +194,8 @@
   line-height: 2rem;
   font-weight: 700;
   color: #0D9488;
+  margin-left: 90px;
+  margin-bottom: 5px;
 }
 
 .form {
@@ -202,30 +204,41 @@
   gap: 1rem;
 }
 
-.input1 {
-  padding: 0.3rem;
-  margin-top: 2rem;
-  border-radius: 0.75rem;
+.form .input1 {
+  padding: 0.5rem; /* Decrease the padding */
+  margin-top: 0.3rem; /* Adjust the margin as needed */
+  border-radius: 0.5rem; /* Adjust the border radius */
   border-width: 1px;
+  line-height: 1; /* Set line-height to 1 to reduce height */
+  margin-right: 50px;
+  margin-left: 1px;
 }
 
-.input2 {
-  padding: 0.3rem;
-  border-radius: 0.75rem;
+.form .input2 {
+  padding: 0.5rem; /* Decrease the padding */
+  border-radius: 0.5rem; /* Adjust the border radius */
   border-width: 1px;
   width: 100%;
+  line-height: 1; /* Set line-height to 1 to reduce height */
+  margin-right: 50px;
+  margin-left: 1px;
+  margin-top: 1px;
 
 }
+
 
 .div3 {
   padding-top: 1rem;
   padding-bottom: 1rem;
-  margin-top: 1.25rem;
+  margin-top: 0.1rem;
   border-bottom-width: 1px;
   font-size: 0.75rem;
   line-height: 1rem;
   border-color: #0D9488;
   color: #0D9488;
+  margin-top: 1px;
+
+
 }
 
 .div4 {
@@ -235,21 +248,22 @@
   align-items: center;
   font-size: 0.75rem;
   line-height: 1rem;
-  color: #0D9488;
+  color: #94840d;
 }
 
 .button2 {
   display: block;
   padding-top: 0.625rem;
   padding-bottom: 0.625rem;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+  padding-left: 0.5rem; /* Decrease the left padding */
+  padding-right: 1rem;
   border-radius: 0.5rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  font-weight: 500;
+  font-weight: 400;
   text-align: center;
-  color: #ffffff;
+  color: #7b6626;
+  
 }
 
 .button1 {
