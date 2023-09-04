@@ -4,25 +4,11 @@ export default function Footer() {
 
 
 return ( 
-  // <footer class="footer-1 bg-gray-100 py-8 sm:py-12">
   <footer style={{backgroundColor:'#e5e7eb'}} className="footer-1  py-8 sm:py-12">
   <div class="container mx-auto px-4">
     <div class="sm:flex sm:flex-wrap sm:-mx-4 md:py-4">
      
-      {/* <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 sm:mt-0">
-        <h5 class="text-xl font-bold mb-6">Tools use in project</h5>
-        <ul class="list-none footer-links">
-          <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">React-NextJs</a>
-          </li>
-          <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Python </a>
-          </li>
-          <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Talwind</a>
-          </li>
-        </ul>
-      </div> */}
+      
       <div style={{width:'44%'}} class="px-4 mt-8 md:mt-0">
         <h5 class="text-xl font-bold mb-6">About</h5>
         <ul style={{width:'90%' }}  class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">
