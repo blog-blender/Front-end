@@ -126,11 +126,16 @@ export default function Profile() {
               <div className={styles.keyboard}></div>
             </div>
             <div className={styles.glassdiv}>
+              <a href = "http://localhost:3000/post"> 
+              
               <div className={styles.container}>
                 <div className={styles.box}>
+                
                   <span className={styles.title}>Your posts . . . </span>
                 </div>
+                
               </div>
+              </a>
             </div>
 
 

@@ -89,14 +89,14 @@ export default function Post(props) {
 
                 <div className={styles.numbers}>
 
-                    <p><i
+                    {/* <p><i
                         className={classNames('fa', {
                             'fa-heart': !liked,
                             'fa-heart-o': liked,
                         })}
                         aria-hidden="true"
                     /> {data.likes.length}
-                    </p>
+                    </p> */}
                     <p><i className="fa fa-comment-o" aria-hidden="true" />{(data.likes)?data.comments.length:-1}</p>
                 </div>
 
