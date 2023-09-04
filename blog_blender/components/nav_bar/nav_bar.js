@@ -48,10 +48,10 @@ function NavBar() {
             </Link>
 
              <Link
-              href="./"
+              href="/aboutPage/aboutus"
               className="text-[#0D9488] hover:bg-[#e5e7eb] hover:text-[#0D9488] px-3 py-2 rounded-md text-sm font-medium"
             >
-              About
+              About Us
             </Link>   
           </div>
 
