@@ -13,7 +13,7 @@ export default function BlogList (props) {
   
   return (
     <div className={props.className}>
-      <div className="rounded-lg shadow-md p-2 w-full">
+      <div className="rounded-lg shadow-md p-2 w-full m-5">
         <div className="grid gap-4">
         <div className={styles.cards} >
         <div className={styles.cardo} style={divStyle}>  
