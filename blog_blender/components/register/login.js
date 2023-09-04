@@ -5,7 +5,6 @@ import styles from './login.module.css';
 import Link from "next/link";
 
 const LoginPage = (props) => {
-  let AuthData = useContext(AuthContext)
     const [formData, setFormData] = useState({
         username: null,
         password: null,
@@ -19,9 +18,9 @@ const LoginPage = (props) => {
       };
 
     const submitHandler = (event) => {
-        // event.preventDefault();
+        event.preventDefault();
         console.log(formData,"submitted");
-        AuthData.login(formData.username, formData.password)
+        props.AuthData.login(formData.username, formData.password)
     };
 
 
@@ -51,7 +50,7 @@ const LoginPage = (props) => {
                     style={{ backgroundColor: '#0D9488' }}
                     className={styles.button1}
                     type="button"
-                    onClick={() => { AuthData.login("admin", "admin"); }}
+                    onClick={() => { props.AuthData.login("admin", "admin"); }}
                     // onClick={submitHandler}
                 >
                     Login
