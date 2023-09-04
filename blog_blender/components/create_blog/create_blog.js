@@ -6,29 +6,32 @@ const CreateBlogForm = (props) => {
   const [selectedCategories, setSelectedCategories] = useState([]);
 
   const [blogDatail, setBlogDetail] = useState(props.initialData?props.initialData:{});
-   
-  const urlToFile = async (url)=>{
-    if(url){
-      fetch(url)
-      .then(res => res.blob())
-      .then(blob => {
-        new File([blob], 'image', {type: blob.type})
-      })
-    }
-    return null
-  };
-
-  console.log(urlToFile("https://miro.medium.com/v2/resize:fit:4800/format:webp/1*g3L9F6AO-jUW-QuQRFI3JA.jpeg"),"outtter");
   const [blogImages, setBlogImages] = useState({
-    upload:{banner:urlToFile(blogDatail.banner),blogPic:urlToFile(blogDatail.blogPic).then().then()},
-    display:{banner:blogDatail.banner,blogPic:blogDatail.blogPic},
-  });
+      upload:{banner:null,blogPic:null},
+      display:{banner:blogDatail.banner,blogPic:blogDatail.blogPic},
+    });
+  
+  // const urlToFile = async (url, callBack, callBackParams, setter)=>{
+  //   let result = null
+  //   if(url){
+  //     console.log("acepted");
+  //     result = await fetch(url)
+  //     .then(res => res.blob())
+  //     .then(blob => {
+  //     callBack(new File([blob], 'image', {type: blob.type}), callBackParams, setter)
+  //     })
+  //   }
+  // };
+
+  // let getBlogFiles = async (value, params, setter) =>{
+    
+  // }
+
+  // getBlogFiles(blogImages.display.banner, blogImages.display.blogPic, setBlogImages, blogImages);
 
   const imageChangeHandler = (event) => {
     const uploadedImage = event.target.files[0];
     console.log(uploadedImage,"on change");
-    if(!uploadedImage)
-        return
     const imageUrl = URL.createObjectURL(uploadedImage);
     let temp = {...blogImages}
     temp.upload[event.target.id] = uploadedImage
@@ -87,8 +90,8 @@ const CreateBlogForm = (props) => {
     formData.append("description", payload.description);
     formData.append("owner", props.AuthData.user.id);
     formData.append("category_name", "gym");
-    // formData.append("banner", payload.banner);
-    // formData.append("blog_pic", payload.blogPic);
+    formData.append("banner", payload.banner);
+    formData.append("blog_pic", payload.blogPic);
     
     axios[method](url, formData, config)
       .then(function (response) {
@@ -122,6 +125,7 @@ const CreateBlogForm = (props) => {
               id="title"
               onChange={textChangeHandler}
               className="border rounded-lg p-2 w-full"
+              // value={ini}
             />
           </div>
           <div className="mb-4">

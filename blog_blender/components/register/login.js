@@ -1,32 +1,27 @@
-import { useEffect, useState } from "react";
-import { useAuth,AuthContext } from "../AuthContext";
-import { useContext } from "react";
+import { useState,useContext } from "react";
+import { AuthContext } from "../AuthContext";
 import React from 'react';
 import styles from './login.module.css';
+import Link from "next/link";
 
-const LoginPage = () => {
-  let context = useContext(AuthContext)
-  const [openModal, setOpenModal] = useState(false)
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  
+const LoginPage = (props) => {
+  let AuthData = useContext(AuthContext)
     const [formData, setFormData] = useState({
-        username: '',
-        password: '',
+        username: null,
+        password: null,
     });
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle form submission, e.g., validate and send data to a server
+    const textChangeHandler = (event) => {
+        const newFormData = {...formData}
+        newFormData[event.target.id] = event.target.value
+        setFormData(newFormData)
         console.log(formData);
+      };
+
+    const submitHandler = (event) => {
+        // event.preventDefault();
+        console.log(formData,"submitted");
+        AuthData.login(formData.username, formData.password)
     };
 
 
@@ -47,34 +42,29 @@ const LoginPage = () => {
 
 
             <form action="" className={styles.form}>
-                <input className={styles.input1} type="email" name="email" onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+                <input className={styles.input1} type="text" id="username" name="username" onChange={textChangeHandler} placeholder="username" />
                 <div class="relative">
-                    <input className={styles.input2} type="password" onChange={(e) => { setPassword(e.target.value) }} name="password" placeholder="Password" />
+                    <input className={styles.input2} type="password" onChange={textChangeHandler} id="password" name="password" placeholder="Password" />
 
                 </div>
                 <button
                     style={{ backgroundColor: '#0D9488' }}
                     className={styles.button1}
                     type="button"
-                    onClick={() => { setOpenModal(true); context.login("admin", "admin"); }}
+                    onClick={() => { AuthData.login("admin", "admin"); }}
+                    // onClick={submitHandler}
                 >
                     Login
                 </button>
             </form>
 
             <div className={styles.div3}>
-                <a href="#">Forgot your password?</a>
+                <Link href="#">Forgot your password?</Link>
             </div>
 
             <div className={styles.div4}>
-                <p>Don't have an account?</p>
-                <button
-                    style={{ backgroundColor: '#0D9488' }}
-                    className={styles.button2}
-                    type="button"
-                >
-                    Register
-                </button>
+                <span onClick={()=>{props.setViewState("register")}}>Don't have an account?</span>
+                
             </div>
         </div>
 

@@ -1,12 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState,useContext } from "react";
+import { AuthContext } from "../AuthContext";
+import React from 'react';
 
-const RejesterPage = () => {
-    const [openModal,setOpenModal] = useState(false)
-    const [ email , setEmail ] =useState('')
-    const [firstName,setFirstName]= useState('')
-    const [lastName , setLastName] = useState('')
-    const [ password , setPassword ] = useState('')
-    console.log(openModal)
+const RejesterPage = (props) => {
+  let AuthData = useContext(AuthContext)
+  const [formData, setFormData] = useState({
+      username: null,
+      password: null,
+      confirmPassword:null,
+  });
+
+  
     return (
         <section class="bg-gray-50 min-h-screen flex items-center justify-center">
         <div class="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
@@ -15,13 +19,11 @@ const RejesterPage = () => {
             
            
             <form action="" class="flex flex-col gap-4">
-              <input class="p-2 mt-5 rounded-xl border" type="text" name="firstName" onChange={(a) => setFirstName(a.target.value)} placeholder="FirstName" />
-              <input class="p-2 mt-5 rounded-xl border" type="text" onChange={(s)=> setLastName(s.target.value)} name="lastName"  placeholder="Last Name" />
-              <input class="p-2 mt-5 rounded-xl border" type="email" name="email" onChange={(e)=>setEmail(e.target.value)} placeholder="Email Address" />
+              <input class="p-2 mt-5 rounded-xl border" type="text" name="userame" onChange={(a) => setFirstName(a.target.value)} placeholder="username" />
                 <input class="p-2 mt-3 rounded-xl border w-full" type="password" onChange={(e)=> {setPassword(e.target.value)}} name="password" placeholder="Password" />
 
               <div class="relative">
-                <input class="p-2 mt-3 rounded-xl border w-full" type="password" onChange={(e)=> {setPassword(e.target.value)}} name="password" placeholder="Confirm Password" />
+                <input class="p-2 mt-3 rounded-xl border w-full" type="password" onChange={(e)=> {setPassword(e.target.value)}} name="confirmPassword" placeholder="Confirm Password" />
 
               </div>
 

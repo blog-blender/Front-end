@@ -96,23 +96,26 @@ function NavBar() {
           >
             Home
           </Link>
+
+          <Link
+            href="./"
+            className="text-[#0D9488] hover:bg-gray-600 hover:text-[#0D9488] block px-3 py-2 rounded-md text-base font-medium"
+          >
+            Profile
+          </Link>
+
           <Link
             href="#"
+            onClick={()=>AuthData.logout()}
+            className="text-[#0D9488] hover:bg-gray-600 hover:text-[#0D9488] block px-3 py-2 rounded-md text-base font-medium"
+          >
+            Logout
+          </Link>
+          <Link
+            href="./about"
             className="text-[#0D9488] hover:bg-gray-600 hover:text-[#0D9488] block px-3 py-2 rounded-md text-base font-medium"
           >
             About
-          </Link>
-          <Link
-            href="#"
-            className="text-[#0D9488] hover:bg-gray-600 hover:text-[#0D9488] block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Services
-          </Link>
-          <Link
-            href="#"
-            className="text-[#0D9488] hover:bg-gray-600 hover:text-[#0D9488] block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Contact
           </Link>
         </div>
       </div>

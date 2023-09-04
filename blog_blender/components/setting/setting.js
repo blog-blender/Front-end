@@ -217,10 +217,11 @@ const AccountSettingsForm = (props) => {
                                             className='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500'
                                             type='password'
                                             required
+                                            // value={initialData.email}
                                             onChange={textChangeHandler}
                                         />
                                     </div>
-                                    <div className='w-full md:w-1/2 px-3 mb-6'>
+                                    {/* <div className='w-full md:w-1/2 px-3 mb-6'>
                                         <label className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' >New Password</label>
                                         <input
                                             className='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500'
@@ -228,7 +229,7 @@ const AccountSettingsForm = (props) => {
                                             // value={newPassword}
                                             onChange={(e) => setNewPassword(e.target.value)}
                                         />
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <div className="flex justify-end">
                                     <button className="appearance-none bg-blue-300 text-gray-900 px-2 py-1 shadow-sm border border-gray-400 rounded-md mr-3" type="submit" onClick={submitHandeler} >Save Changes</button>

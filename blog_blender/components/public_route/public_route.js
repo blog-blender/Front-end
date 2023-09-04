@@ -1,11 +1,13 @@
 import React from 'react'
 import LoginPage from '../register/login'
 import RejesterPage from '../register/regester'
+import { useState } from 'react'
 export default function PublicRoute({ Component, pageProps }) {
-  console.log("public");
+  const [viewState, setViewState] = useState("login");
   return (
     <>
-        <LoginPage/>
+        {viewState == "login"?<LoginPage setViewState={setViewState}/>
+        :<RejesterPage setViewState={setViewState}/>}
         {/* <Component {...pageProps}/> */}
     </>    
   )

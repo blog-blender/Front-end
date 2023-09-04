@@ -45,14 +45,16 @@ export default function Profile() {
   }, [])
 
   if (userDatail) {
-    let data = userDatail.data
-    banner = data.banner
+
+    let data = userDatail.data[0]
+    banner = data.user_banner_pic
     profilePic = data.profile_pic
     userName = data.username
     firstName = data.first_name
     lastName = data.last_name
     email = data.email
     id = AuthData.user.id
+    console.log(email,"email");
   }
 
 
@@ -60,12 +62,12 @@ export default function Profile() {
     <div className={styles.grid}>
       <header className={styles.header}>
         <div className={styles.content}>
-          <img className={styles.banner} src={data.banner} alt="User Banner" />
+          <img className={styles.banner} src={banner} alt="User Banner" />
           <div className={styles.user_info}>
-            <img className={styles.user_photo} src={data.user_photo} alt="User Photo" />
+            <img className={styles.user_photo} src={profilePic} alt="User Photo" />
             <ul className="flex-container nowrap">
-              <li className={styles.name}>{data.first_name + " " + data.last_name}</li>
-              <li className={styles.username}>@{data.user_name}</li>
+              <li className={styles.name}>{firstName + " " + lastName}</li>
+              <li className={styles.username}>@{userName}</li>
             </ul>
             <ul className="flex-container wrap">
               <li className={styles.setting_icon}>

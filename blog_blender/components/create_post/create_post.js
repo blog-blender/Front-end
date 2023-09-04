@@ -5,13 +5,42 @@ import axios from 'axios';
 import { AuthContext } from '../AuthContext';
 
 export default function CreatePostForm({ onSave, closeHandeler, initialData }) {
+  let mock_data= {
+    id: 5,
+    Auther_id: {
+      username: "eman",
+      profile_pic: null
+    },
+    title: "new",
+    content: "test",
+    blog_id: 1,
+    comments: [
+      {
+        user_id: {
+          username: "firas",
+          profile_pic: null
+        },
+        content: "gtgtgt",
+        id: 8
+      }
+    ],
+    photo: [
+      {
+        id: 1,
+        data: "http://127.0.0.1:8000/media/post_picture/robin-4k-beautiful-background-wallpaper-preview.jpg",
+        post_id: 5
+      }
+    ],
+    likes: []
+  }
+  initialData = mock_data
   const [postImages, setPostImages] = useState({
     upload: [],
-    display: initialData?initialData.photos:[],
+    display: initialData?initialData.photo.map((object)=> object.data):[],
   });
 
   const [postData, setInitialData] = useState(initialData?initialData:{});
-
+  console.log(postImages,3333333333333);
   const {token, user, login} = useContext(AuthContext);
 
   const imageChangeHandler = (event) => {
@@ -61,22 +90,27 @@ export default function CreatePostForm({ onSave, closeHandeler, initialData }) {
       Auther_id: user.id, 
       content: postData.content,
       post_id: 1,
-      photos: postImages.upload.length>0?postImages.upload:initialData.photos,
+      photos: postImages.upload.length>0?initialData.photos:postImages.upload,
       }
     formData.append("title", payload.title);
     formData.append("Auther_id", payload.Auther_id);
     formData.append("content", payload.content);
-    formData.append("blog_id", payload.post_id);
     for (const image of payload.photos) {
       formData.append("photos", image);
     }
+    const params = {
+      post_id:postData.id
+    }
+    
     const config = {
       headers: {
         Authorization : `Bearer ${token.access}`,
       },
+      params: params,
   };
+  
     const createUrl = 'http://127.0.0.1:8000/api/v1/posts/create/'
-    const updateUrl = 'http://127.0.0.1:8000/api/v1/posts/[blog_id]/update/'
+    const updateUrl = `http://127.0.0.1:8000/api/v1/posts/update/`
     const resultUrl = initialData?updateUrl:createUrl
     const method = initialData?"put":"post"
     const data=await axios[method](resultUrl ,formData,config)

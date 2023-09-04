@@ -116,7 +116,7 @@ export default function Post(props) {
                     <button className={styles.buttons}><i className="fa fa-share" aria-hidden="true" />Share</button>
                 </div>
                 <div>
-                    <Modal current_value={commentsVisibility} set_value={setCommentsVisibility} target={target} />
+                    <Modal current_value={commentsVisibility} set_value={setCommentsVisibility} target={target} className="z-40"/>
                 </div>
                 <div className={styles.post_summary}>
 
