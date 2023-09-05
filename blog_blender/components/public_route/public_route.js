@@ -1,11 +1,16 @@
-import React from 'react'
 import LoginPage from '../register/login'
 import RejesterPage from '../register/regester'
+import React from 'react';
+import { useState, useContext } from "react";
+import { AuthContext } from "../AuthContext";
+
 export default function PublicRoute({ Component, pageProps }) {
-  console.log("public");
+  const [viewState, setViewState] = useState("login");
+  let AuthData = useContext(AuthContext)
   return (
     <>
-        <LoginPage/>
+        {viewState == "login"?<LoginPage setViewState={setViewState} AuthData={AuthData}/>
+        :<RejesterPage setViewState={setViewState} AuthData={AuthData}/>}
         {/* <Component {...pageProps}/> */}
     </>    
   )

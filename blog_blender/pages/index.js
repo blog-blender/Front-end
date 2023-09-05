@@ -13,7 +13,7 @@ import BlogDetailPage from "@/components/BlogDetailPage/BlogDetailPage";
 import Styles from "./home.module.css"
 import Carousel from "@/components/homeslider/home_image"
 import FriendList from "@/components/friend/friend_list"
-
+import Image from "next/image";
 
 
 
@@ -22,10 +22,17 @@ export default function Home() {
 
   const [postData, setPostData] = useState(null);
   const [blogData, setBlogData] = useState(null);
+  const [friendsData, setFriendsData] = useState(null);
+  const [searchResult, setsearchResult] = useState(null);
 
   const postsUrl = `http://127.0.0.1:8000/api/v1/posts/home/`
   const postsParams = {user_id:3,num_of_posts:10}
-  const blogsUrl = 'http://127.0.0.1:8000/api/v1/posts/?blog_id=1'
+  const blogsUrl = 'http://127.0.0.1:8000/api/v1/blogs/userfollowing/'
+  const blogsParams = {user_id:3}
+  const friendsUrl = "http://127.0.0.1:8000/api/v1/blogs/user_friends/"
+  const friendsParams = {user_id:1}
+  const searchResultUrl = "http://127.0.0.1:8000/api/v1/blogs/search/"
+  const searchResultParams = {blog_title:"Tech"}
 
   async function getData(url, token, setter, params){
     const config = {headers: {
@@ -39,16 +46,35 @@ export default function Home() {
   useEffect(() => {
     if (AuthData.token){
       getData(postsUrl,AuthData.token.access,setPostData,postsParams)
-      getData(blogsUrl,AuthData.token.access,setBlogData)
+      getData(blogsUrl,AuthData.token.access,setBlogData,blogsParams)
+      getData(friendsUrl,AuthData.token.access,setFriendsData,friendsParams)
+      getData(searchResultUrl,AuthData.token.access,setsearchResult,searchResultParams)
     }
   },[])
+
+// if (postData){console.log(11111111111111,blogData)}
+// if (friendsData){console.log(22222222222,searchResult)}
 
   return (
     <main>
       {/* <div className="flex sticky top-0 self-start">
       <BlogList className="w-1/4 overflow-auto overscroll-contain h-full sticky left-0 top-16"  data={blog_data}/>
       <PostList className="w-3/4"  posts={postData?postData.data:post_data} AuthData={AuthData}/> */}
-      <form>
+      
+      
+      
+      <div className="overlay-container">
+      <Carousel /> 
+      <div className={Styles.home}>
+      
+      <input className={Styles.input1} />
+      <Image  className={Styles.glass} alt="glass" src="/glass.svg" width={6} height={6}/>
+    </div> 
+    </div>
+      
+      
+      
+      {/* <form>
   <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
     Search
   </label>
@@ -65,18 +91,12 @@ export default function Home() {
       placeholder="Search Mockups, Logos..."
       required
     />
-    <button
-      type="submit"
-      className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-    >
-      Search
-    </button>
   </div>
-</form>
+</form> */}
 
-      <Carousel />
+      {/* <Carousel /> */}
       <div className={Styles.mainContent}>
-      <BlogList className="w-1/4 overflow-auto overscroll-contain h-full  left-0 top-16" onClick={()=>{}} data={blog_data}/>
+      <BlogList onClick={()=>{}} data={blog_data}/>
       {/* {selectedBlog && <BlogDetailPage blog={selectedBlog} />} */}
 
         <PostList className={Styles.postList} user={{ id: 1 }} posts={postData?postData.data:post_data} AuthData={AuthData} />

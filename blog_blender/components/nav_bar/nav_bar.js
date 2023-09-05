@@ -1,6 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState,useContext } from "react";
 import { AuthContext } from '@/components/AuthContext';
 import Link from 'next/link'
+import styles from './header.module.css'
+import Image from "next/image";
 function NavBar() {
   let AuthData = useContext(AuthContext)
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,29 +17,30 @@ function NavBar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo on the left */}
-          <div className="flex items-center">
-            <Link href="./" className="text-[#0D9488] text-lg font-semibold">
-              Social Media
+          <Image src='/images/logo.jpg' alt="logo" width={20} height={20}/>
+          <div className={styles.blogblinder}>
+            <Link href="./"  >
+              Blog Blender
             </Link>
           </div>
 
           {/* Menu on the right */}
           <div className="hidden md:flex space-x-4">
           <Link
-              href="./"
+              href="/"
               className="text-[#0D9488] hover:bg-[#e5e7eb] hover:text-[#0D9488] px-3 py-2 rounded-md text-sm font-medium"
             >
               Home
             </Link>
             <Link
-              href="./profile"
+              href="/profile"
               className="text-[#0D9488] hover:bg-[#e5e7eb] hover:text-[#0D9488] px-3 py-2 rounded-md text-sm font-medium"
             >
               Profile
             </Link>
 
              <Link
-              href="./"
+              href="/"
               onClick={()=>AuthData.logout()}
               className="text-[#0D9488] hover:bg-[#e5e7eb] hover:text-[#0D9488] px-3 py-2 rounded-md text-sm font-medium"
             >
@@ -44,10 +48,10 @@ function NavBar() {
             </Link>
 
              <Link
-              href="./"
+              href="/aboutPage/aboutus"
               className="text-[#0D9488] hover:bg-[#e5e7eb] hover:text-[#0D9488] px-3 py-2 rounded-md text-sm font-medium"
             >
-              About
+              About Us
             </Link>   
           </div>
 
@@ -91,28 +95,31 @@ function NavBar() {
       >
         <div className="px-2 pt-2 pb-3 space-y-1">
           <Link
-            href="#"
+            href="/"
             className="text-[#0D9488] block px-3 py-2 rounded-md text-base font-medium"
           >
             Home
           </Link>
+
           <Link
-            href="#"
+            href="/profile"
+            className="text-[#0D9488] hover:bg-gray-600 hover:text-[#0D9488] block px-3 py-2 rounded-md text-base font-medium"
+          >
+            Profile
+          </Link>
+
+          <Link
+            href="/"
+            onClick={()=>AuthData.logout()}
+            className="text-[#0D9488] hover:bg-gray-600 hover:text-[#0D9488] block px-3 py-2 rounded-md text-base font-medium"
+          >
+            Logout
+          </Link>
+          <Link
+            href="./about"
             className="text-[#0D9488] hover:bg-gray-600 hover:text-[#0D9488] block px-3 py-2 rounded-md text-base font-medium"
           >
             About
-          </Link>
-          <Link
-            href="#"
-            className="text-[#0D9488] hover:bg-gray-600 hover:text-[#0D9488] block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Services
-          </Link>
-          <Link
-            href="#"
-            className="text-[#0D9488] hover:bg-gray-600 hover:text-[#0D9488] block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Contact
           </Link>
         </div>
       </div>

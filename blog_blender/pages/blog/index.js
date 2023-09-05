@@ -67,6 +67,7 @@ export default function Blog() {
       <Link href="./profile/">profile</Link>
       <Link href="./blog/">blog</Link>
       <Link href="./">Home</Link>
+      {/* {siteCategories?<CreateBlogForm AuthData={AuthData} categories={siteCategories.data.map((category)=>{return category.category_name})}/>:<p>empty</p>} */}
       {siteCategories?<CreateBlogForm AuthData={AuthData} categories={siteCategories.data.map((category)=>{return category.category_name})} initialData={mock}/>:<p>empty</p>}
       {/* <CreatePostForm /> */}
       

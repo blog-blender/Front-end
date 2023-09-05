@@ -24,6 +24,10 @@ export default function Profile() {
   const userDeatailUrl = 'http://127.0.0.1:8000/api/v1/accounts/users'
   const userDeatailParams = { username: AuthData.user.username, }
 
+  const [recentPosts, setrecentPosts] = useState(null);
+  const recentPostsUrl = 'http://127.0.0.1:8000/api/v1/posts/recent'
+  const recentPostsParams = { user_id:1,num_of_posts:3 }
+
   async function getData(url, token, setter, params) {
     const config = {
       headers: {
@@ -41,18 +45,22 @@ export default function Profile() {
       console.log("profile fetch");
       getData(userDeatailUrl, AuthData.token.access, setUserDetail, userDeatailParams)
       getData(siteCategorieslUrl, AuthData.token.access, setSiteCategories)
+      getData(recentPostsUrl, AuthData.token.access, setrecentPosts,recentPostsParams)
     }
   }, [])
-
+if (recentPosts){console.log(11111111111111,recentPosts)}
+// if (friendsData){console.log(22222222222,searchResult)}
   if (userDatail) {
-    let data = userDatail.data
-    banner = data.banner
+
+    let data = userDatail.data[0]
+    banner = data.user_banner_pic
     profilePic = data.profile_pic
     userName = data.username
     firstName = data.first_name
     lastName = data.last_name
     email = data.email
     id = AuthData.user.id
+    console.log(email,"email");
   }
 
 
@@ -60,12 +68,12 @@ export default function Profile() {
     <div className={styles.grid}>
       <header className={styles.header}>
         <div className={styles.content}>
-          <img className={styles.banner} src={data.banner} alt="User Banner" />
+          <img className={styles.banner} src={banner} alt="User Banner" />
           <div className={styles.user_info}>
-            <img className={styles.user_photo} src={data.user_photo} alt="User Photo" />
+            <img className={styles.user_photo} src={profilePic} alt="User Photo" />
             <ul className="flex-container nowrap">
-              <li className={styles.name}>{data.first_name + " " + data.last_name}</li>
-              <li className={styles.username}>@{data.user_name}</li>
+              <li className={styles.name}>{firstName + " " + lastName}</li>
+              <li className={styles.username}>@{userName}</li>
             </ul>
             <ul className="flex-container wrap">
               <li className={styles.setting_icon}>
@@ -126,11 +134,16 @@ export default function Profile() {
               <div className={styles.keyboard}></div>
             </div>
             <div className={styles.glassdiv}>
+              <a href = "http://localhost:3000/post"> 
+              
               <div className={styles.container}>
                 <div className={styles.box}>
+                
                   <span className={styles.title}>Your posts . . . </span>
                 </div>
+                
               </div>
+              </a>
             </div>
 
 

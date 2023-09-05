@@ -12,8 +12,8 @@ export default function BlogList (props) {
   };
   
   return (
-    <div className={props.className}>
-      <div className="rounded-lg shadow-md p-2 w-full">
+    <div className={`${props.className} m-4 p-4 ${styles.divMain}`} >
+      <div className="rounded-lg shadow-md  w-full  ">
         <div className="grid gap-4">
         <div className={styles.cards} >
         <div className={styles.cardo} style={divStyle}>  
@@ -21,7 +21,7 @@ export default function BlogList (props) {
         </div>
       </div>
           {data.map((blog, index) => (
-            <Link key={index} href={`/render_blog_detalis/${blog.id}`}>
+            <Link key={index} href={`./render_blog_detalis/${blog.id}`}>
               
               <Blog
                 blog_photo={blog.banner}

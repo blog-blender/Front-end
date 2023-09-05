@@ -1,32 +1,26 @@
-import { useEffect, useState } from "react";
-import { useAuth,AuthContext } from "../AuthContext";
-import { useContext } from "react";
+import { useState,useContext } from "react";
+import { AuthContext } from "../AuthContext";
 import React from 'react';
 import styles from './login.module.css';
+import Link from "next/link";
 
-const LoginPage = () => {
-  let context = useContext(AuthContext)
-  const [openModal, setOpenModal] = useState(false)
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  
+const LoginPage = (props) => {
     const [formData, setFormData] = useState({
-        username: '',
-        password: '',
+        username: null,
+        password: null,
     });
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle form submission, e.g., validate and send data to a server
+    const textChangeHandler = (event) => {
+        const newFormData = {...formData}
+        newFormData[event.target.id] = event.target.value
+        setFormData(newFormData)
         console.log(formData);
+      };
+
+    const submitHandler = (event) => {
+        event.preventDefault();
+        console.log(formData,"submitted");
+        props.AuthData.login(formData.username, formData.password)
     };
 
 
@@ -40,47 +34,42 @@ const LoginPage = () => {
 
 
 
-            <section className={styles.section}>
-    <div className={styles.div1}>
-        <div className={styles.div2}>
-            <h1 className={styles.h1}>Login</h1>
+                <section className={styles.section}>
+                    <div className={styles.div1}>
+                        <div className={styles.div2}>
+                            <h1 className={styles.h1}>Login</h1>
 
 
-            <form action="" className={styles.form}>
-                <input className={styles.input1} type="email" name="email" onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
-                <div class="relative">
-                    <input className={styles.input2} type="password" onChange={(e) => { setPassword(e.target.value) }} name="password" placeholder="Password" />
+                            <form action="" className={styles.form}>
+                                <input className={styles.input1} type="text" id="username" name="username" onChange={textChangeHandler} placeholder="username"/>
+                                <div class="relative">
+                                    <input className={styles.input2}type="password" onChange={textChangeHandler} id="password" name="password" placeholder="Password"/>
 
-                </div>
-                <button
-                    style={{ backgroundColor: '#0D9488' }}
-                    className={styles.button1}
-                    type="button"
-                    onClick={() => { setOpenModal(true); context.login("admin", "admin"); }}
-                >
-                    Login
-                </button>
-            </form>
-
-            <div className={styles.div3}>
-                <a href="#">Forgot your password?</a>
-            </div>
-
-            <div className={styles.div4}>
-                <p>Don't have an account?</p>
-                <button
-                    style={{ backgroundColor: '#0D9488' }}
-                    className={styles.button2}
-                    type="button"
-                >
-                    Register
-                </button>
-            </div>
-        </div>
+                                </div>
+                                <div className={styles.div3}>
+                                    <a href="#">Forgot your password?</a>
+                                </div>
+                                <button
+                                    style={{ backgroundColor: '#0D9488' }}
+                                    className={styles.button1}
+                                    type="button"
+                                    onClick={() => { props.AuthData.login("admin", "admin"); }}
+                                    // onClick={submitHandler}
+                                >
+                                    Login
+                                </button>
+                            </form>
 
 
-    </div>
-</section>
+
+                            <div className={styles.div4}>
+                                <span onClick={()=>{props.setViewState("register")}}>Don't have an account?</span>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </section>
 
             </div>
         </div>

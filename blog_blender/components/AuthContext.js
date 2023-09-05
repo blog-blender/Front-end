@@ -31,7 +31,7 @@ export function AuthProvider(props){
     })
 
     async function login(username,password){
-  
+        let failCode = 400
         const url = "http://127.0.0.1:8000/api/token/"
         const options={
                 method : "POST",
@@ -43,17 +43,22 @@ export function AuthProvider(props){
         const data = await response.json()
         const decodedToken = jwt.decode(data.access)
         console.log(decodedToken)
-
-        const newState = {
-            token : data,
-            user :{
-                username :decodedToken.username ,
-                email : decodedToken.email ,
-                id : decodedToken.user_id, 
+        if(response.ok){
+            let newState = {
+                token : data,
+                user :{
+                    username :decodedToken.username ,
+                    email : decodedToken.email ,
+                    id : decodedToken.user_id, 
+                }
             }
-        }
+        
         setState(prevState=> ({...prevState,... newState}));
-        // setState(newState)
+        }
+        else{
+            console.log(data);
+            alert(`User Name: ${data.username}\nPassword: ${data.password}`)
+        }
     }
     function logout(){
         const newState={
