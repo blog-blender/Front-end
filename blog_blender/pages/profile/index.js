@@ -28,6 +28,11 @@ export default function Profile() {
   const recentPostsUrl = 'http://127.0.0.1:8000/api/v1/posts/recent'
   const recentPostsParams = { user_id:1,num_of_posts:3 }
 
+  const [myblogs, setmyblogs] = useState(null);
+  const myblogsUrl = 'http://127.0.0.1:8000/api/v1/blogs'
+  const myblogsParams = { owner:1}
+
+
   async function getData(url, token, setter, params) {
     const config = {
       headers: {
@@ -46,9 +51,10 @@ export default function Profile() {
       getData(userDeatailUrl, AuthData.token.access, setUserDetail, userDeatailParams)
       getData(siteCategorieslUrl, AuthData.token.access, setSiteCategories)
       getData(recentPostsUrl, AuthData.token.access, setrecentPosts,recentPostsParams)
+      getData(myblogsUrl, AuthData.token.access, setmyblogs,myblogsParams)
     }
   }, [])
-if (recentPosts){console.log(11111111111111,recentPosts)}
+// if (myblogsParams){console.log(11111111111111,myblogsParams)}
 // if (friendsData){console.log(22222222222,searchResult)}
   if (userDatail) {
 

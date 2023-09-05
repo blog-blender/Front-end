@@ -11,6 +11,14 @@ export default function Blog() {
   const [siteCategories, setSiteCategories] = useState(null);
   const siteCategorieslUrl = 'http://127.0.0.1:8000/api/v1/blogs/categories'
 
+  const [blogDetails, setBlogDetails] = useState(null);
+  const blogDetailsUrl = 'http://127.0.0.1:8000/api/v1/blogs'
+  const blogDetailsParams = {blog_id:1}
+
+  const [blogPosts, setblogPosts] = useState(null);
+  const blogPostsUrl = 'http://127.0.0.1:8000/api/v1/posts'
+  const blogPostsParams = {blog_id:1}
+
   async function getData(url, token, setter, params) {
     const config = {
       headers: {
@@ -25,9 +33,13 @@ export default function Blog() {
 
   useEffect(() => {
     if (AuthData.token) {
-      getData(siteCategorieslUrl, AuthData.token.access, setSiteCategories)
+      // getData(siteCategorieslUrl, AuthData.token.access, setSiteCategories)
+      // getData(blogDetailsUrl, AuthData.token.access, setBlogDetails,blogDetailsParams)
+      getData(blogPostsUrl, AuthData.token.access, setblogPosts ,blogPostsParams)
     }
   }, [])
+
+if (blogPosts){console.log(11111111111111,blogPosts)}
 
   let mock = {
     id: 1,
