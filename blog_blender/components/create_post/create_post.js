@@ -76,8 +76,13 @@ export default function CreatePostForm({ onSave, closeHandler, initialData }) {
   return (
     <div className="flex items-center justify-center min-h-screen p-4">
       <form className="w-full max-w-3xl border border-gray-300 rounded-lg p-10 bg-primary-500 max-h-[80vh] overflow-auto">
+      <div className="text-center mb-6">
+      <label className="text-4xl font-medium leading-5 text-indigo-900">
+        Creating Post
+      </label>
+    </div>
         <div className="mb-6">
-          <label htmlFor="title" className="block text-2xl font-medium leading-5 text-black-900 py-2">
+          <label htmlFor="title" className="block text-2xl font-medium leading-5 text-primary-100 py-2">
             Title:
           </label>
           <div className="mt-1 relative rounded-md shadow-sm">
