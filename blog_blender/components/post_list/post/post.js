@@ -9,6 +9,7 @@ import axios from "axios";
 export default function Post(props) {
 
     const [postData, setPostData] = useState(props.data);
+    console.log(postData,"post");
     let AuthData = props.AuthData
     const [liked, setLiked] = useState((postData.likes)?postData.likes.includes(AuthData.user.id):false);
     const [commentsVisibility, setCommentsVisibility] = useState(false);
@@ -20,22 +21,19 @@ export default function Post(props) {
     
         
         if(props.initialData){
-            let tagretId = postData.likes.filter((object)=>{return object.user_id.username})
+            let tagretId = postData.likes.filter((object)=>{return object.user_id.username == AuthData.user.username})
             method = "delete"
             url = `http://127.0.0.1:8000/api/v1/posts/like/delete/${tagretId}`
             payload ={
                 }
-                config.params = {}
+            params = {}
         }
         else{
-          method = "post"
-          url = 'http://127.0.0.1:8000/api/v1/blogs/createblog/'
-          payload ={
-            title: blogDatail.title,
-            description: blogDatail.description,
-            banner: blogImages.upload.banner,
-            blogPic: blogImages.upload.blogPic,
-            }
+            method = "post"
+            url = 'http://127.0.0.1:8000/api/v1/posts/like/'
+            payload ={
+                }
+            params = {user_id:AuthData.user.id,post_id:postData.id}
         }
 
         const config = {
@@ -43,18 +41,24 @@ export default function Post(props) {
           params: params,
         };
         
-        axios[method](url, formData, config)
+        axios[method](url,payload,config)
         .then(function (response) {
             console.log(response);
             if(liked){
-                setPostData(postData.likes.filter((object)=>{return object.user_id.id != AuthData}))
+                let temp = {...postData}
+                temp.likes=postData.likes.filter((object)=>{return object.user_id != AuthData.user.id})
+                setPostData(temp)
+                console.log(postData.likes.length,"likes");
             }
             else{
-                let temp = [...postData]
-                temp.push(response)
+                let temp = {...postData}
+                temp.likes.push(response.data)
                 setPostData(temp)
+                console.log(postData.likes.length,"likes");
             }
+            console.log(liked);
             setLiked(!liked)
+            console.log(liked);
           })
           .catch(function (error) {
             console.log(error);

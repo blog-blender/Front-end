@@ -42,7 +42,7 @@ export default function Home() {
     .then((response)=>{console.log(response);setter(response)})
     .catch((error)=>{setter(error)})
   }
-
+  
   useEffect(() => {
     if (AuthData.token){
       getData(postsUrl,AuthData.token.access,setPostData,postsParams)
@@ -52,14 +52,10 @@ export default function Home() {
     }
   },[])
 
-// if (postData){console.log(11111111111111,blogData)}
-// if (friendsData){console.log(22222222222,searchResult)}
+// if (postData){console.log(11111111111111,postData)}
 
   return (
     <main>
-      {/* <div className="flex sticky top-0 self-start">
-      <BlogList className="w-1/4 overflow-auto overscroll-contain h-full sticky left-0 top-16"  data={blog_data}/>
-      <PostList className="w-3/4"  posts={postData?postData.data:post_data} AuthData={AuthData}/> */}
       
       
       
@@ -99,7 +95,7 @@ export default function Home() {
       <BlogList onClick={()=>{}} data={blog_data}/>
       {/* {selectedBlog && <BlogDetailPage blog={selectedBlog} />} */}
 
-        <PostList className={Styles.postList} user={{ id: 1 }} posts={postData?postData.data:post_data} AuthData={AuthData} />
+        {postData?<PostList className={Styles.postList} user={{ id: 1 }} posts={postData.data} AuthData={AuthData}/>:<p>posts no valid</p>}
         <FriendList />
       </div>
     </main>
