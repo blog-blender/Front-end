@@ -8,27 +8,24 @@ import styles from './post.module.css';
 import axios from "axios";
 export default function Post(props) {
 
-    const [postData, setPostData] = useState(props.post);
+    const [postData, setPostData] = useState(props.data);
     let AuthData = props.AuthData
     const [liked, setLiked] = useState((postData.likes)?postData.likes.includes(AuthData.user.id):false);
     const [commentsVisibility, setCommentsVisibility] = useState(false);
     const target = (postData.comments)?<CommentList postData={postData.comments} AuthData={props.AuthData} postId={postData.id} blogId={postData.blog_id}/>:<></>
+    
     async function likeOnClick(event) {
         event.preventDefault();
         let url,method,payload,params
     
         
         if(props.initialData){
+            let tagretId = postData.likes.filter((object)=>{return object.user_id.username})
             method = "delete"
-          url = `http://127.0.0.1:8000/api/v1/blogs/update/`
-          payload ={
-              title: blogDatail.title,
-            description: blogDatail.description,
-            banner: blogImages.upload.banner,
-            blogPic: blogImages.upload.blogPic,
-            }
-            config.params = {blog_id:props.initialData.id}
-            console.log(payload.banner,"uploaded",payload.blogPic);
+            url = `http://127.0.0.1:8000/api/v1/posts/like/delete/${tagretId}`
+            payload ={
+                }
+                config.params = {}
         }
         else{
           method = "post"
@@ -114,6 +111,8 @@ export default function Post(props) {
           );
           // TODO add toast
     };
+
+    
     return (
 
         <>
@@ -175,10 +174,10 @@ export default function Post(props) {
                 <div className={styles.numbers}>
 
                     <p><i
-                        className={classNames('fa', {
-                            'fa-thumbs-up': !liked,
-                            'fa-thumbs-o-up': liked,
-                        })}
+                        className={classNames('fa',
+                            'fa-thumbs-up',)
+                            // 'fa-thumbs-o-up'
+                        }
                         aria-hidden="true"
                     /> <span style={{ marginRight: '1em' }}>{postData.likes.length}</span> 
                     </p>
@@ -198,8 +197,8 @@ export default function Post(props) {
                     <button className={styles.buttons} onClick={likeOnClick} >
                         <i
                             className={classNames('fa', {
-                                'fa-thumbs-up': !liked,
-                                'fa-thumbs-o-up': liked,
+                                'fa-thumbs-up': liked,
+                                'fa-thumbs-o-up': !liked,
                             })}
                             aria-hidden="true"
                             style={{ fontSize: '25px' ,marginRight: '8px' }}
@@ -207,7 +206,7 @@ export default function Post(props) {
                     </button>
 
                     <button className={styles.buttons} onClick={showComments}><i className="fa fa-comment-o" aria-hidden="true" style={{ fontSize: '25px' }}/></button>
-                    <button className={styles.buttons}><i className="fa fa-share" aria-hidden="true" style={{ fontSize: '25px' }}/></button>
+                    <button className={styles.buttons} onClick={copyLink}><i className="fa fa-share" aria-hidden="true" style={{ fontSize: '25px' }}/></button>
                 </div>
                 <div>
                     <Modal current_value={commentsVisibility} set_value={setCommentsVisibility} target={target} className="z-40"/>
