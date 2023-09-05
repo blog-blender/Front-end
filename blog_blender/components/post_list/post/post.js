@@ -37,7 +37,6 @@ export default function Post(props) {
     //     ],
     //     "likes": []
     // },
-    const [postFormOpen, setPostFormOpen] = useState(null)
     const [postData, setPostData] = useState(props.data);
     // console.log(props,"POST PROPS");
     let AuthData = props.AuthData
@@ -144,7 +143,7 @@ export default function Post(props) {
                     </ul>
                     
                     <div className={styles.icondiv} >
-                        <button onClick={()=>{setPostFormOpen(true)}}>
+                        <button onClick={()=>{props.setViewPostForm(postData)}}>
                             <i className="fa fa-pencil" aria-hidden="true" />
                         </button>
                         <button onClick={deletePost}>

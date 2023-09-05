@@ -77,7 +77,7 @@ if (blogData){console.log("HOME BLOG DATA",blogData)}
         {blogData?<BlogList data={blogData.data.map((object=>{return object.blog_id}))}/>:<p>no blogs</p>}
 
         {(postData && userDatail)?<PostList className={Styles.postList} data={postData.data} AuthData={AuthData} userData={userDatail.data[0]}/>:<p>posts no valid</p>}
-        <FriendList />
+        {friendsData?<FriendList data={friendsData.data}/>:<>no friends</>}
       </div>
     </main>
   )
