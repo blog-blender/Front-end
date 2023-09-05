@@ -1,10 +1,20 @@
+// "comments": [
+//   {
+//       "user_id": {
+//           "username": "Ibraheem",
+//           "profile_pic": "http://127.0.0.1:8000/media/profile_pics/TNGRRLUMA-U04PA8EC6ET-3c0112671aa0-512.jpg"
+//       },
+//       "content": "Your writing style is so engaging. I felt like I was right there with you!",
+//       "id": 11
+//   }
+// ],
 export default function Comment(props) {
-   let content = props.content
+   let content = props.data.content
    let user_name = null
    let profile_pic = null
    if (props.data.user_id) {
       user_name = props.data.user_id.username
-      profile_pic = props.data.user_id.profile_pic   
+      profile_pic = props.data.user_id.profile_pic
    }
     return<>
 <div style={{border:'1px solid #E2E8F0'}} class="flex bg-white shadow-lg rounded-lg ">

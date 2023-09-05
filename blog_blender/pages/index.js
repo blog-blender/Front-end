@@ -1,16 +1,12 @@
-import BlogList from "@/components/blog_list/blog_list"
-import PostList from "@/components/post_list/post_list"
 import Link from 'next/link'
-import { blog_data } from "@/data_samples/blog_list";
-import { post_data } from "@/data_samples/post_list";
-import { comment_data } from "@/data_samples/comment_list";
 import axios from "axios";
 import { useState, useContext, useEffect } from "react";
 import {AuthContext} from '@/components/AuthContext';
 
-import BlogDetailPage from "@/components/BlogDetailPage/BlogDetailPage";
-
 import Styles from "./home.module.css"
+
+import BlogList from "@/components/blog_list/blog_list"
+import PostList from "@/components/post_list/post_list"
 import Carousel from "@/components/homeslider/home_image"
 import FriendList from "@/components/friend/friend_list"
 import Image from "next/image";
@@ -24,13 +20,21 @@ export default function Home() {
   const [blogData, setBlogData] = useState(null);
   const [friendsData, setFriendsData] = useState(null);
   const [searchResult, setsearchResult] = useState(null);
+  const [userDatail, setUserDetail] = useState(null);
+  
+
+  const userDeatailUrl = 'http://127.0.0.1:8000/api/v1/accounts/users'
+  const userDeatailParams = { username: AuthData.user.username,}
 
   const postsUrl = `http://127.0.0.1:8000/api/v1/posts/home/`
   const postsParams = {user_id:3,num_of_posts:10}
+
   const blogsUrl = 'http://127.0.0.1:8000/api/v1/blogs/userfollowing/'
   const blogsParams = {user_id:3}
+
   const friendsUrl = "http://127.0.0.1:8000/api/v1/blogs/user_friends/"
   const friendsParams = {user_id:1}
+
   const searchResultUrl = "http://127.0.0.1:8000/api/v1/blogs/search/"
   const searchResultParams = {blog_title:"Tech"}
 
@@ -49,10 +53,11 @@ export default function Home() {
       getData(blogsUrl,AuthData.token.access,setBlogData,blogsParams)
       getData(friendsUrl,AuthData.token.access,setFriendsData,friendsParams)
       getData(searchResultUrl,AuthData.token.access,setsearchResult,searchResultParams)
+      getData(userDeatailUrl, AuthData.token.access, setUserDetail, userDeatailParams)
     }
   },[])
 
-if (blogData){console.log("blog data",blogData)}
+if (blogData){console.log("HOME BLOG DATA",blogData)}
 
   return (
     <main>
@@ -69,9 +74,9 @@ if (blogData){console.log("blog data",blogData)}
     </div>
       
       <div className={Styles.mainContent}>
-        {blogData?<BlogList data={blogData.data}/>:<p>no blogs</p>}
+        {blogData?<BlogList data={blogData.data.map((object=>{return object.blog_id}))}/>:<p>no blogs</p>}
 
-        {postData?<PostList className={Styles.postList} user={{ id: 1 }} data={postData.data} AuthData={AuthData}/>:<p>posts no valid</p>}
+        {(postData && userDatail)?<PostList className={Styles.postList} data={postData.data} AuthData={AuthData} userData={userDatail.data[0]}/>:<p>posts no valid</p>}
         <FriendList />
       </div>
     </main>

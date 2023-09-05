@@ -1,20 +1,20 @@
 import Link from 'next/link'
-import { blog_data } from "@/data_samples/blog_list"
-import { post_data } from "@/data_samples/post_list"
-import { user_data } from "@/data_samples/user_data"
 import { useState, useContext, useEffect } from 'react'
 import PostList from '@/components/post_list/post_list';
 import BlogList from '@/components/blog_list/blog_list';
+
 import styles from './profile.module.css'
 import AccountSettingsForm from '@/components/setting/setting';
 import Modal from '@/components/modal';
+import PostForm from '@/components/create_post/create_post';
+import PostFormModal from '@/components/create_post/modal';
 import { AuthContext } from '@/components/AuthContext';
 import axios from 'axios';
 
 export default function Profile() {
-  let data = user_data[0]
   let banner, profilePic, userName, firstName, lastName, email, id
-  const [viewModal, setViewModal] = useState(false);
+  const [viewComments, setViewComments] = useState(false);
+  const [viewPostForm, setViewPostForm] = useState(null);
   let AuthData = useContext(AuthContext);
 
   const [siteCategories, setSiteCategories] = useState(null);
@@ -22,15 +22,17 @@ export default function Profile() {
 
   const [userDatail, setUserDetail] = useState(null);
   const userDeatailUrl = 'http://127.0.0.1:8000/api/v1/accounts/users'
-  const userDeatailParams = { username: AuthData.user.username, }
+  const userDeatailParams = { username: AuthData.user.username,}
 
   const [recentPosts, setrecentPosts] = useState(null);
   const recentPostsUrl = 'http://127.0.0.1:8000/api/v1/posts/recent'
-  const recentPostsParams = { user_id:1,num_of_posts:3 }
+  const recentPostsParams = { user_id:3, num_of_posts:10 }
+  // const recentPostsParams = { user_id:AuthData.user.id, num_of_posts:10 }
 
-  const [myblogs, setmyblogs] = useState(null);
-  const myblogsUrl = 'http://127.0.0.1:8000/api/v1/blogs'
-  const myblogsParams = { owner:1}
+  const [myBlogs, setMyBlogs] = useState(null);
+  const myBlogsUrl = 'http://127.0.0.1:8000/api/v1/blogs'
+  // const myBlogsParams = { owner:AuthData.user.id}
+  const myBlogsParams = { owner:3}
 
 
   async function getData(url, token, setter, params) {
@@ -47,15 +49,14 @@ export default function Profile() {
 
   useEffect(() => {
     if (AuthData.token) {
-      console.log("profile fetch");
+      // console.log("profile fetch");
       getData(userDeatailUrl, AuthData.token.access, setUserDetail, userDeatailParams)
       getData(siteCategorieslUrl, AuthData.token.access, setSiteCategories)
       getData(recentPostsUrl, AuthData.token.access, setrecentPosts,recentPostsParams)
-      getData(myblogsUrl, AuthData.token.access, setmyblogs,myblogsParams)
+      getData(myBlogsUrl, AuthData.token.access, setMyBlogs,myBlogsParams)
     }
   }, [])
-// if (myblogsParams){console.log(11111111111111,myblogsParams)}
-// if (friendsData){console.log(22222222222,searchResult)}
+
   if (userDatail) {
 
     let data = userDatail.data[0]
@@ -66,17 +67,18 @@ export default function Profile() {
     lastName = data.last_name
     email = data.email
     id = AuthData.user.id
-    console.log(email,"email");
+    // console.log(email,"email");
   }
 
 
-  return (
+  return (  
     <div className={styles.grid}>
       <header className={styles.header}>
         <div className={styles.content}>
           <img className={styles.banner} src={banner} alt="User Banner" />
           <div className={styles.user_info}>
             <img className={styles.user_photo} src={profilePic} alt="User Photo" />
+                  {/* <PostFormModal postFormOpen={viewPostForm} setPostFormOpen={setViewPostForm} initialData={viewPostForm == true?undefined:viewPostForm}/>  */}
             <ul className="flex-container nowrap">
               <li className={styles.name}>{firstName + " " + lastName}</li>
               <li className={styles.username}>@{userName}</li>
@@ -95,8 +97,9 @@ export default function Profile() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     className={styles.setting_icon}
-                    onClick={(event) => {event.preventDefault();document.body.style.overflow = "hidden";setViewModal(true);}}
+                    onClick={(event) => {event.preventDefault();document.body.style.overflow = "hidden";setViewComments(true);}}
                   >
+                    
                     {/* Your SVG content here */}
 
 
@@ -115,8 +118,8 @@ export default function Profile() {
         <div className={styles.content}>
           {/* here i mean  */}
 
-          <BlogList data={blog_data} />
-
+          
+          {myBlogs?<BlogList data={myBlogs.data}/>:<p>no blogs</p>}
 
 
           {/* to here */}
@@ -125,8 +128,9 @@ export default function Profile() {
 
 
       </aside>
-
-      <Modal current_value={viewModal} set_value={setViewModal} target={<AccountSettingsForm initialData={{ id, banner, profilePic, userName, firstName, lastName, email }} AuthData={AuthData} />} />
+      
+      <Modal current_value={viewPostForm} set_value={setViewPostForm} target={<PostForm initialData={viewPostForm == true?undefined:viewPostForm}/>} AuthData={AuthData} />
+      <Modal current_value={viewComments} set_value={setViewComments} target={<AccountSettingsForm initialData={{ id, banner, profilePic, userName, firstName, lastName, email }} AuthData={AuthData} />} />
       <main className={styles.main}>
         <div className={styles.content}>
 
@@ -145,7 +149,7 @@ export default function Profile() {
               <div className={styles.container}>
                 <div className={styles.box}>
                 
-                  <span className={styles.title}>Your posts . . . </span>
+                  <span className={styles.title} onClick={(event)=>{event.preventDefault();setViewPostForm(true)}}>Your posts . . . </span>
                 </div>
                 
               </div>
@@ -155,15 +159,11 @@ export default function Profile() {
 
           </div>
 
-          <PostList posts={post_data} AuthData={AuthData} />
+          {recentPosts?<PostList data={recentPosts.data} AuthData={AuthData} userData={userDatail.data[0]}/>:<p>no posts</p>}
 
         </div>
       </main>
-      <footer className={styles.footer}>
-        <div className={styles.content}>
-          <p>Footer</p>
-        </div>
-      </footer>
+      
     </div>
   )
 };

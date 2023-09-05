@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 
 const Photo = ({ photos }) => {
-    console.log(photos,"photot list");
+    // console.log(photos,"photot list");
     if (!photos) {
         return<></>
     }

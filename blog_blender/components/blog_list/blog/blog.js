@@ -10,7 +10,7 @@ export default function Blog(props) {
         }
     };
     const divStyle = {
-        backgroundImage: `url(${props.data.blog_id.banner})`,
+        backgroundImage: `url(${props.data.banner})`,
         backgroundSize: 'cover',
         // WebkitFilter: 'invert(8%) opacity(81%)',
         // filter: 'invert(8%) opacity(81%)',
@@ -26,7 +26,7 @@ export default function Blog(props) {
         
         <div className={styles.cards} onClick={handleBlogClick}>
         <div className={styles.cardo} style={divStyle}>
-          <p style= {text}>{props.data.blog_id.title}</p>
+          <p style= {text}>{props.data.title}</p>
         </div>
       </div>
     );

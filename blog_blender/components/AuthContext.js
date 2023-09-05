@@ -42,7 +42,7 @@ export function AuthProvider(props){
         const response = await fetch(url,options )
         const data = await response.json()
         const decodedToken = jwt.decode(data.access)
-        console.log(decodedToken)
+        console.log(decodedToken,"DECODED TOKEN")
         if(response.ok){
             let newState = {
                 token : data,
@@ -52,6 +52,7 @@ export function AuthProvider(props){
                     id : decodedToken.user_id, 
                 }
             }
+            
         
         setState(prevState=> ({...prevState,... newState}));
         }

@@ -2,10 +2,10 @@ import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../AuthContext';
 
-export default function CreatePostForm({ onSave, closeHandler, initialData }) {
+export default function PostForm({ onSave, closeHandler, initialData }) {
   const [postImages, setPostImages] = useState({
     upload: [],
-    display: initialData ? initialData.photos : [],
+    display: initialData ? initialData.photo : [],
   });
 
   const [postData, setInitialData] = useState(initialData ? initialData : {});
@@ -46,7 +46,7 @@ export default function CreatePostForm({ onSave, closeHandler, initialData }) {
       Auther_id: user.id,
       content: postData.content,
       blog_id: postData.blog_id,
-      photos: postImages.upload.length > 0 ? postImages.upload : initialData.photos,
+      photos: postImages.upload.length > 0 ? postImages.upload : initialData.photo,
     };
     formData.append("title", payload.title);
     formData.append("Auther_id", payload.Auther_id);
@@ -79,8 +79,8 @@ export default function CreatePostForm({ onSave, closeHandler, initialData }) {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen p-4">
-      <form className="w-full max-w-3xl border border-gray-300 rounded-lg p-10 bg-primary-500 max-h-[80vh] overflow-auto">
+    <div className="flex items-center justify-center ">
+      <form className="w-full max-w-3xl border border-gray-300 rounded-lg p-10 bg-primary-500  overflow-x-visible">
       <div className="text-center mb-6">
       <label className="text-4xl font-medium leading-5 text-indigo-900">
         Creating Post

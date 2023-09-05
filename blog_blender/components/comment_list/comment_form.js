@@ -1,10 +1,19 @@
 import { useState } from "react";
 import React from "react";
 import axios from "axios";
-
+// "comments": [
+//   {
+//       "user_id": {
+//           "username": "Ibraheem",
+//           "profile_pic": "http://127.0.0.1:8000/media/profile_pics/TNGRRLUMA-U04PA8EC6ET-3c0112671aa0-512.jpg"
+//       },
+//       "content": "Your writing style is so engaging. I felt like I was right there with you!",
+//       "id": 11
+//   }
+// ],
 export default function CommentForm(props) {
   let [commentContent, setCommentContent] = useState(props.initialData?props.initialData.content:"") 
-
+  console.log(props.initialData,"COMMMMENT");
   function update(event) {
     event.target.style.height = event.target.scrollHeight + 1 + "px"
     setCommentContent(event.target.value)
@@ -59,7 +68,7 @@ export default function CommentForm(props) {
     </section>
     <section class="w-full flex px-3 py-2">
       <div class="mr-1">
-        <img class="rounded-full" src="https://pbs.twimg.com/profile_images/1366772608373387269/K6En5xnu_normal.jpg" alt="Profile Picture" />
+        <img className="rounded-full w-8 h-8" src={props.userPic} alt="Profile Picture"/>
       </div>
       <div class="flex-1">
         <textarea class="w-full p-2 bg-transparent outline-none placeholder-gray-600 text-black resize-none overflow-auto max-h-screen" onChange={update} rows="4" placeholder="What's happening?">{commentContent}</textarea>

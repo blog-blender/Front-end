@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Checkbox from './Checkbox';
 import axios from 'axios';
 
-const CreateBlogForm = (props) => {
+const BlogForm = (props) => {
   const [selectedCategories, setSelectedCategories] = useState([]);
   // const urlToFile = async (url, callBack, callBackParams, setter)=>{
   //   let result = null
@@ -328,4 +328,4 @@ const CreateBlogForm = (props) => {
   );
 };
 
-export default CreateBlogForm;
+export default BlogForm;

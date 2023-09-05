@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import { useState, useContext } from "react";
 import { user_data } from '@/data_samples/user_data';
-import CreatePostForm from '@/components/create_post/create_post';
-import CreateBlogForm from '@/components/create_blog/create_blog';
+import PostForm from '@/components/create_post/create_post';
+import BlogForm from '@/components/create_blog/create_blog';
+import CreatePostModal from '@/components/create_post/modal';
 
 export default function Post() {
 
@@ -16,7 +17,9 @@ export default function Post() {
       <Link href="./profile/">profile </Link>
       <Link href="./blog/">blog </Link>
       <Link href="./">Home </Link>
-      <CreatePostForm/>
+      <CreatePostModal/>
+      {/* <PostForm/> */}
+      {/* <BlogForm/> */}
     </main>
   )
 }

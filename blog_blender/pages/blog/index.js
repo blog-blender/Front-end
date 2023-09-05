@@ -39,7 +39,7 @@ export default function Blog() {
     }
   }, [])
 
-if (blogPosts){console.log(11111111111111,blogPosts)}
+// if (blogPosts){console.log(11111111111111,blogPosts)}
 
   let mock = {
     id: 1,

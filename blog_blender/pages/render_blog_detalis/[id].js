@@ -5,25 +5,27 @@ import { useContext, useState, useEffect } from "react";
 import { AuthContext } from '@/components/AuthContext';
 import axios from 'axios';
 
+
+
 export default function BlogDetailPage() {
   let AuthData = useContext(AuthContext);
   const router = useRouter();
-  const { id } = router.query; // Get the blog ID from the route
-
-  // Find the blog with the matching ID from your sample data
-  const blog = blog_data.find(blog => blog.id === parseInt(id, 10));
-
+  const queryId = router.query.id;
   
   const [siteCategories, setSiteCategories] = useState(null);
   const siteCategorieslUrl = 'http://127.0.0.1:8000/api/v1/blogs/categories'
 
   const [blogDetails, setBlogDetails] = useState(null);
   const blogDetailsUrl = 'http://127.0.0.1:8000/api/v1/blogs'
-  const blogDetailsParams = {blog_id:1}
+  const blogDetailsParams = {blog_id:queryId}
 
   const [blogPosts, setblogPosts] = useState(null);
   const blogPostsUrl = 'http://127.0.0.1:8000/api/v1/posts'
-  const blogPostsParams = {blog_id:1}
+  const blogPostsParams = {blog_id:queryId}
+  
+  const [userDatail, setUserDetail] = useState(null);
+  const userDeatailUrl = 'http://127.0.0.1:8000/api/v1/accounts/users'
+  const userDeatailParams = { username: AuthData.user.username,}
 
   async function getData(url, token, setter, params) {
     const config = {
@@ -45,11 +47,9 @@ export default function BlogDetailPage() {
     }
   }, [])
 
-if (blogPosts){console.log(11111111111111,blogPosts)}
 
-  if (!blog) {
+  if (!blogDetails || !blogPosts) {
     return <div>Blog not found</div>;
   }
-
-  return <BlogDetail blog={blog} />;
+  return <BlogDetail blog={blogDetails.data[0]} AuthData={AuthData} posts={blogPosts.data}/>;
 }

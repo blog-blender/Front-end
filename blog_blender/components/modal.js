@@ -17,10 +17,10 @@ export default function Modal(props) {
     <div  className={"flex flex-col items-center " + props.className}>
       
       <div className="fixed inset-0 flex items-center justify-center z-30 bg-gray-800 bg-opacity-50 ">
-        <div className="z-40 bg-white p-1 pt-0 rounded-lg shadow-lg lg:w-1/2 h-3/4 overflow-auto overscroll-contain overflow-x-hidden">
-            <div className="flex justify-end mb-2 sticky top-0 bg-white">
+        <div className="z-40 bg-white p-1 pt-0 rounded-lg shadow-lg lg:w-1/2 h-full max-h-fit overflow-auto overscroll-contain">
+            <div className="z-40 flex justify-end mb-2 sticky top-0 bg-white">
             
-            <svg onClick={handleCloseModal} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-14 h-14">
+            <svg onClick={handleCloseModal} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10">
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
 

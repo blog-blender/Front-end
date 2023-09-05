@@ -6,6 +6,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import classNames from 'classnames';
 import styles from './post.module.css';
 import axios from "axios";
+
 export default function Post(props) {
     // {
     //     "id": 22,
@@ -36,12 +37,13 @@ export default function Post(props) {
     //     ],
     //     "likes": []
     // },
+    const [postFormOpen, setPostFormOpen] = useState(null)
     const [postData, setPostData] = useState(props.data);
-    console.log(postData,"post");
+    // console.log(props,"POST PROPS");
     let AuthData = props.AuthData
     const [liked, setLiked] = useState((postData.likes)?postData.likes.includes(AuthData.user.id):false);
     const [commentsVisibility, setCommentsVisibility] = useState(false);
-    const target = (postData.comments)?<CommentList postData={postData.comments} AuthData={props.AuthData} postId={postData.id} blogId={postData.blog_id}/>:<></>
+    const target = (postData.comments)?<CommentList userPic={props.userData.profile_pic} data={postData.comments} AuthData={props.AuthData} postId={postData.id} blogId={postData.blog_id}/>:<></>
     
     async function likeOnClick(event) {
         event.preventDefault();
@@ -78,17 +80,17 @@ export default function Post(props) {
                 let temp = {...postData}
                 temp.likes=postData.likes.filter((object)=>{return object.user_id != AuthData.user.id})
                 setPostData(temp)
-                console.log(postData.likes.length,"likes");
+                // console.log(postData.likes.length,"likes");
             }
             else{
                 let temp = {...postData}
                 temp.likes.push(response.data)
                 setPostData(temp)
-                console.log(postData.likes.length,"likes");
+                // console.log(postData.likes.length,"likes");
             }
-            console.log(liked);
+            // console.log(liked);
             setLiked(!liked)
-            console.log(liked);
+            // console.log(liked);
           })
           .catch(function (error) {
             console.log(error);
@@ -132,7 +134,6 @@ export default function Post(props) {
     return (<>
 
         <div className={styles.card}>
-
             <div className={styles.leftButtonsContainer}>
                 <div className="imgName">
                 <div className={styles.user_infoPost}>
@@ -143,7 +144,7 @@ export default function Post(props) {
                     </ul>
                     
                     <div className={styles.icondiv} >
-                        <button onClick={editPost}>
+                        <button onClick={()=>{setPostFormOpen(true)}}>
                             <i className="fa fa-pencil" aria-hidden="true" />
                         </button>
                         <button onClick={deletePost}>
