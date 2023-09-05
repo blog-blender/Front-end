@@ -66,12 +66,22 @@ export default function CreatePostForm({ onSave, closeHandler, initialData }) {
     const method = initialData ? "put" : "post";
     const data = await axios[method](resultUrl, formData, config);
   };
+  ////
 
-  const blogHandler = (event) => {
+  const handleBlogChange = (event) => {
     const newFormData = { ...postData };
     newFormData[event.target.id] = event.target.value;
     setInitialData(newFormData);
   };
+  const [selectedBlog, setSelectedBlog] = useState(initialData ? initialData.blog_id : 1); 
+
+  const blogOptions = [
+    // Define your blog options here, you can fetch this dynamically if needed
+    { id: 1, name: 'Blog 1' },
+    { id: 2, name: 'Blog 2' },
+    // Add more options as needed
+  ];
+
 
   return (
     <div className="flex items-center justify-center min-h-screen p-4">
@@ -183,6 +193,26 @@ export default function CreatePostForm({ onSave, closeHandler, initialData }) {
 
           </div>
 
+        </div>
+        <div className="mb-6">
+          <label htmlFor="blog" className="block text-2xl font-medium leading-5 text-primary-100 py-2">
+            Blog name:
+          </label>
+          <div className="mt-1 relative rounded-md shadow-sm">
+            <select
+              id="blog"
+              name="blog"
+              value={selectedBlog}
+              onChange={handleBlogChange}
+              className="block w-full pl-3 pr-10 py-2 border-gray-300 rounded-md text-gray-900 placeholder-gray-400 focus:ring-indigo-600 focus:border-indigo-600 sm:text-sm focus:outline-none focus:ring focus:ring-opacity-50"
+            >
+              {blogOptions.map((blog) => (
+                <option key={blog.id} value={blog.id}>
+                  {blog.name}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
 
         <div className="mb-6 flex justify-end">

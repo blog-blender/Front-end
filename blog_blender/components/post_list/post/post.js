@@ -27,14 +27,6 @@ export default function Post(props) {
 
 
 
-        // <div className={styles.post_photos}>
-        //     {(data.photo)?<Photo photos={data.photo}/>:<p>no photos</p>}
-        // </div>
-        
-        // <div className={styles.post_summary}>
-        //     <p>likes {(data.likes)?data.likes.length:69}</p>
-        //     <p>Comments {(data.likes)?data.comments.length:69}</p>
-        // </div>
 
 
     const deletePost = (event) => {
@@ -81,22 +73,8 @@ export default function Post(props) {
                 <div className={styles['go-corner']}>
                     <div className={styles['go-arrow']}>→</div>
                 </div>
-                {/* <div className={styles.photocontainer}>
-                    <img className={styles.postbanner} src={data.banner} alt="User Banner1" />
-                    <img className={styles.postbanner} src={data.banner} alt="User Banner" />
-                    <img className={styles.postbanner} src={data.banner} alt="User Banner" />
-                </div> */}
 
                 <div className={styles.numbers}>
-
-                    {/* <p><i
-                        className={classNames('fa', {
-                            'fa-heart': !liked,
-                            'fa-heart-o': liked,
-                        })}
-                        aria-hidden="true"
-                    /> {data.likes.length}
-                    </p> */}
                     <p><i className="fa fa-comment-o" aria-hidden="true" />{(data.likes)?data.comments.length:-1}</p>
                 </div>
 

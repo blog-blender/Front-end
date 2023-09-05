@@ -131,7 +131,7 @@ export default function Profile() {
               <div className={styles.container}>
                 <div className={styles.box}>
                 
-                  <span className={styles.title}>Your posts . . . </span>
+                  <span className={styles.title}>Create Post</span>
                 </div>
                 
               </div>

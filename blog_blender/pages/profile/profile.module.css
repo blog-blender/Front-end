@@ -83,7 +83,7 @@ margin-right: 55%;
     grid-area: leftbar;
     margin-top: 240%;
     height: 200px;
-    margin-left: 30%;
+  
     
   }
   
@@ -91,6 +91,7 @@ margin-right: 55%;
     margin-top: 450px;
     grid-area: main;
     margin-bottom: 50%;
+    margin-left: 5%;
   }
   
   .footer {
@@ -99,12 +100,10 @@ margin-right: 55%;
   
   .content {
     color: #242424;
-    /* background-color: #f25fff; */
     font-weight: 600;
     text-align: center;
     box-sizing: border-box;
     height: 100%;
-    padding: 10px;
   }
   .blogsList {
     font-weight: bold;
@@ -144,24 +143,7 @@ margin-right: 55%;
 
 
   }
-  .picman{
 
-
-        width: 0px;
-        height: 0px;
-        border-right: 60px solid transparent;
-        border-top: 60px solid #C2BCA0;
-        border-left: 60px solid #C2BCA0;
-        border-bottom: 60px solid #C2BCA0;
-        border-top-left-radius: 60px;
-        border-top-right-radius: 60px;
-        border-bottom-left-radius: 60px;
-        border-bottom-right-radius: 60px;
-        align-self: flex-start;
-        
-
-
-  }
   .myposts{
     display: flex;
     flex-wrap: wrap;
@@ -171,38 +153,7 @@ margin-right: 55%;
   }
   
 
-  .speechbubble {
-    align-self: flex-start;
-    width: 60%; 
-    height: 80px; 
-    background: #BAC7CD;
-    position: absolute;
-    -moz-border-radius: 10px; 
-    -webkit-border-radius: 10px; 
-    border-radius: 10px;    
-    margin-left: 10%;
-    margin-top: 1%;
-    border-width:2px;
-border-style:solid;
-border-color:#687E8D;
- }
- .speechbubblet {
-    margin-left: 8.3%;
-    margin-top: 1.9%;
-    content:"";
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-top: 13px solid transparent;
-    border-right: 26px solid #687E8D;
-    border-bottom: 13px solid transparent;
-    /* border-width:2px; */
-    /* border-style:solid; */
-    /* border-color:#687E8D; */
-    /* background: #BAC7CD; */
-    
-    
- }
+
 .text1{
     text-align: center;
     margin-top: 2.0%;
@@ -313,7 +264,7 @@ font-size: 10px;
   .card {
     display: block;
     position: relative;
-    max-width: 85%;
+    max-width: 80%;
     max-height: 35%;
 
     border-radius: 10px;
@@ -388,11 +339,11 @@ font-size: 10px;
   }
   
   /* here i mean .... */
-
+/* blog list */
   .cards {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    flex-direction: row;
+    gap: 30px;
   }
   
 
@@ -429,7 +380,7 @@ font-size: 10px;
   }
   .containerfor {
     display: flex;
-    margin-left: 12.5%;
+    margin-left: 5.5%;
     margin-top: 1%;
   }
   
@@ -445,7 +396,7 @@ font-size: 10px;
 .container {
   position: relative;
   font-family: sans-serif;
-  width: 93%;
+  width: 95%;
   height: 75px;
 }
 
