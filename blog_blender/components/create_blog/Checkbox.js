@@ -27,6 +27,7 @@ const Checkbox = ({ selectedOptions, onOptionChange, categories }) => {
           </label>
         ))}
       </div>
+
     </div>
   );
 };
