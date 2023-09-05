@@ -14,7 +14,6 @@ export default function Profile() {
   const deletePostUrl = 'http://127.0.0.1:8000/api/v1/posts/1/update'
   const deleteCommentUrl = 'http://127.0.0.1:8000/api/v1/posts/1/comments/update/1'
   const deleteFollowUrl = 'http://127.0.0.1:8000/api/v1/blogs/unfollow/1/'
-  const deleteLikeUrl = 'http://127.0.0.1:8000/api/v1/posts/like/delete/1'
   const deleteUserUrl = 'http://127.0.0.1:8000/api/v1/accounts/update'
 
   async function deleteData(url, token, params) {
@@ -35,8 +34,7 @@ export default function Profile() {
       deleteData(deletePostUrl,AuthData.token.access)
       deleteData(deleteCommentUrl,AuthData.token.access)
       deleteData(deleteFollowUrl,AuthData.token.access)
-      deleteData(deleteLikeUrl,AuthData.token.access)
-      deleteData(deleteUserUrl,AuthData.token.access)
+      // deleteData(deleteUserUrl,AuthData.token.access)
     }
   }, [])
 

@@ -20,13 +20,15 @@ export default function Post(props) {
         let url,method,payload,params
     
         
-        if(props.initialData){
-            let tagretId = postData.likes.filter((object)=>{return object.user_id.username == AuthData.user.username})
+        if(liked){
+            let tagretId = postData.likes.filter((object)=>{return object.user_id == AuthData.user.id})
+            tagretId = tagretId[0].id
+            console.log(tagretId,"TRGGGGGGGGGGGG");
             method = "delete"
-            url = `http://127.0.0.1:8000/api/v1/posts/like/delete/${tagretId}`
+            url = `http://127.0.0.1:8000/api/v1/posts/like/delete/${tagretId}/`
             payload ={
                 }
-            params = {}
+            params = {user_id:AuthData.user.id,post_id:postData.id}
         }
         else{
             method = "post"

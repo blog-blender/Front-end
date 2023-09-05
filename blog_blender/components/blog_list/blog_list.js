@@ -22,17 +22,7 @@ export default function BlogList (props) {
       </div>
           {data.map((blog, index) => (
             <Link key={index} href={`./render_blog_detalis/${blog.id}`}>
-              
-              <Blog
-                blog_photo={blog.banner}
-                group_name={blog.group_name}
-                // description={blog.description}
-
-
-                // comment
-
-
-              />
+              <Blog data={blog}/>
             </Link>
           ))}
         </div>
