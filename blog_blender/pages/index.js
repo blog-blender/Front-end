@@ -13,7 +13,7 @@ import BlogDetailPage from "@/components/BlogDetailPage/BlogDetailPage";
 import Styles from "./home.module.css"
 import Carousel from "@/components/homeslider/home_image"
 import FriendList from "@/components/friend/friend_list"
-
+import Image from "next/image";
 
 
 
@@ -48,7 +48,21 @@ export default function Home() {
       {/* <div className="flex sticky top-0 self-start">
       <BlogList className="w-1/4 overflow-auto overscroll-contain h-full sticky left-0 top-16"  data={blog_data}/>
       <PostList className="w-3/4"  posts={postData?postData.data:post_data} AuthData={AuthData}/> */}
-      <form>
+      
+      
+      
+      <div className="overlay-container">
+      <Carousel /> 
+      <div className={Styles.home}>
+      
+      <input className={Styles.input1} />
+      <Image  className={Styles.glass} alt="glass" src="/glass.svg" width={6} height={6}/>
+    </div> 
+    </div>
+      
+      
+      
+      {/* <form>
   <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
     Search
   </label>
@@ -72,11 +86,11 @@ export default function Home() {
       Search
     </button>
   </div>
-</form>
+</form> */}
 
-      <Carousel />
+      {/* <Carousel /> */}
       <div className={Styles.mainContent}>
-      <BlogList className="w-1/4 overflow-auto overscroll-contain h-full  left-0 top-16" onClick={()=>{}} data={blog_data}/>
+      <BlogList onClick={()=>{}} data={blog_data}/>
       {/* {selectedBlog && <BlogDetailPage blog={selectedBlog} />} */}
 
         <PostList className={Styles.postList} user={{ id: 1 }} posts={postData?postData.data:post_data} AuthData={AuthData} />
