@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 
 const Photo = ({ photos }) => {
-    // console.log(photos,7777777777777777777);
+    console.log(photos,"photot list");
     if (!photos) {
         return<></>
     }
@@ -48,8 +48,7 @@ const Photo = ({ photos }) => {
                     <div className="w-full overflow-hidden rounded-lg shadow">
                         <img
                             className="object-contain  h-full"
-                            src={photo}
-                            // src={photo.data}
+                            src={photo.data}
                             alt={`Photo ${index + 1}`}
                         />
                     </div>
@@ -98,8 +97,7 @@ const Photo = ({ photos }) => {
                 <img
                     className="h-full w-auto"
                     style={{ maxHeight: '100vh', maxWidth: '100vw' }}
-                    // src={photos[currentPhotoIndex].data}
-                    src={photos[currentPhotoIndex]}
+                    src={photos[currentPhotoIndex].data}
                     alt={`Photo ${currentPhotoIndex + 1}`}
                 />
                 <button

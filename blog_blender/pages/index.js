@@ -71,7 +71,7 @@ if (blogData){console.log("blog data",blogData)}
       <div className={Styles.mainContent}>
         {blogData?<BlogList data={blogData.data}/>:<p>no blogs</p>}
 
-        {postData?<PostList className={Styles.postList} user={{ id: 1 }} posts={postData.data} AuthData={AuthData}/>:<p>posts no valid</p>}
+        {postData?<PostList className={Styles.postList} user={{ id: 1 }} data={postData.data} AuthData={AuthData}/>:<p>posts no valid</p>}
         <FriendList />
       </div>
     </main>
