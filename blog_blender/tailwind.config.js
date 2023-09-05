@@ -8,6 +8,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: { // Define your custom color here
+          100: "#687E8D",
+          500: "#BAC7CD",
+          900: "#C2BCA0",
+        },
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
