@@ -119,13 +119,27 @@ export default function Post(props) {
         <>
 
             <div className={styles.card}>
+
                 <div className={styles.leftButtonsContainer}>
-                    <button onClick={editPost}>
-                        <i className="fa fa-pencil" aria-hidden="true" />
-                    </button>
-                    <button onClick={deletePost}>
-                        <i className="fa fa-trash-o" aria-hidden="true" />
-                    </button>
+                    <div className="imgName">
+                        <img className={styles.user_photoPost} src={data.user_photo} alt="User Photo" />
+                        <ul className="flex-container nowrap">
+                            <li className={styles.namePost}>{data.first_name + " " + data.last_name}</li>
+                            {/* <li className={styles.usernamePost}>eman {data.user_name}</li> */}
+                        </ul>
+                        <ul className="flex-container wrap">
+                        </ul>
+                    </div>
+                    <div className={styles.icondiv}>
+                        <button onClick={editPost}>
+                            <i className="fa fa-pencil" aria-hidden="true" />
+                        </button>
+                        <button onClick={deletePost}>
+                            <i className="fa fa-trash-o" aria-hidden="true" />
+                        </button>
+                    </div>
+
+
                 </div>
 
 
@@ -160,37 +174,45 @@ export default function Post(props) {
 
                 <div className={styles.numbers}>
 
-                    {/* <p><i
+                    <p><i
                         className={classNames('fa', {
-                            'fa-heart': !liked,
-                            'fa-heart-o': liked,
+                            'fa-thumbs-up': !liked,
+                            'fa-thumbs-o-up': liked,
                         })}
                         aria-hidden="true"
-                    /> {data.likes.length}
-                    </p> */}
+                    /> <span style={{ marginRight: '1em' }}>{data.likes.length}</span> 
+                    </p>
                     <p><i className="fa fa-comment-o" aria-hidden="true" />{(data.likes)?data.comments.length:-1}</p>
+                        {/* style={{ marginLeft: '0.1em' ,marginRight:'0.1em'}} */}
+                        
+                    
+                    
+                    <p><i className="fa fa-comment-o" aria-hidden="true" />{(data.comments) ? data.comments.length : -1}</p>
+
                 </div>
 
 
 
                 <div className={styles.post_interactions}>
 
-                    <button className={styles.buttons} onClick={likeOnClick} > <i
-                        className={classNames('fa', {
-                            'fa-heart': liked,
-                            'fa-heart-o': !liked,
-                        })}
-                        aria-hidden="true"
-                    /> </button>
+                    <button className={styles.buttons} onClick={likeOnClick} >
+                        <i
+                            className={classNames('fa', {
+                                'fa-thumbs-up': !liked,
+                                'fa-thumbs-o-up': liked,
+                            })}
+                            aria-hidden="true"
+                            style={{ fontSize: '25px' ,marginRight: '8px' }}
+                        />
+                    </button>
 
-                    <button className={styles.buttons} onClick={showComments}><i className="fa fa-comment-o" aria-hidden="true" /> Comment</button>
-                    <button className={styles.buttons}><i className="fa fa-share" aria-hidden="true" onClick={copyLink}/></button>
+                    <button className={styles.buttons} onClick={showComments}><i className="fa fa-comment-o" aria-hidden="true" style={{ fontSize: '25px' }}/></button>
+                    <button className={styles.buttons}><i className="fa fa-share" aria-hidden="true" style={{ fontSize: '25px' }}/></button>
                 </div>
                 <div>
                     <Modal current_value={commentsVisibility} set_value={setCommentsVisibility} target={target} className="z-40"/>
                 </div>
                 <div className={styles.post_summary}>
-
 
                 </div>
             </div>

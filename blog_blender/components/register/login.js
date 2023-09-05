@@ -34,42 +34,42 @@ const LoginPage = (props) => {
 
 
 
-            <section className={styles.section}>
-    <div className={styles.div1}>
-        <div className={styles.div2}>
-            <h1 className={styles.h1}>Login</h1>
+                <section className={styles.section}>
+                    <div className={styles.div1}>
+                        <div className={styles.div2}>
+                            <h1 className={styles.h1}>Login</h1>
 
 
-            <form action="" className={styles.form}>
-                <input className={styles.input1} type="text" id="username" name="username" onChange={textChangeHandler} placeholder="username" />
-                <div class="relative">
-                    <input className={styles.input2} type="password" onChange={textChangeHandler} id="password" name="password" placeholder="Password" />
+                            <form action="" className={styles.form}>
+                                <input className={styles.input1} type="text" id="username" name="username" onChange={textChangeHandler} placeholder="username"/>
+                                <div class="relative">
+                                    <input className={styles.input2}type="password" onChange={textChangeHandler} id="password" name="password" placeholder="Password"/>
 
-                </div>
-                <button
-                    style={{ backgroundColor: '#0D9488' }}
-                    className={styles.button1}
-                    type="button"
-                    onClick={() => { props.AuthData.login("admin", "admin"); }}
-                    // onClick={submitHandler}
-                >
-                    Login
-                </button>
-            </form>
-
-            <div className={styles.div3}>
-                <Link href="#">Forgot your password?</Link>
-            </div>
-
-            <div className={styles.div4}>
-                <span onClick={()=>{props.setViewState("register")}}>Don't have an account?</span>
-                
-            </div>
-        </div>
+                                </div>
+                                <div className={styles.div3}>
+                                    <a href="#">Forgot your password?</a>
+                                </div>
+                                <button
+                                    style={{ backgroundColor: '#0D9488' }}
+                                    className={styles.button1}
+                                    type="button"
+                                    onClick={() => { props.AuthData.login("admin", "admin"); }}
+                                    // onClick={submitHandler}
+                                >
+                                    Login
+                                </button>
+                            </form>
 
 
-    </div>
-</section>
+
+                            <div className={styles.div4}>
+                                <span onClick={()=>{props.setViewState("register")}}>Don't have an account?</span>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </section>
 
             </div>
         </div>

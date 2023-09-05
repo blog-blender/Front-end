@@ -118,4 +118,14 @@
   }
   
   /* ... Other CSS rules ... */
-  
+
+
+  .blogblinder{
+    display: flex;
+    color: #0D9488;
+    font-size: x-large;
+    font-family:'Times New Roman', Times, serif;
+    justify-content: flex-end;
+
+
+  }
