@@ -54,7 +54,7 @@ export default function Post(props) {
                         <img className={styles.user_photoPost} src={data.user_photo} alt="User Photo" />
                         <ul className="flex-container nowrap">
                             <li className={styles.namePost}>{data.first_name + " " + data.last_name}</li>
-                            <li className={styles.usernamePost}>eman {data.user_name}</li>
+                            {/* <li className={styles.usernamePost}>eman {data.user_name}</li> */}
                         </ul>
                         <ul className="flex-container wrap">
                         </ul>
@@ -104,9 +104,13 @@ export default function Post(props) {
                             'fa-thumbs-o-up': liked,
                         })}
                         aria-hidden="true"
-                    /> {data.likes.length}
+                        style={{ marginLeft: '0.1em' ,marginRight:'0.1em'}}
+                        
+                    /> <span style={{ marginRight: '1em' }}>{data.likes.length}</span> 
                     </p>
+                    
                     <p><i className="fa fa-comment-o" aria-hidden="true" />{(data.comments) ? data.comments.length : -1}</p>
+
                 </div>
 
 
@@ -120,11 +124,12 @@ export default function Post(props) {
                                 'fa-thumbs-o-up': liked,
                             })}
                             aria-hidden="true"
+                            style={{ fontSize: '25px' ,marginRight: '8px' }}
                         />
                     </button>
 
-                    <button className={styles.buttons} onClick={showComments}><i className="fa fa-comment-o" aria-hidden="true" /></button>
-                    <button className={styles.buttons}><i className="fa fa-share" aria-hidden="true" /></button>
+                    <button className={styles.buttons} onClick={showComments}><i className="fa fa-comment-o" aria-hidden="true" style={{ fontSize: '25px' }}/></button>
+                    <button className={styles.buttons}><i className="fa fa-share" aria-hidden="true" style={{ fontSize: '25px' }}/></button>
                 </div>
                 <div>
                     <Modal current_value={commentsVisibility} set_value={setCommentsVisibility} target={target} />

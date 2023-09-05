@@ -165,6 +165,7 @@
 .numbers {
   display: flex;
   margin-bottom: 1%;
+  margin-right: 10px;
 }
 
 .leftButtonsContainer {
