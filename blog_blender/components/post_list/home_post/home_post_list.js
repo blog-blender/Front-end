@@ -1,4 +1,4 @@
-import Post from "./post/profile_post/post"
+import Post from "@/components/post_list/home_post/homePost"
 
 export default function PostList(props) {
   console.log("post list",props.posts,"post list");
@@ -7,5 +7,4 @@ export default function PostList(props) {
     {props.posts.map(post => { return <Post className="" data={post} AuthData={props.AuthData}/>
   })}
     </div>
-    )
-}
+    )}

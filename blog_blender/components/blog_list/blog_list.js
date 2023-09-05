@@ -12,31 +12,24 @@ export default function BlogList (props) {
   };
   
   return (
-    <div className={`${props.className} m-4 p-4 ${styles.divMain}`} >
-      <div className="rounded-lg shadow-md  w-full  ">
-        <div className="grid gap-4">
-        <div className={styles.cards} >
-        <div className={styles.cardo} style={divStyle}>  
-          <p className={styles.tip} style={text}>Blog List</p>
-        </div>
-      </div>
-          {data.map((blog, index) => (
-            <Link key={index} href={`./render_blog_detalis/${blog.id}`}>
-              
-              <Blog
-                blog_photo={blog.banner}
-                group_name={blog.group_name}
-                // description={blog.description}
+    <div className={`${props.className} m-4 p-4 ${styles.divMain}`}>
+  <div>
+    <div >
+      <div className={`flex flex-wrap ${styles.cards}`}>
 
-
-                // comment
-
-
-              />
-            </Link>
-          ))}
-        </div>
+        {data.map((blog, index) => (
+          <Link key={index} href={`./render_blog_detalis/${blog.id}`}>
+            <Blog
+              blog_photo={blog.banner}
+              group_name={blog.group_name}
+              // description={blog.description}
+              // comment
+            />
+          </Link>
+        ))}
       </div>
     </div>
+  </div>
+</div>
   );
 }

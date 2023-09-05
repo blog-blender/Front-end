@@ -12,14 +12,14 @@ export default function Blog(props) {
     const divStyle = {
         backgroundImage: `url(${props.blog_photo})`,
         backgroundSize: 'cover',
-        // WebkitFilter: 'invert(8%) opacity(81%)',
-        // filter: 'invert(8%) opacity(81%)',
+        WebkitFilter: 'invert(8%) opacity(81%)',
+        filter: 'invert(8%) opacity(81%)',
       };
       const text = {
-        fontSize: '25px',
+        
         color: 'white',
         fontWeight: 'bold',
-    
+        zIndex: 1,    
       };
       
     return (

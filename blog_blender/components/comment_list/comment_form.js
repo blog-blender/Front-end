@@ -52,26 +52,24 @@ export default function CommentForm(props) {
 
   };
 
-	return (
-  <div style={{border:'1px solid #E2E8F0'}} class="bg-white-400 rounded-2xl transform -translate-y-5 ">
-    <section class="p-3 border-b border-gray-600">
+  return (
+    <div  class="bg-white rounded-2xl border border-solid border-gray-300 transform -translate-y-5 ">
       
-    </section>
-    <section class="w-full flex px-3 py-2">
-      <div class="mr-1">
-        <img class="rounded-full" src="https://pbs.twimg.com/profile_images/1366772608373387269/K6En5xnu_normal.jpg" alt="Profile Picture" />
-      </div>
-      <div class="flex-1">
-        <textarea class="w-full p-2 bg-transparent outline-none placeholder-gray-600 text-black resize-none overflow-auto max-h-screen" onChange={update} rows="4" placeholder="What's happening?">{commentContent}</textarea>
-        <div style={{display:'flex', justifyContent:'flex-end'}} class="flex items-center pt-2 border-t border-blue">
-          <div style={{display:'flex', justifyContent:'flex-end'}}> 
-            <button style={{display:'flex',justifyContent:'flex-end',backgroundColor:'#0D9488'}} onClick={submitHandler} class="transition duration-500 ease-in-out bg-blue-500 bg-opacity-100  text-white text-opacity-100  py-2 px-3 rounded-2xl text-base font-bold focus:outline-none" >Send</button>
+      <section class="w-full flex px-2 py-2">
+        <div>
+          <img class="rounded-full" src="https://pbs.twimg.com/profile_images/1366772608373387269/K6En5xnu_normal.jpg" alt="Profile Picture" />
+        </div>
+        <div class="flex-1">
+          <textarea class="w-full h-10 bg-white pl-3 outline-none placeholder-gray-600 text-black resize-none overflow-auto max-h-screen" onChange={update} rows="4" placeholder="What's happening?">{commentContent}</textarea>
+          <div  class="flex justify-end flex items-center   border-blue">
+            <div style={{display:'flex', justifyContent:'flex-end'}}> 
+              <button style={{display:'flex',justifyContent:'flex-end',backgroundColor:'#0D9488'}} onClick={submitHandler} class="transition duration-500 ease-in-out bg-blue-500 bg-opacity-100  text-white text-opacity-100  py-2 px-3 rounded-2xl text-base font-bold focus:outline-none" >Send</button>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  </div>
-	)
+      </section>
+    </div>
+    )
 	
 
 }
