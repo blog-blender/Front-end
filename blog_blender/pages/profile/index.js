@@ -24,6 +24,10 @@ export default function Profile() {
   const userDeatailUrl = 'http://127.0.0.1:8000/api/v1/accounts/users'
   const userDeatailParams = { username: AuthData.user.username, }
 
+  const [recentPosts, setrecentPosts] = useState(null);
+  const recentPostsUrl = 'http://127.0.0.1:8000/api/v1/posts/recent'
+  const recentPostsParams = { user_id:1,num_of_posts:3 }
+
   async function getData(url, token, setter, params) {
     const config = {
       headers: {
@@ -41,9 +45,11 @@ export default function Profile() {
       console.log("profile fetch");
       getData(userDeatailUrl, AuthData.token.access, setUserDetail, userDeatailParams)
       getData(siteCategorieslUrl, AuthData.token.access, setSiteCategories)
+      getData(recentPostsUrl, AuthData.token.access, setrecentPosts,recentPostsParams)
     }
   }, [])
-
+if (recentPosts){console.log(11111111111111,recentPosts)}
+// if (friendsData){console.log(22222222222,searchResult)}
   if (userDatail) {
 
     let data = userDatail.data[0]

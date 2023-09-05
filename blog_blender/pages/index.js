@@ -22,10 +22,17 @@ export default function Home() {
 
   const [postData, setPostData] = useState(null);
   const [blogData, setBlogData] = useState(null);
+  const [friendsData, setFriendsData] = useState(null);
+  const [searchResult, setsearchResult] = useState(null);
 
   const postsUrl = `http://127.0.0.1:8000/api/v1/posts/home/`
   const postsParams = {user_id:3,num_of_posts:10}
-  const blogsUrl = 'http://127.0.0.1:8000/api/v1/posts/?blog_id=1'
+  const blogsUrl = 'http://127.0.0.1:8000/api/v1/blogs/userfollowing/'
+  const blogsParams = {user_id:3}
+  const friendsUrl = "http://127.0.0.1:8000/api/v1/blogs/user_friends/"
+  const friendsParams = {user_id:1}
+  const searchResultUrl = "http://127.0.0.1:8000/api/v1/blogs/search/"
+  const searchResultParams = {blog_title:"Tech"}
 
   async function getData(url, token, setter, params){
     const config = {headers: {
@@ -39,9 +46,14 @@ export default function Home() {
   useEffect(() => {
     if (AuthData.token){
       getData(postsUrl,AuthData.token.access,setPostData,postsParams)
-      getData(blogsUrl,AuthData.token.access,setBlogData)
+      getData(blogsUrl,AuthData.token.access,setBlogData,blogsParams)
+      getData(friendsUrl,AuthData.token.access,setFriendsData,friendsParams)
+      getData(searchResultUrl,AuthData.token.access,setsearchResult,searchResultParams)
     }
   },[])
+
+// if (postData){console.log(11111111111111,blogData)}
+// if (friendsData){console.log(22222222222,searchResult)}
 
   return (
     <main>
