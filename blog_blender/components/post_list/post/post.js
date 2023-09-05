@@ -8,7 +8,7 @@ import styles from './post.module.css';
 import axios from "axios";
 export default function Post(props) {
 
-    const [postData, setPostData] = useState(props.data);
+    const [postData, setPostData] = useState(props.post);
     let AuthData = props.AuthData
     const [liked, setLiked] = useState((postData.likes)?postData.likes.includes(AuthData.user.id):false);
     const [commentsVisibility, setCommentsVisibility] = useState(false);
@@ -54,7 +54,7 @@ export default function Post(props) {
             }
             else{
                 let temp = [...postData]
-                temp.push(response.data)
+                temp.push(response)
                 setPostData(temp)
             }
             setLiked(!liked)
@@ -122,10 +122,10 @@ export default function Post(props) {
 
                 <div className={styles.leftButtonsContainer}>
                     <div className="imgName">
-                        <img className={styles.user_photoPost} src={data.user_photo} alt="User Photo" />
+                        <img className={styles.user_photoPost} src={postData.user_photo} alt="User Photo" />
                         <ul className="flex-container nowrap">
-                            <li className={styles.namePost}>{data.first_name + " " + data.last_name}</li>
-                            {/* <li className={styles.usernamePost}>eman {data.user_name}</li> */}
+                            <li className={styles.namePost}>{postData.first_name + " " + postData.last_name}</li>
+                            {/* <li className={styles.usernamePost}>eman {postData.user_name}</li> */}
                         </ul>
                         <ul className="flex-container wrap">
                         </ul>
@@ -180,14 +180,14 @@ export default function Post(props) {
                             'fa-thumbs-o-up': liked,
                         })}
                         aria-hidden="true"
-                    /> <span style={{ marginRight: '1em' }}>{data.likes.length}</span> 
+                    /> <span style={{ marginRight: '1em' }}>{postData.likes.length}</span> 
                     </p>
-                    <p><i className="fa fa-comment-o" aria-hidden="true" />{(data.likes)?data.comments.length:-1}</p>
+                    <p><i className="fa fa-comment-o" aria-hidden="true" />{(postData.likes)?postData.comments.length:-1}</p>
                         {/* style={{ marginLeft: '0.1em' ,marginRight:'0.1em'}} */}
                         
                     
                     
-                    <p><i className="fa fa-comment-o" aria-hidden="true" />{(data.comments) ? data.comments.length : -1}</p>
+                    <p><i className="fa fa-comment-o" aria-hidden="true" />{(postData.comments) ? postData.comments.length : -1}</p>
 
                 </div>
 
