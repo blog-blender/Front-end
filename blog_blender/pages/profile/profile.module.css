@@ -29,7 +29,13 @@
 }
 
 
-
+.divMain{
+  display: inline-block;
+  height: auto;
+  margin: 1.75rem;
+  border-radius: 0.5rem;
+  background: linear-gradient(to bottom, #FFFFFF, #DAE3EB);
+}
 
 .setting_icon{
 

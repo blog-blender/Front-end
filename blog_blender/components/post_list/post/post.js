@@ -45,7 +45,7 @@ export default function Post(props) {
     };
     return (
 
-        <div>
+        <>
 
             <div className={styles.card}>
                 <div className={styles.leftButtonsContainer}>
@@ -123,7 +123,7 @@ export default function Post(props) {
 
                 </div>
             </div>
-        </div>
+        </>
 
     )
 }
