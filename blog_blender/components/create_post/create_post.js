@@ -3,9 +3,10 @@ import axios from 'axios';
 import { AuthContext } from '../AuthContext';
 
 export default function PostForm({ onSave, closeHandler, initialData }) {
+  console.log("POST FORM",initialData);
   const [postImages, setPostImages] = useState({
     upload: [],
-    display: initialData ? initialData.photo : [],
+    display: initialData ? initialData.photo.map((object)=>{return object.data}) : [],
   });
 
   const [postData, setInitialData] = useState(initialData ? initialData : {});

@@ -101,14 +101,24 @@ export default function Post(props) {
         setCommentsVisibility(true)
     }
 
-    const editPost = (event) => {
-        // Add your code to handle editing the post
-    };
-
     const deletePost = (event) => {
         // Add your code to handle deleting the post
         if (window.confirm('Are you sure you want to delete this post?')) {
-            alert('Deleting the post');
+            const url = `http://127.0.0.1:8000/api/v1/posts/like/delete/${tagretId}/`
+            const payload ={}
+            const params = {user_id:AuthData.user.id,post_id:postData.id}
+            const config = {
+              headers: {Authorization : `Bearer ${props.AuthData.token.access}`,},
+              params: params,  };
+
+            axios.delete(url,payload,config)
+            .then(function (response) {
+                console.log(response); 
+                alert('Post Deleted');
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
         }
         
     };
