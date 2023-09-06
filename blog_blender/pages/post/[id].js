@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from '@/components/AuthContext';
+import PostList from '@/components/post_list/post_list';
 import axios from 'axios';
 
 
@@ -13,7 +14,7 @@ export default function BlogDetailPage() {
   
   const [postDatail, setPostDetail] = useState(null);
   const userDetailUrl = 'http://127.0.0.1:8000/api/v1/posts/details/'
-  const userDetailParams = { id: queryId,}
+  const userDetailParams = { post_id: queryId,}
 
   async function getData(url, token, setter, params) {
     const config = {
@@ -37,6 +38,8 @@ export default function BlogDetailPage() {
   if (!postDatail) {
     return <div>Post not found</div>;
   }
-  // return < blog={blogDetails.data[0]} AuthData={AuthData} posts={blogPosts.data}/>;
+  return(
+    <PostList data={postDatail.data} userData={postDatail.data[0].Auther_id} AuthData={AuthData}/>
+  )
 }
 
