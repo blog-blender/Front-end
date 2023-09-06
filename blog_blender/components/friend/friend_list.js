@@ -1,4 +1,4 @@
-// import styles from '@/components/blog_list/home/homeeman.module.css'
+import styles from '@/components/blog_list/homeeman.module.css'
 import Friend from "./freind_card"
 
 

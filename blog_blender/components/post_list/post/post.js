@@ -126,8 +126,16 @@ export default function Post(props) {
     }
 
     const deletePost = (event) => {
-        // Add your code to handle deleting the post
-        if (window.confirm('Are you sure you want to delete this post?')) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
             const url = `http://127.0.0.1:8000/api/v1/posts/delete/${postData.id}/`
             const params = {user_id:AuthData.user.id,post_id:postData.id}
             const config = {
@@ -136,12 +144,18 @@ export default function Post(props) {
             axios.delete(url,config)
             .then(function (response) {
                 console.log(response); 
-                alert('Post Deleted');
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                  )
               })
               .catch(function (error) {
                 console.log(error);
               });
-        }
+              
+            }
+          })
         
     };
     
@@ -163,7 +177,6 @@ export default function Post(props) {
               alert("somthing went wrong")
             },
           );
-          // TODO add toast
     };
 
     

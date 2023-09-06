@@ -1,9 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import { AuthContext } from '../AuthContext';
 
 export default function PostForm({ onSave, closeHandler, initialData, ownedBlogs, AuthData }) {
-  console.log("POST FORM", initialData, ownedBlogs);
+  console.log("POST FORM", initialData, ownedBlogs, AuthData);
   const [postImages, setPostImages] = useState({
     upload: [],
     display: initialData ? initialData.photo.map((object) => { return object.data }) : [],
@@ -11,7 +10,6 @@ export default function PostForm({ onSave, closeHandler, initialData, ownedBlogs
 
   const [postData, setInitialData] = useState(initialData ? initialData : {});
 
-  const { token, user, login } = useContext(AuthContext);
 
   const imageChangeHandler = (event) => {
     const uploadedImage = event.target.files[0];
@@ -45,7 +43,7 @@ export default function PostForm({ onSave, closeHandler, initialData, ownedBlogs
     const formData = new FormData();
     const payload = {
       title: postData.title,
-      Auther_id: user.id,
+      Auther_id: AuthData.user.id,
       content: postData.content,
       blog_id: postData.blog_id,
       photos: postImages.upload.length > 0 ? postImages.upload : initialData ? initialData.photo : null,
@@ -65,12 +63,12 @@ export default function PostForm({ onSave, closeHandler, initialData, ownedBlogs
 
     const config = {
       headers: {
-        Authorization: `Bearer ${token.access}`,
+        Authorization: `Bearer ${AuthData.token.access}`,
       },
       params: params
     };
     const createUrl = 'http://127.0.0.1:8000/api/v1/posts/create/';
-    // const updateUrl = `http://127.0.0.1:8000/api/v1/posts/${initialData.blog_id}/update/`;
+    const updateUrl = `http://127.0.0.1:8000/api/v1/posts/update/`;
     const resultUrl = initialData ? updateUrl : createUrl;
     const method = initialData ? "put" : "post";
     const data = await axios[method](resultUrl, formData, config);

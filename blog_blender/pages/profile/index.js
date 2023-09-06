@@ -18,7 +18,7 @@ export default function Profile() {
   const [viewPostForm, setViewPostForm] = useState(null);
   const [viewBlogForm, setViewBlogForm] = useState(null);
   let AuthData = useContext(AuthContext);
-
+  console.log(AuthData,"FORM AUTH DATA");
   const [siteCategories, setSiteCategories] = useState(null);
   const siteCategorieslUrl = 'http://127.0.0.1:8000/api/v1/blogs/categories'
 
@@ -138,7 +138,7 @@ export default function Profile() {
         </div>
 
       </div>
-      {myBlogs ? <Modal current_value={viewPostForm} set_value={setViewPostForm} target={<PostForm initialData={viewPostForm == true ? undefined : viewPostForm} ownedBlogs={myBlogs ? myBlogs.data : []} AuthData={AuthData} />} /> : <></>}
+      {myBlogs ? <Modal current_value={viewPostForm} set_value={setViewPostForm} target={<PostForm AuthData={AuthData} initialData={viewPostForm == true ? undefined : viewPostForm} ownedBlogs={myBlogs ? myBlogs.data : []}/>}/> : <></>}
       {myBlogs && siteCategories ? <Modal current_value={viewBlogForm} set_value={setViewBlogForm} target={<BlogForm categories={siteCategories.data} AuthData={AuthData} />} /> : <></>}
       <Modal current_value={viewSettingsForm} set_value={setViewSettingsForm} target={<AccountSettingsForm initialData={{ id, banner, profilePic, userName, firstName, lastName, email }} AuthData={AuthData} />} />
 

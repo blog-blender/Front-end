@@ -21,7 +21,7 @@ export default function PostList(props) {
   const [viewPostForm, setViewPostForm] = useState(null);
     return(
     <div className={props.className}>
-      <Modal current_value={viewPostForm} set_value={setViewPostForm} target={<PostForm initialData={viewPostForm == true?undefined:viewPostForm} ownedBlogs={props.ownedBlogs}/>} AuthData={props.AuthData} />
+      <Modal current_value={viewPostForm} set_value={setViewPostForm} target={<PostForm initialData={viewPostForm == true?undefined:viewPostForm} ownedBlogs={props.ownedBlogs} AuthData={props.AuthData} />} />
       {props.data.map(post => { return <Post className="" data={post} AuthData={props.AuthData} userData={props.userData} setViewPostForm={setViewPostForm}/>})}
     </div>
     )

@@ -1,5 +1,5 @@
 import React from 'react';
-// import styles from '@/components/blog_list/home/homeeman.module.css'
+import styles from '@/components/blog_list/homeeman.module.css'
 
 // DELETE
 
