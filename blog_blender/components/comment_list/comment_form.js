@@ -65,7 +65,7 @@ export default function CommentForm(props) {
     <div  class="bg-white rounded-2xl border border-solid border-gray-300 transform -translate-y-5 ">
       
     
-    <section class="w-full flex px-3 py-2">
+    <section class="w-full flex px-4 py-2">
       <div class="mr-1">
         <img className="rounded-full w-8 h-8" src={props.userPic} alt="Profile Picture"/>
       </div>
