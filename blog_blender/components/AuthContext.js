@@ -1,5 +1,6 @@
 import { createContext,useContext,useState } from "react";
 import jwt from 'jsonwebtoken';
+import Swal from "sweetalert2";
 
 // const AppContext = createContext()
 // export default AppContext
@@ -58,7 +59,11 @@ export function AuthProvider(props){
         }
         else{
             console.log(data);
-            alert(`User Name: ${data.username}\nPassword: ${data.password}`)
+            Swal.fire({
+                icon: 'error',
+                title: 'Something went wrong!',
+                text: `${data.password?"password: "+ data.password:""} ${data.username?"username: "+data.username:""}`
+            })
         }
     }
     function logout(){

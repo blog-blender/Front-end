@@ -162,7 +162,7 @@ export default function Post(props) {
     const copyLink = (event) => {
         event.preventDefault()
         const baseUrl = 'http://localhost:3000/'
-        const pageUrl = 'render_blog_detalis/'
+        const pageUrl = 'post/'
         let url = `${baseUrl}${pageUrl}${postData.id}`
         navigator.clipboard.writeText(url).then(
             () => {
@@ -192,7 +192,7 @@ export default function Post(props) {
                         <li className={styles.usernamePost}>@{postData.Auther_id.username}</li>
                     </ul>
                     
-                    {AuthData.user.id == postData.Auther_id?<div className={styles.icondiv} >
+                    {AuthData.user.username == postData.Auther_id.username?<div className={styles.icondiv} >
                         <button onClick={()=>{props.setViewPostForm(postData)}}>
                             <i className="fa fa-pencil" aria-hidden="true" />
                         </button>

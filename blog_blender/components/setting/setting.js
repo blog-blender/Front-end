@@ -81,164 +81,160 @@ const AccountSettingsForm = (props) => {
           });
     };
     return (
-        <div className="bg-gray-200 min-h-screen pt-2 font-mono my-16">
-            <div className="container mx-auto">
-                <div className="inputs w-full max-w-2xl p-6 mx-auto">
-                    <h2 className="text-2xl text-gray-900">Personal info:</h2>
-                    <form className="mt-6 border-t border-gray-400 pt-4">
-                        <div className='flex flex-wrap -mx-3 mb-6'>
-                            <div className="personal w-full border-gray-400 pt-4">
-                                <div className="flex items-center justify-between mt-4">
-                                    <div className='w-full md:w-1/2 px-3 mb-6'>
-                                        
-                                            <span onClick={imageDiscardHandler} id='profilePic'>X</span>
-                                        <label className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Profile Photo</label>
-                                        <label htmlFor='profilePic' className='block w-full cursor-pointer'>
-                                            <input
-                                                id='profilePic'
-                                                type='file'
-                                                accept='image/*'
-                                                // className='hidden'
-                                                onChange={imageChangeHandeler}
-                                            />
-                                            <img
-                                                className='w-full h-auto border border-gray-400 shadow-inner rounded-md cursor-pointer'
-                                                src={settingImages.display.profilePic}
-                                                alt="User Photo"
-                                                style={{ maxWidth: '200px', height: '200px' }}
-                                            />
-                                        </label>
-                                    </div>
-                                        <span id='banner' onClick={imageDiscardHandler}>X</span>
-                                    <div className='w-full md:w-1/2 px-3 mb-6'>
-                                        <label className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Banner Photo</label>
-                                        <label htmlFor='banner' className='block w-full cursor-pointer'>
-                                            <img
-                                                className='w-full h-auto border border-gray-400 shadow-inner rounded-md cursor-pointer'
-                                                src={settingImages.display.banner}
-                                                alt="Banner"
-                                                style={{ maxWidth: '200px', height: '200px' }}
-                                            />
-                                            <input
-                                                id='banner'
-                                                type='file'
-                                                accept='image/*'
-                                                // className='hidden'
-                                                onChange={imageChangeHandeler}
-                                            />
-                                        </label>
-                                    </div>
-                                </div>
-                                <div className="flex items-center justify-between mt-4">
-                                    <div className='w-full md:w-1/2 px-3 mb-6'>
-                                        <label className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' >First Name</label>
-                                        <input
-                                            className='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500'
-                                            type='text'
-                                            value={initialData.firstName}
-                                            onChange={textChangeHandler}
-                                            id='firstName'
-                                        />
-                                    </div>
-
-                                    <div className='w-full md:w-1/2 px-3 mb-6'>
-                                        <label className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' >Last Name</label>
-                                        <input
-                                            className='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500'
-                                            type='text'
-                                            value={initialData.lastName}
-                                            onChange={textChangeHandler}
-                                            id='lastName'
-                                        />
-                                    </div>
-
-
-
-                                </div>
-                                <div className="flex items-center justify-between mt-4">
-                                    <div className='w-full md:w-1/2 px-3 mb-6'>
-                                        <label className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' >Userame</label>
-                                        <input
-                                            className='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500'
-                                            type='text'
-                                            // value={initialData.username}
-                                            onChange={textChangeHandler}
-                                            id='userName'
-                                        />
-                                    </div>
-                                    <div className='w-full md:w-1/2 px-3 mb-6'>
-                                        <label className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' >Email</label>
-                                        <input
-                                            className='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500'
-                                            type='text'
-                                            value={initialData.email}
-                                            onChange={textChangeHandler}
-                                            id='email'
-                                        />
-                                    </div>
-                                </div>
-                                <div className="flex items-center justify-between mt-4">
-
-
-                                </div>
-                                <div className="flex items-center justify-between mt-4">
-                                    <div className='w-full md:w-full px-3 mb-6'>
-                                        <label className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>fav language</label>
-                                        <div className="flex-shrink w-full inline-block relative">
-                                            <select className="block appearance-none text-gray-600 w-full bg-white border border-gray-400 shadow-inner px-4 py-2 pr-8 rounded">
-                                                <option>choose ...</option>
-                                                <option>English</option>
-                                                <option>France</option>
-                                                <option>Spanish</option>
-                                            </select>
-                                            <div className="pointer-events-none absolute top-0 mt-3  right-0 flex items-center px-2 text-gray-600">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className='w-full md:w-full px-3 mb-6'>
-                                        <label className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>pick your country</label>
-                                        <div className="flex-shrink w-full inline-block relative">
-                                            <select className="block appearance-none text-gray-600 w-full bg-white border border-gray-400 shadow-inner px-4 py-2 pr-8 rounded">
-                                                <option>choose ...</option>
-                                                <option>USA</option>
-                                                <option>France</option>
-                                                <option>Spain</option>
-                                                <option>UK</option>
-                                            </select>
-                                            <div className="pointer-events-none absolute top-0 mt-3  right-0 flex items-center px-2 text-gray-600">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="flex items-center justify-between mt-4">
-                                    <div className='w-full md:w-1/2 px-3 mb-6'>
-                                        <label className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' >Password</label>
-                                        <input
-                                            className='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500'
-                                            type='password'
-                                            required
-                                            // value={initialData.email}
-                                            onChange={textChangeHandler}
-                                        />
-                                    </div>
-                                    {/* <div className='w-full md:w-1/2 px-3 mb-6'>
-                                        <label className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' >New Password</label>
-                                        <input
-                                            className='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500'
-                                            type='password'
-                                            // value={newPassword}
-                                            onChange={(e) => setNewPassword(e.target.value)}
-                                        />
-                                    </div> */}
-                                </div>
-                                <div className="flex justify-end">
-                                    <button className="appearance-none bg-blue-300 text-gray-900 px-2 py-1 shadow-sm border border-gray-400 rounded-md mr-3" type="submit" onClick={submitHandeler} >Save Changes</button>
-                                </div>
-                            </div>
+        <div className="bg-gray-200 min-h-screen rounded-lg font-mono my-16">
+          <div className="container mx-auto">
+            <div className="inputs w-full max-w-2xl p-6 mx-auto">
+              <div className="text-center mb-6">
+                <label className="text-4xl font-medium leading-5 text-indigo-900">
+                  Personal Info:
+                </label>
+              </div>
+              <form className="border-t border-gray-400 pt-4">
+                <div className='flex flex-wrap -mx-3 mb-6'>
+                  <div className="personal w-full border-gray-400 pt-4">
+                    <div className="flex items-center justify-between mt-4">
+                      <div className="w-full md:w-1/2 px-3 mb-6">
+                        <label htmlFor="content" className="block text-2xl font-medium leading-5 text-primary-100 py-2">
+                          Profile Photo:
+                        </label>
+                        <div className="relative">
+                            
+                          <img
+                            className="w-full h-auto border border-gray-400 shadow-inner rounded-md cursor-pointer max-w-[200px] h-[200px]"
+                            src={settingImages.display.profilePic}
+                            alt=""
+                          />
+                          {settingImages.upload.profilePic && (
+                            
+                            <button
+                            className="absolute top-[-10px] right-24 bg-gray-400 text-white rounded-full p-1 hover:bg-indigo-900"
+                              onClick={() => imageDiscardHandler('profilePic')}
+                            >
+                              X
+                            </button>
+                          )}
+                          <label htmlFor="profilePic" className="block w-20 cursor-pointer bg-indigo-900 text-white rounded-md px-3 py-1 mt-2 hover:bg-indigo-700">
+                            Upload
+                          </label>
+                          <input
+                            id="profilePic"
+                            type="file"
+                            accept="image/*"
+                            className="hidden"
+                            onChange={imageChangeHandeler}
+                          />
                         </div>
-                    </form>
+                      </div>
+                      <div className="w-full md:w-1/2 px-3 mb-6">
+                        <label htmlFor="content" className="block text-2xl font-medium leading-5 text-primary-100 py-2">
+                          Banner Photo:
+                        </label>
+                        <div className="relative">
+                          <img
+                            className="w-full h-auto border border-gray-400 shadow-inner rounded-md cursor-pointer max-w-[200px] h-[200px]"
+                            src={settingImages.display.banner}
+                            alt=""
+                          />
+                          {settingImages.upload.banner && (
+                            <button
+                            className="absolute top-[-10px] right-24 bg-gray-400 text-white rounded-full p-1 hover:bg-indigo-900"
+                              onClick={() => imageDiscardHandler('banner')}
+                            >
+                              X
+                            </button>
+                          )}
+                          <label htmlFor="banner" className="block w-20 cursor-pointer bg-indigo-900 text-white rounded-md px-3 py-1 mt-2 hover:bg-indigo-700">
+                            Upload
+                          </label>
+                          <input
+                            id="banner"
+                            type="file"
+                            accept="image/*"
+                            className="hidden"
+                            onChange={imageChangeHandeler}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between mt-4">
+                      <div className='w-full md:w-1/2 px-3 mb-6'>
+                        <label htmlFor="content" className="block text-2xl font-medium leading-5 text-primary-100 py-2">
+                          First Name:
+                        </label>
+                        <input
+                          className='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500'
+                          type='text'
+                          value={initialData.firstName}
+                          onChange={textChangeHandler}
+                          id='firstName'
+                        />
+                      </div>
+                      <div className='w-full md:w-1/2 px-3 mb-6'>
+                        <label htmlFor="content" className="block text-2xl font-medium leading-5 text-primary-100 py-2">
+                          Last Name:
+                        </label>
+                        <input
+                          className='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500'
+                          type='text'
+                          value={initialData.lastName}
+                          onChange={textChangeHandler}
+                          id='lastName'
+                        />
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between mt-4">
+                      <div className='w-full md:w-1/2 px-3 mb-6'>
+                        <label htmlFor="content" className="block text-2xl font-medium leading-5 text-primary-100 py-2">
+                          Username:
+                        </label>
+                        <input
+                          className='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500'
+                          type='text'
+                          onChange={textChangeHandler}
+                          id='userName'
+                          value={initialData.username}
+                        />
+                      </div>
+                      <div className='w-full md:w-1/2 px-3 mb-6'>
+                        <label htmlFor="content" className="block text-2xl font-medium leading-5 text-primary-100 py-2">
+                          Email:
+                        </label>
+                        <input
+                          className='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500'
+                          type='text'
+                          value={initialData.email}
+                          onChange={textChangeHandler}
+                          id='email'
+                        />
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between mt-4"></div>
+                    <div className="flex items-center justify-between mt-4">
+                      <div className='w-full md:w-1/2 px-3 mb-6'>
+                        <label htmlFor="content" className="block text-2xl font-medium leading-5 text-primary-100 py-2">
+                          Password:
+                        </label>
+                        <input
+                          className='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500'
+                          type='password'
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div className="mb-6 flex justify-end">
+                      <button
+                        onClick={submitHandeler}
+                        type="submit"
+                        className="bg-indigo-900 text-white py-3 px-6 rounded-lg hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 text-lg"
+                      >
+                        Save
+                      </button>
+                    </div>
+                  </div>
                 </div>
+              </form>
             </div>
+          </div>
         </div>
     );
 }
