@@ -5,7 +5,7 @@
 import {AuthContext} from '@/components/AuthContext';
 
 import { useContext, useState, useEffect } from "react";
-import Post from '@/components/post_list/post/post'
+import Post from '@/components/post_list/profile_post/post'
 // import  Header  from '@/components/nav_bar/nav_bar'
 // import Comments from '@/components/comment_list/comment_list'
 // import Footer from '@/components/footer/footer'

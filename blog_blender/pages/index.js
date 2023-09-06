@@ -46,7 +46,7 @@ export default function Home() {
     .then((response)=>{console.log(response);setter(response)})
     .catch((error)=>{setter(error)})
   }
-  
+
   useEffect(() => {
     if (AuthData.token){
       getData(postsUrl,AuthData.token.access,setPostData,postsParams)
@@ -61,9 +61,6 @@ if (blogData){console.log("HOME BLOG DATA",blogData)}
 
   return (
     <main>
-      
-      
-      
       <div className="overlay-container">
       <Carousel /> 
       <div className={Styles.home}>
@@ -77,15 +74,8 @@ if (blogData){console.log("HOME BLOG DATA",blogData)}
         {blogData?<BlogList data={blogData.data.map((object=>{return object.blog_id}))}/>:<p>no blogs</p>}
 
         {(postData && userDatail)?<PostList className={Styles.postList} data={postData.data} AuthData={AuthData} userData={userDatail.data[0]}/>:<p>posts no valid</p>}
-        {friendsData?<FriendList data={friendsData.data}/>:<>no friends</>}
+        {/* {friendsData?<FriendList data={friendsData.data}/>:<>no friends</>} */}
       </div>
     </main>
   )
 }
-
-
-
-
-
-
-

@@ -6,6 +6,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import classNames from 'classnames';
 import styles from './post.module.css';
 import axios from "axios";
+import Swal from "sweetalert2";
 
 export default function Post(props) {
     // {
@@ -43,7 +44,7 @@ export default function Post(props) {
     const [liked, setLiked] = useState((postData.likes)?postData.likes.includes(AuthData.user.id):false);
     const [commentsVisibility, setCommentsVisibility] = useState(false);
     const target = (postData.comments)?<CommentList userPic={props.userData.profile_pic} data={postData.comments} AuthData={props.AuthData} postId={postData.id} blogId={postData.blog_id}/>:<></>
-    
+    // KEEP
     async function likeOnClick(event) {
         event.preventDefault();
         let url,method,payload,params
@@ -151,7 +152,12 @@ export default function Post(props) {
         let url = `${baseUrl}${pageUrl}${postData.id}`
         navigator.clipboard.writeText(url).then(
             () => {
-              alert("copied!")
+                Swal.fire({
+                    position: 'top-end',
+                    title: 'Copied!!',
+                    showConfirmButton: false,
+                    timer: 800
+                  })
             },
             () => {
               alert("somthing went wrong")

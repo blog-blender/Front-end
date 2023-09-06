@@ -96,7 +96,6 @@
   }
   
   .card {
-     box-shadow: -8px -8px 16px rgba(0, 0, 0, 0.2);
     display: block;
     position: relative;
     max-width: 100%;
@@ -105,12 +104,10 @@
     padding: 2em 1.2em;
     margin: 16px;
     text-decoration: none;
-    z-index: 0;
     overflow: hidden;
     background: linear-gradient(to bottom, #FFFFFF, #DAE3EB);
     font-family: Arial, Helvetica, sans-serif;
     margin-left: 4%;
-    /* margin-top: 4px; */
     margin-right: 4%;
     margin-bottom: 1%;
   
@@ -119,7 +116,6 @@
   .card:before {
     content: '';
     position: absolute;
-    z-index: -1;
     top: -16px;
     right: -16px;
     background: linear-gradient(135deg, #C2BCA0, #93B1A6);
@@ -214,7 +210,6 @@
     padding: 1em 1em;
     /* margin: 12px; */
     text-decoration: none;
-    z-index: 0;
     overflow: hidden;
     background: linear-gradient(to bottom, #FFFFFF, #DAE3EB);
     font-family: 'Times New Roman', Times, serif;
@@ -229,7 +224,7 @@
   .card:before {
     content: '';
     position: absolute;
-    z-index: -1;
+    z-index:-1;
     top: -16px;
     right: -16px;
     background: linear-gradient(135deg, #C2BCA0, #93B1A6);
@@ -283,7 +278,7 @@
   }
   
   .user_infoPost .icondiv {
-    margin-left: 75%;
+    margin-left: 50%;
     padding: 20;
     display: flex;
     margin-right: 1%;

@@ -61,11 +61,10 @@ export default function CommentForm(props) {
 
   };
 
-	return (
-  <div style={{border:'1px solid #E2E8F0'}} class="bg-white-400 rounded-2xl transform -translate-y-5 ">
-    <section class="p-3 border-b border-gray-600">
+  return (
+    <div  class="bg-white rounded-2xl border border-solid border-gray-300 transform -translate-y-5 ">
       
-    </section>
+    
     <section class="w-full flex px-3 py-2">
       <div class="mr-1">
         <img className="rounded-full w-8 h-8" src={props.userPic} alt="Profile Picture"/>
@@ -77,10 +76,10 @@ export default function CommentForm(props) {
             <button style={{display:'flex',justifyContent:'flex-end',backgroundColor:'#0D9488'}} onClick={submitHandler} class="transition duration-500 ease-in-out bg-blue-500 bg-opacity-100  text-white text-opacity-100  py-2 px-3 rounded-2xl text-base font-bold focus:outline-none" >Send</button>
           </div>
         </div>
-      </div>
-    </section>
-  </div>
-	)
+      </div>  
+      </section>
+    </div>
+    )
 	
 
 }

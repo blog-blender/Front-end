@@ -1,47 +1,15 @@
 .container {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-}
-
-.header {
-  height: 400px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 8%;;
-}
-
-.content {
-  justify-content: center; /* Center items horizontally */
-  align-items: center; 
-  display: flex; /* Add this to make the content flex container */
-  /* justify-content: space-around;  */
-  /* margin-top: 8%; */
-  color: #242424;
-  gap :40px;
-  font-weight: 600;
-  text-align: center;
-  /* Remove height: 100%; */
-  margin-left: 1.5%;
-  flex-direction: row;
-  flex-grow: 1; /* Allow .content to grow and take available space */
-}
-
-/* Add the following styles to .header to center its children */
-  .blogListContainer {
-    display:"flex";
-    flex-direction: row;
-    text-align: center; 
-    margin-left: 6%;
+    display: flex;
+    flex-wrap: wrap;
   }
 
-.banner{
-  width: 100%; /* Make the banner take the full width of its parent */
-  height: 100%; /* Make the banner take the full height of its parent */
-  object-fit: cover;
-  object-position: 25% 25%;
 
+.banner{
+    width: 94vw;
+    height: 100%;
+    object-fit: cover;
+    object-position: 25% 25%;
+    margin: auto;
 }
 
  .user_photo{
@@ -59,12 +27,23 @@
     flex-direction: row;
     gap: 2%;
 }
+
+.mainContent{
+  background: linear-gradient(to bottom, #FFFFFF, #DAE3EB); 
+    display: flex;
+    align-items: flex-start;
+    position: sticky;
+    align-self: flex-start;
+    top:0;
+background-color: #93B1A6;
+    
+}
 .divMain{
   display: inline-block;
   height: auto;
-  margin: 1.0rem;
+  margin: 1.75rem;
   border-radius: 0.5rem;
-}
+  background: linear-gradient(to bottom, #FFFFFF, #DAE3EB);}
 
 .setting_icon{
 
@@ -87,27 +66,64 @@ margin-right: 55%;
 
 }
       
+      
+
+
+
+
+
+
+
+
+  .grid {
+    display: grid;
+    grid-template-columns: 200px auto;
+    grid-template-rows: 7px minmax(16px, auto) auto;
+    grid-template-areas: 
+      'header header'
+      'leftbar main'
+      'footer footer';
+    column-gap: 20px;
+    row-gap: 20px;
+  }
+  
+  .header {
+    height: 400px;
+    grid-area: header;
+
+  }
+  
+  .leftbar {
+    grid-area: leftbar;
+    margin-top: 240%;
+    height: 200px;
+    margin-left: 30%;
+    
+  }
+  
+  .main {
+    margin-top: 450px;
+    grid-area: main;
+    margin-bottom: 50%;
+  }
   
   .footer {
     grid-area: footer;
   }
   
   .content {
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center;
     color: #242424;
+    /* background-color: #f25fff; */
     font-weight: 600;
     text-align: center;
     box-sizing: border-box;
     height: 100%;
-    margin-left: 3%;
-  
+    padding: 10px;
   }
   .blogsList {
     font-weight: bold;
     font-size: 22.5px;
-
+    margin-bottom: 5%;
     width: 250px;
     height: 80px;
     background-color: rgba(104, 126, 141, 1);
@@ -130,11 +146,11 @@ margin-right: 55%;
   .blogsListContentTest{
 
     font-size: 20px;
-    /* margin-bottom: 20%; */
+    margin-bottom: 20%;
     
     width: 250px;
     height: 80px;
-    /* background-color: #BAC7CD; */
+    background-color: #BAC7CD;
     color: #fff;
     border-radius: 115px;
     box-shadow: 0px 19px 38px 0px rgba(0,0,0,0.3),
@@ -142,21 +158,70 @@ margin-right: 55%;
 
 
   }
+  .picman{
 
+
+        width: 0px;
+        height: 0px;
+        border-right: 60px solid transparent;
+        border-top: 60px solid #C2BCA0;
+        border-left: 60px solid #C2BCA0;
+        border-bottom: 60px solid #C2BCA0;
+        border-top-left-radius: 60px;
+        border-top-right-radius: 60px;
+        border-bottom-left-radius: 60px;
+        border-bottom-right-radius: 60px;
+        align-self: flex-start;
+        
+
+
+  }
   .myposts{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    margin-left: 10%;
+    /* margin-bottom: 20%; */
   }
   
 
-
+  .speechbubble {
+    align-self: flex-start;
+    width: 60%; 
+    height: 80px; 
+    background: #BAC7CD;
+    position: absolute;
+    -moz-border-radius: 10px; 
+    -webkit-border-radius: 10px; 
+    border-radius: 10px;    
+    margin-left: 10%;
+    margin-top: 1%;
+    border-width:2px;
+border-style:solid;
+border-color:#687E8D;
+ }
+ .speechbubblet {
+    margin-left: 8.3%;
+    margin-top: 1.9%;
+    content:"";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 13px solid transparent;
+    border-right: 26px solid #687E8D;
+    border-bottom: 13px solid transparent;
+    /* border-width:2px; */
+    /* border-style:solid; */
+    /* border-color:#687E8D; */
+    /* background: #BAC7CD; */
+    
+    
+ }
 .text1{
     text-align: center;
     margin-top: 2.0%;
     font-size: 25px;
     color:#687E8D
-    
 }
 
 
@@ -194,7 +259,7 @@ margin-right: 55%;
 
 
 
-/* posts ................... */
+
 .namePost{
     
     font-weight: bold;
@@ -279,7 +344,7 @@ font-size: 10px;
   .card:before {
     content: '';
     position: absolute;
-    
+    z-index: -1;
     top: -16px;
     right: -16px;
     background: linear-gradient(135deg, #C2BCA0, #687E8D);
@@ -297,8 +362,8 @@ font-size: 10px;
   
   .card:hover .small-desc {
     transition: all 0.5s ease-out;
- 
-   
+    color: rgba(255, 255, 255, 0.8);
+    color: #000000;
     line-height: 1.45;
     letter-spacing: 4px;
     word-spacing: 3px;
@@ -336,28 +401,25 @@ font-size: 10px;
     /* Add any other styles you want for the images */
   }
   
-  /* blog list .... */
 
   .cards {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    text-align: center;
-    cursor: pointer;
-    transition: 400ms;
-    gap :20px;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
   }
   
-  .cardo {
+
+  
+  .cards .cardo {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: row;
+    flex-direction: column;
     text-align: center;
-    width: 200px; /* Set a fixed width */
-    height: 75px; /* Set a fixed height */
-    border-radius: 20px;
+    height: 100px;
+    width: 250px;
+    border-radius: 10px;
     cursor: pointer;
     transition: 400ms;
   }
@@ -367,7 +429,9 @@ font-size: 10px;
     font-weight: 700;
   }
   
-
+  .text {
+    font-size: .7em;
+  }
   
   .cards .cardo:hover {
     transform: scale(1.1, 1.1);
@@ -377,147 +441,20 @@ font-size: 10px;
     filter: blur(10px);
     transform: scale(0.9, 0.9);
   }
-
+  .containerfor {
+    display: flex;
+    margin-left: 12.5%;
+    margin-top: 1%;
+  }
   
 
-/* glasssssssssssss */
-.glassdiv {
-width : 30%;
-
-height: 50px;/* Adjusted height for better visibility */
-}
-
-.container2 {
-  /* position: relative; */
-  font-family: sans-serif;
-  
-  /* height: 1px; */
-}
-
-.container2::before,
-.container2::after {
-  content: "";
-  background-color: #687E8D; /* Semi-transparent gray color for glass effect */
+.overlayText{
   position: absolute;
-  z-index: -1; /* Place the glass effect behind the content */
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  z-index: 2; 
+  color: white; 
+  font-size: 24px; /* Text size */
+  /* Add any other styles you want for the overlay text */
 }
-
-.container2::before {
-  border-radius: 50%;
-  width: 20rem;
-  height: 20rem;
-  top: 30%;
-  right: 7%;
-  backdrop-filter: blur(20px); /* Apply a blur effect to the glass */
-}
-
-
-
-.container2 .box {
-  padding: 1rem;
-  background-color: #687E8D; /* Semi-transparent gray background */
-  border: 2px solid #687E8D; /* Border color for the content */
-  -webkit-backdrop-filter: blur(20px); /* Apply a blur effect to the content */
-  backdrop-filter: blur(20px);
-  border-radius: 0.7rem;
-  transition: all ease 0.3s;
-  width: 100%;
-  height: 50px; /* Adjusted height for better visibility */
-}
-
-.container2 .box {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.container2 .box .title {
-  font-size: 2rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  color: rgb(255, 255, 255); /* Black title text */
-  display: flex;
-  align-items: center; /* Vertically center the text */
-  justify-content: center; /* Horizontally center the text */
-  height: 100%; /* Make the title fill the entire height of the glass */
-}
-
-
-
-
-.container2 .box:hover {
-  box-shadow: 0px 10px 25px 1px#687E8D; /* Adjusted box shadow */
-  border: 1px solid #687E8D;
-  background-color: #687E8D; /* Adjusted background color on hover for more glassy effect */
-}
-
-.glassdivsec{
-  width : 30%;
-  
-  height: 50px;/* Adjusted height for better visibility */
-  }
-  
-  .container2sec {
-    /* position: relative; */
-    font-family: sans-serif;
-    width: 100%;
-    /* height: 1px; */
-  }
-  
-  .container2sec::before,
-  .container2sec::after {
-    content: "";
-    background-color: #687E8D; /* Semi-transparent gray color for glass effect */
-    position: absolute;
-    z-index: -1; /* Place the glass effect behind the content */
-  }
-  
-  .container2sec::before {
-    border-radius: 50%;
-    width: 20rem;
-    height: 20rem;
-    top: 30%;
-    right: 7%;
-    backdrop-filter: blur(20px); /* Apply a blur effect to the glass */
-  }
-  
-  
-  
-  .container2sec .box {
-    padding: 1rem;
-    background-color: #ffffff; /* Semi-transparent gray background */
-    border: 2px solid #687E8D; /* Border color for the content */
-    -webkit-backdrop-filter: blur(20px); /* Apply a blur effect to the content */
-    backdrop-filter: blur(20px);
-    border-radius: 0.7rem;
-    transition: all ease 0.3s;
-    width: 100%;
-    height: 50px; /* Adjusted height for better visibility */
-  }
-  
-  .container2sec .box {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .container2sec .box .title {
-    font-size: 2rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    color: #687E8D; /* Black title text */
-    display: flex;
-    align-items: center; /* Vertically center the text */
-    justify-content: center; /* Horizontally center the text */
-    height: 100%; /* Make the title fill the entire height of the glass */
-  }
-  
-  
-  
-  
-  .container2sec .box:hover {
-    box-shadow: 0px 10px 25px 1px#687E8D; /* Adjusted box shadow */
-    border: 1px solid 687E8D;
-    background-color: #BAC7CD; /* Adjusted background color on hover for more glassy effect */
-  }
-  
