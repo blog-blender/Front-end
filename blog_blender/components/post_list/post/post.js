@@ -71,8 +71,8 @@ export default function Post(props) {
           headers: {Authorization : `Bearer ${props.AuthData.token.access}`,},
           params: params,
         };
-        
-        axios[method](url,payload,config)
+
+        axios[method](url, payload, config)
         .then(function (response) {
             console.log(response);
             if(liked){
@@ -94,6 +94,29 @@ export default function Post(props) {
           .catch(function (error) {
             console.log(error);
           });
+
+          axios[method](url,config)
+          .then(function (response) {
+              console.log(response);
+              if(liked){
+                  let temp = {...postData}
+                  temp.likes=postData.likes.filter((object)=>{return object.user_id != AuthData.user.id})
+                  setPostData(temp)
+                  // console.log(postData.likes.length,"likes");
+              }
+              else{
+                  let temp = {...postData}
+                  temp.likes.push(response.data)
+                  setPostData(temp)
+                  // console.log(postData.likes.length,"likes");
+              }
+              // console.log(liked);
+              setLiked(!liked)
+              // console.log(liked);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
     }
 
     function showComments(event) {
@@ -104,14 +127,12 @@ export default function Post(props) {
     const deletePost = (event) => {
         // Add your code to handle deleting the post
         if (window.confirm('Are you sure you want to delete this post?')) {
-            const url = `http://127.0.0.1:8000/api/v1/posts/like/delete/${tagretId}/`
-            const payload ={}
+            const url = `http://127.0.0.1:8000/api/v1/posts/delete/${postData.id}/`
             const params = {user_id:AuthData.user.id,post_id:postData.id}
             const config = {
-              headers: {Authorization : `Bearer ${props.AuthData.token.access}`,},
-              params: params,  };
-
-            axios.delete(url,payload,config)
+              headers: {Authorization : `Bearer ${props.AuthData.token.access}`,},};
+            console.log("DELETE POST",url,config);
+            axios.delete(url,config)
             .then(function (response) {
                 console.log(response); 
                 alert('Post Deleted');

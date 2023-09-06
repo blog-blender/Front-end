@@ -10,11 +10,47 @@ export default function Profile() {
   const [siteCategories, setSiteCategories] = useState(null);
   const [userDatail, setUserDetail] = useState(null);
 
-  const deleteBlogUrl = 'http://127.0.0.1:8000/api/v1/blogs/update/1/'
-  const deletePostUrl = 'http://127.0.0.1:8000/api/v1/posts/1/update'
-  const deleteCommentUrl = 'http://127.0.0.1:8000/api/v1/posts/1/comments/update/1'
-  const deleteFollowUrl = 'http://127.0.0.1:8000/api/v1/blogs/unfollow/1/'
-  const deleteUserUrl = 'http://127.0.0.1:8000/api/v1/accounts/update'
+  const [deleteBlog, setdeleteBlog] = useState(null);
+const deleteBlogUrl = 'http://127.0.0.1:8000/api/v1/blogs/delete/10/'
+const deleteBlogParams = { username: AuthData.user.username}
+
+const [deletePost, setdeletePost] = useState(null);
+const deletePostUrl = 'http://127.0.0.1:8000/api/v1/posts/delete/10/'
+const deletePostParams = { username: AuthData.user.username}
+
+const [deleteComment, setdeleteComment] = useState(null);
+const deleteCommentUrl = 'http://127.0.0.1:8000/api/v1/posts/comments/update/7/'
+const deleteCommentParams = { username: AuthData.user.username}
+
+const [deleteFollow, setdeleteFollow] = useState(null);
+const deleteFollowUrl = 'http://127.0.0.1:8000/api/v1/blogs/unfollow/2/'
+const deleteFollowParams = { username: AuthData.user.username}
+
+const [deleteUser, setdeleteUser] = useState(null);
+const deleteUserUrl = 'http://127.0.0.1:8000/api/v1/accounts/update'
+const deleteUserParams = { username: AuthData.user.username}
+
+const [deleteLike, setdeleteLike] = useState(null);
+const deleteLikeUrl = 'http://127.0.0.1:8000/api/v1/posts/like/delete/1/'
+const deleteLikeParams = { username: AuthData.user.username}
+
+const [followBlog, setfollowBlog] = useState(null);
+const followBlogUrl = 'http://127.0.0.1:8000/api/v1/blogs/follow/'
+const followBlogParams = { username: AuthData.user.username}
+
+////////////////////////////////////////
+
+  async function deleteData(url, token, setter ,params) {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      params: params,
+    };
+    axios.delete(url, config)
+      .then((response) => { console.log(response); setter(response) })
+      .catch((error) => { setter(error) })
+  }
 
   async function deleteData(url, token, params) {
     const config = {

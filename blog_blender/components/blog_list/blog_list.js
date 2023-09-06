@@ -26,6 +26,9 @@ export default function BlogList (props) {
             </Link>
           ))}
         </div>
+        {props.setViewBlogForm?<div className={styles.cardo} style={divStyle}>  
+          <span className={styles.tip} style={text} onClick={()=>{props.setViewBlogForm(true)}}>+</span>
+        </div>:<></>}
       </div>
     </div>
   );

@@ -2,11 +2,11 @@ import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../AuthContext';
 
-export default function PostForm({ onSave, closeHandler, initialData }) {
-  console.log("POST FORM",initialData);
+export default function PostForm({ onSave, closeHandler, initialData, ownedBlogs, AuthData }) {
+  console.log("POST FORM", initialData, ownedBlogs);
   const [postImages, setPostImages] = useState({
     upload: [],
-    display: initialData ? initialData.photo.map((object)=>{return object.data}) : [],
+    display: initialData ? initialData.photo.map((object) => { return object.data }) : [],
   });
 
   const [postData, setInitialData] = useState(initialData ? initialData : {});
@@ -41,25 +41,28 @@ export default function PostForm({ onSave, closeHandler, initialData }) {
 
   const submitHandler = async (event) => {
     event.preventDefault();
+    console.log("EVENT CREATE POST SUBMIT",event);
     const formData = new FormData();
     const payload = {
       title: postData.title,
       Auther_id: user.id,
       content: postData.content,
       blog_id: postData.blog_id,
-      photos: postImages.upload.length > 0 ? postImages.upload : initialData.photo,
+      photos: postImages.upload.length > 0 ? postImages.upload : initialData ? initialData.photo : null,
     };
     formData.append("title", payload.title);
-    formData.append("Auther_id", payload.Auther_id);
+    formData.append("Auther_id", AuthData.user.id);
     formData.append("content", payload.content);
-    formData.append("blog_id", 1);
-    for (const image of payload.photos) {
-      formData.append("photos", image);
-    }
+    formData.append("blog_id", payload.blog_id);
+    if (payload.photos)
+      for (const image of payload.photos) {
+        formData.append("photos", image);
+      }
+
     const params = {
-      post_id:postData.id
+      post_id: postData.id
     }
-    
+
     const config = {
       headers: {
         Authorization: `Bearer ${token.access}`,
@@ -67,7 +70,7 @@ export default function PostForm({ onSave, closeHandler, initialData }) {
       params: params
     };
     const createUrl = 'http://127.0.0.1:8000/api/v1/posts/create/';
-    const updateUrl = `http://127.0.0.1:8000/api/v1/posts/${initialData.blog_id}/update/`;
+    // const updateUrl = `http://127.0.0.1:8000/api/v1/posts/${initialData.blog_id}/update/`;
     const resultUrl = initialData ? updateUrl : createUrl;
     const method = initialData ? "put" : "post";
     const data = await axios[method](resultUrl, formData, config);
@@ -82,11 +85,26 @@ export default function PostForm({ onSave, closeHandler, initialData }) {
   return (
     <div className="flex items-center justify-center ">
       <form className="w-full max-w-3xl border border-gray-300 rounded-lg p-10 bg-primary-500  overflow-x-visible">
-      <div className="text-center mb-6">
-      <label className="text-4xl font-medium leading-5 text-indigo-900">
-        Creating Post
-      </label>
-    </div>
+        <div className="text-center mb-6">
+          <label className="text-4xl font-medium leading-5 text-indigo-900">
+            Creating Post
+          </label>
+          <div>
+            <label htmlFor="content" className="block text-2xl font-medium leading-5 text-primary-100 py-2">Choose Blog:</label>
+            <div className="relative">
+              <select onChange={textChangeHandler} id="blog_id" className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                <option>BLOG NAME</option>
+                {ownedBlogs.map((object) => { return <option value={object.id}>{object.title}</option> })}
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M7.293 9.293a1 1 0 011.414 0L10 10.586l1.293-1.293a1 1 0 111.414 1.414l-2 2a1 1 0 01-1.414 0l-2-2a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="mb-6">
           <label htmlFor="title" className="block text-2xl font-medium leading-5 text-primary-100 py-2">
             Title:
@@ -152,38 +170,38 @@ export default function PostForm({ onSave, closeHandler, initialData }) {
 
 
             <div className="mb-6">
-            <div className="mt-4 flex flex-wrap justify-center">
-              {postImages.display.map((imageUrl, index) => (
-                <div key={index} className="relative mx-2 my-2">
-                                    <label
-                    htmlFor="cover-photo-upload"
-                    className="cursor-pointer text-xs leading-5 text-black-900 opacity-25 absolute top-0 left-0 w-full h-full rounded-md bg-gray-800 hover:opacity-70 hover:text-white flex items-center justify-center"
-                  
-                  >Click to Change</label>
-                  <img
-                    src={imageUrl}
-                    alt={`Preview ${index}`}
-                    className="max-w-xs max-h-32 rounded-md border border-gray-300"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => imageDiscardHandler(index)}
-                    className="text-bg-indigo-900 bg-white rounded-full p-1 hover:bg-indigo-900 hover:text-white absolute top-0 right-0 transform translate-x-2/4 -translate-y-2/4"
-                    style={{
-                      width: '24px',
-                      height: '24px',
-                      borderRadius: '50%',
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                    }}
-                  >
-                    X
-                  </button>
-                </div>
-              ))}
+              <div className="mt-4 flex flex-wrap justify-center">
+                {postImages.display.map((imageUrl, index) => (
+                  <div key={index} className="relative mx-2 my-2">
+                    <label
+                      htmlFor="cover-photo-upload"
+                      className="cursor-pointer text-xs leading-5 text-black-900 opacity-25 absolute top-0 left-0 w-full h-full rounded-md bg-gray-800 hover:opacity-70 hover:text-white flex items-center justify-center"
+
+                    >Click to Change</label>
+                    <img
+                      src={imageUrl}
+                      alt={`Preview ${index}`}
+                      className="max-w-xs max-h-32 rounded-md border border-gray-300"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => imageDiscardHandler(index)}
+                      className="text-bg-indigo-900 bg-white rounded-full p-1 hover:bg-indigo-900 hover:text-white absolute top-0 right-0 transform translate-x-2/4 -translate-y-2/4"
+                      style={{
+                        width: '24px',
+                        height: '24px',
+                        borderRadius: '50%',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                      }}
+                    >
+                      X
+                    </button>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
 
 
 

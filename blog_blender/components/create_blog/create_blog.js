@@ -127,22 +127,22 @@ const BlogForm = (props) => {
     formData.append("title", payload.title);
     formData.append("description", payload.description);
     formData.append("owner", props.AuthData.user.id);
-    formData.append("banner", payload.banner);
-    formData.append("blog_pic", payload.blogPic);
     const categoryNames = selectedCategories.map((category) => category.name);
     console.log("Category Names:", categoryNames);
+    
+    if (payload.banner) {
+      console.log("BANNER");
+      formData.append("banner", payload.banner);
+    }
+    if (payload.blogPic) {
+      console.log("PIC");
+      formData.append("blog_pic", payload.blogPic);
+    }
     formData.append("category_names", categoryNames.join(", "));;
     
 
 
 
-
-    if (payload.banner) {
-      formData.append("banner", payload.banner);
-    }
-    if (payload.blogPic) {
-      formData.append("blog_pic", payload.blogPic);
-    }
   
     // Create an object with the form data
     const formDataObject = {};
@@ -206,7 +206,7 @@ const BlogForm = (props) => {
           <div className="mb-6">
             <Checkbox
   selectedOptions={selectedCategories}
-  categories={props.categories}
+  categories={props.categories.map((object)=>{return object.category_name})}
   onOptionChange={handleCheckboxChange}
             />
           </div>

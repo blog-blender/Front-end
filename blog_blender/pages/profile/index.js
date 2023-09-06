@@ -7,7 +7,7 @@ import styles from './profile.module.css'
 import AccountSettingsForm from '@/components/setting/setting';
 import Modal from '@/components/modal';
 import PostForm from '@/components/create_post/create_post';
-import PostFormModal from '@/components/create_post/modal';
+import BlogForm from '@/components/create_blog/create_blog';
 import { AuthContext } from '@/components/AuthContext';
 import axios from 'axios';
 
@@ -15,6 +15,7 @@ export default function Profile() {
   let banner, profilePic, userName, firstName, lastName, email, id
   const [viewComments, setViewComments] = useState(false);
   const [viewPostForm, setViewPostForm] = useState(null);
+  const [viewBlogForm, setViewBlogForm] = useState(null);
   let AuthData = useContext(AuthContext);
 
   const [siteCategories, setSiteCategories] = useState(null);
@@ -26,13 +27,13 @@ export default function Profile() {
 
   const [recentPosts, setrecentPosts] = useState(null);
   const recentPostsUrl = 'http://127.0.0.1:8000/api/v1/posts/recent'
-  const recentPostsParams = { user_id:3, num_of_posts:10 }
-  // const recentPostsParams = { user_id:AuthData.user.id, num_of_posts:10 }
+  // const recentPostsParams = { user_id:3, num_of_posts:10 }
+  const recentPostsParams = { user_id:AuthData.user.id, num_of_posts:10 }
 
   const [myBlogs, setMyBlogs] = useState(null);
   const myBlogsUrl = 'http://127.0.0.1:8000/api/v1/blogs'
-  // const myBlogsParams = { owner:AuthData.user.id}
-  const myBlogsParams = { owner:3}
+  // const myBlogsParams = { owner:3}
+  const myBlogsParams = { owner:AuthData.user.id}
 
 
   async function getData(url, token, setter, params) {
@@ -70,7 +71,8 @@ export default function Profile() {
     // console.log(email,"email");
   }
 
-
+  if(myBlogs)
+    console.log(myBlogs.data,"MY BLOGS");
   return (  
     <div className={styles.grid}>
       <header className={styles.header}>
@@ -119,17 +121,15 @@ export default function Profile() {
           {/* here i mean  */}
 
           
-          {myBlogs?<BlogList data={myBlogs.data}/>:<p>no blogs</p>}
+          {myBlogs?<BlogList data={myBlogs.data} setViewBlogForm={setViewBlogForm}/>:<p>no blogs</p>}
 
 
           {/* to here */}
         </div>
-
-
-
       </aside>
       
-      <Modal current_value={viewPostForm} set_value={setViewPostForm} target={<PostForm initialData={viewPostForm == true?undefined:viewPostForm}/>} AuthData={AuthData} />
+      {myBlogs?<Modal current_value={viewPostForm} set_value={setViewPostForm} target={<PostForm initialData={viewPostForm == true?undefined:viewPostForm} ownedBlogs={myBlogs?myBlogs.data:[]}AuthData={AuthData}/>} />:<></>}
+      {myBlogs && siteCategories?<Modal current_value={viewBlogForm} set_value={setViewBlogForm} target={<BlogForm categories={siteCategories.data} AuthData={AuthData}/>}/>:<></>}
       <Modal current_value={viewComments} set_value={setViewComments} target={<AccountSettingsForm initialData={{ id, banner, profilePic, userName, firstName, lastName, email }} AuthData={AuthData} />} />
       <main className={styles.main}>
         <div className={styles.content}>
