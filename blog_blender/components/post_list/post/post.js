@@ -179,7 +179,7 @@ export default function Post(props) {
           );
     };
 
-    
+    console.log("AuthData.user.id == postData.Auther_id",AuthData.user.username , postData);
     return (<>
 
         <div className={styles.card}>
@@ -192,14 +192,14 @@ export default function Post(props) {
                         <li className={styles.usernamePost}>@{postData.Auther_id.username}</li>
                     </ul>
                     
-                    <div className={styles.icondiv} >
+                    {AuthData.user.id == postData.Auther_id?<div className={styles.icondiv} >
                         <button onClick={()=>{props.setViewPostForm(postData)}}>
                             <i className="fa fa-pencil" aria-hidden="true" />
                         </button>
                         <button onClick={deletePost}>
                             <i className="fa fa-trash-o" aria-hidden="true" />
                         </button>
-                    </div>
+                    </div>:<></>}
                 </div>
                 
                 </div>

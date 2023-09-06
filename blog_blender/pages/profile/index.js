@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { useState, useContext, useEffect } from 'react'
-// import PostList from '@/components/post_list/post_list';
-import PostList from '@/components/post_list/home_post/home_post_list';
+import PostList from '@/components/post_list/post_list';
+// import PostList from '@/components/post_list/home_post/home_post_list';
 import BlogList from '@/components/blog_list/blog_list';
 // import BlogList from '@/components/blog_list/home/home_blog_list';
 import styles from './profile.module.css'
