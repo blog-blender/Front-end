@@ -4,6 +4,7 @@ import Modal from "../modal";
 import PostForm from "../create_post/create_post";
 // KEEP
 export default function PostList(props) {
+  const { style } = props;
   console.log("post list",props,"post list");
   const [viewPostForm, setViewPostForm] = useState(null);
     return(

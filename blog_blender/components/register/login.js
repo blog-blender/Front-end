@@ -50,11 +50,11 @@ const LoginPage = (props) => {
                                     <a href="#">Forgot your password?</a>
                                 </div>
                                 <button
-                                    style={{ backgroundColor: '#0D9488' }}
+                                    style={{ backgroundColor: '#687E8D' }}
                                     className={styles.button1}
                                     type="button"
-                                    onClick={() => { props.AuthData.login("admin", "admin"); }}
-                                    // onClick={submitHandler}
+                                    // onClick={() => { props.AuthData.login("admin", "admin"); }}
+                                    onClick={submitHandler}
                                 >
                                     Login
                                 </button>

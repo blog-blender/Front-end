@@ -122,10 +122,11 @@
 
   .blogblinder{
     display: flex;
-    color: #0D9488;
+    color: #1e1a89;
     font-size: x-large;
     font-family:'Times New Roman', Times, serif;
     justify-content: flex-end;
+    margin-left: 19%;
 
 
   }

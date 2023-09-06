@@ -68,11 +68,12 @@ const RejesterPage = (props) => {
                 <div class="relative">
                   <input className={styles.input1} type="password" id="confirmPassword" onChange={textChangeHandler} name="password" placeholder="Confirm Password" />
                 </div>
-                <div>
-                  <input className={styles.input2} type="checkbox" /> Remember Me
-                </div>
+                <div className="flex items-center">
+  <input className={styles.input2} type="checkbox" />
+  <div className="text-indigo-900 text-xs">Remember Me</div>
+</div>
                 <button
-                  style={{ backgroundColor: '#0D9488' }}
+                  style={{ backgroundColor: '#687E8D' }}
                   className={styles.button1}
                   type="button"
                 onClick={submitHandler}

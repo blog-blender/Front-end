@@ -193,7 +193,7 @@
   font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 700;
-  color: #0D9488;
+  color: #687E8D;
   margin-left: 90px;
   margin-bottom: 5px;
 }
@@ -234,8 +234,8 @@
   border-bottom-width: 1px;
   font-size: 0.75rem;
   line-height: 1rem;
-  border-color: #0D9488;
-  color: #0D9488;
+  border-color: #312E81;
+  color: #312E81;
   margin-top: 1px;
 
 
@@ -248,7 +248,7 @@
   align-items: center;
   font-size: 0.75rem;
   line-height: 1rem;
-  color: #94840d;
+  color: #312E81;
 }
 
 .button2 {

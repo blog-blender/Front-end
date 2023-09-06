@@ -17,7 +17,7 @@ function NavBar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo on the left */}
-          <Image src='/images/logo.jpg' alt="logo" width={20} height={20}/>
+          <Image src='/images/Screenshot__223_-removebg-preview-removebg-preview.png' alt="logo" width={75} height={75}/>
           <div className={styles.blogblinder}>
             <Link href="./"  >
               Blog Blender
@@ -28,13 +28,13 @@ function NavBar() {
           <div className="hidden md:flex space-x-4">
           <Link
               href="/"
-              className="text-[#0D9488] hover:bg-[#e5e7eb] hover:text-[#0D9488] px-3 py-2 rounded-md text-sm font-medium"
+              className="text-[#687E8D] hover:bg-[#e5e7eb] hover:text-[#312E81] px-3 py-2 rounded-md text-base font-medium"
             >
               Home
             </Link>
             <Link
               href="/profile"
-              className="text-[#0D9488] hover:bg-[#e5e7eb] hover:text-[#0D9488] px-3 py-2 rounded-md text-sm font-medium"
+              className="text-[#687E8D] hover:bg-[#e5e7eb] hover:text-[#312E81] px-3 py-2 rounded-md text-base font-medium"
             >
               Profile
             </Link>
@@ -42,14 +42,14 @@ function NavBar() {
              <Link
               href="/"
               onClick={()=>AuthData.logout()}
-              className="text-[#0D9488] hover:bg-[#e5e7eb] hover:text-[#0D9488] px-3 py-2 rounded-md text-sm font-medium"
+              className="text-[#687E8D] hover:bg-[#e5e7eb] hover:text-[#312E81] px-3 py-2 rounded-md text-base font-medium"
             >
               Logout
             </Link>
 
              <Link
               href="/aboutPage/aboutus"
-              className="text-[#0D9488] hover:bg-[#e5e7eb] hover:text-[#0D9488] px-3 py-2 rounded-md text-sm font-medium"
+              className="text-[#687E8D] hover:bg-[#e5e7eb] hover:text-[#312E81] px-3 py-2 rounded-md text-base font-medium"
             >
               About Us
             </Link>   

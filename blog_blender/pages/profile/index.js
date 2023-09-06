@@ -81,18 +81,18 @@ export default function Profile() {
       {/* Profile Data */}
       <div className={styles.header}>
 
-        <img className={styles.banner} src={banner} alt="User Banner" />
+        <img className={styles.banner} src={banner || 'https://nichemedia.co.nz/wp-content/uploads/2023/03/placeholder-banner.png'} alt="User Banner" />
 
 
         <div className={styles.user_info}>
-          <img className={styles.user_photo} src={profilePic} alt="User Photo" />
+          <img className={styles.user_photo} src={profilePic || 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541'} alt="User Photo" />
           <ul className="flex-container nowrap">
             <li className={styles.name}>{firstName + " " + lastName}</li>
             <li className={styles.username}>@{userName}</li>
           </ul>
           <ul className="flex-container wrap">
             <li className={styles.setting_icon}>
-              <a href="/your-target-page-url">
+              {/* <a href="/your-target-page-url"> */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="30"
@@ -111,7 +111,7 @@ export default function Profile() {
                   <circle cx="12" cy="12" r="3" />
                   <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0-2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
                 </svg>
-              </a>
+              {/* </a> */}
             </li>
           </ul>
         </div>
@@ -119,22 +119,22 @@ export default function Profile() {
       <div className={styles.content}>
 
         <div className={styles.glassdiv}>
-          <a href="http://localhost:3000/post">
+          {/* <a href="http://localhost:3000/post"> */}
             <div className={styles.container2}>
               <div className={styles.box}>
                 <span className={styles.title} onClick={(event)=>{event.preventDefault();setViewPostForm(true)}}> + Create Post</span>
               </div>
             </div>
-          </a>
+          {/* </a> */}
         </div>
         <div className={styles.glassdivsec}>
-          <a href="http://localhost:3000/post">
+          {/* <a href="http://localhost:3000/post"> */}
             <div className={styles.container2sec}>
               <div className={styles.box}>
                 <span className={styles.title} onClick={(event)=>{event.preventDefault();setViewBlogForm(true)}}> + Create Blog</span>
               </div>
             </div>
-          </a>
+          {/* </a> */}
         </div>
 
       </div>
@@ -143,7 +143,7 @@ export default function Profile() {
       <Modal current_value={viewSettingsForm} set_value={setViewSettingsForm} target={<AccountSettingsForm initialData={{ id, banner, profilePic, userName, firstName, lastName, email }} AuthData={AuthData} />} />
 
       <div className={styles.blogListContainer}>
-        {myBlogs ? <BlogList data={myBlogs.data}/> : <p>no blogs</p>}
+        {myBlogs ? <BlogList style ={styles} data={myBlogs.data}/> : <p>no blogs</p>}
       </div>
 
       <div className={styles.content}>
