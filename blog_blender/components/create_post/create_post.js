@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-export default function PostForm({ onSave, closeHandler, initialData, ownedBlogs, AuthData }) {
+export default function PostForm({ initialData, ownedBlogs, AuthData, setRefetchTrigger, setViewPostForm }) {
   console.log("POST FORM", initialData, ownedBlogs, AuthData);
   const [postImages, setPostImages] = useState({
     upload: [],
@@ -72,6 +72,9 @@ export default function PostForm({ onSave, closeHandler, initialData, ownedBlogs
     const resultUrl = initialData ? updateUrl : createUrl;
     const method = initialData ? "put" : "post";
     const data = await axios[method](resultUrl, formData, config);
+    console.log("closing");
+    setRefetchTrigger(true)
+    setViewPostForm(false)
   };
 
   const blogHandler = (event) => {

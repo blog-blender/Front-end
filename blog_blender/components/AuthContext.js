@@ -1,4 +1,4 @@
-import { createContext,useContext,useState } from "react";
+import { createContext,useContext,useState, useEffect } from "react";
 import jwt from 'jsonwebtoken';
 import Swal from "sweetalert2";
 
@@ -32,7 +32,6 @@ export function AuthProvider(props){
     })
 
     async function login(username,password){
-        let failCode = 400
         const url = "http://127.0.0.1:8000/api/token/"
         const options={
                 method : "POST",
@@ -54,8 +53,8 @@ export function AuthProvider(props){
                 }
             }
             
-        
-        setState(prevState=> ({...prevState,... newState}));
+            localStorage.setItem("authData",JSON.stringify(newState))
+            setState(prevState=> ({...prevState,...newState}));
         }
         else{
             console.log(data);
@@ -72,11 +71,22 @@ export function AuthProvider(props){
             user : null
         }
         setState(prevState=> ({...prevState,... newState}));
-
+        localStorage.setItem("authData",JSON.stringify(state))
+        console.log("LOGGING OUT");
     }
 
     // TODO add token refresh function
-
+    useEffect(()=>{
+        console.log("AAAA");
+        const authDataLocal = localStorage.getItem("authData")
+        if(authDataLocal)
+            {
+                const parsedLocalAuthData = JSON.parse(authDataLocal)
+                if (parsedLocalAuthData.token) {
+                    setState(prevState=> ({...prevState,...parsedLocalAuthData}));
+                }
+            }
+    },[])
     return(
         <AuthContext.Provider value={state}>
             {props.children}

@@ -9,8 +9,8 @@ export default function PostList(props) {
   const [viewPostForm, setViewPostForm] = useState(null);
     return(
     <div className={props.className}>
-      <Modal current_value={viewPostForm} set_value={setViewPostForm} target={<PostForm initialData={viewPostForm == true?undefined:viewPostForm} ownedBlogs={props.ownedBlogs} AuthData={props.AuthData} />}/>
-      {props.data.map(post => { return <Post className="" data={post} AuthData={props.AuthData} userData={props.userData} setViewPostForm={setViewPostForm}/>})}
+      <Modal current_value={viewPostForm} set_value={setViewPostForm} target={<PostForm setViewPostForm={setViewPostForm} setRefetchTrigger={props.setRefetchTrigger} initialData={viewPostForm == true?undefined:viewPostForm} ownedBlogs={props.ownedBlogs} AuthData={props.AuthData} setRefetchTrigger={props.setRefetchTrigger}/>}/>
+      {props.data.map(post => { return <Post setRefetchTrigger={props.setRefetchTrigger} className="" data={post} AuthData={props.AuthData} userData={props.userData} setViewPostForm={setViewPostForm}/>})}
     </div>
     )
 }

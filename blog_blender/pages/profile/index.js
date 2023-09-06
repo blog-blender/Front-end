@@ -14,6 +14,8 @@ import axios from 'axios';
 
 export default function Profile() {
   let banner, profilePic, userName, firstName, lastName, email, id
+
+  const [fetchTrigger,setRefetchTrigger] = useState(false)
   const [viewSettingsForm, setViewSettingsForm] = useState(false);
   const [viewPostForm, setViewPostForm] = useState(null);
   const [viewBlogForm, setViewBlogForm] = useState(null);
@@ -48,14 +50,30 @@ export default function Profile() {
       .then((response) => { console.log(response); setter(response) })
       .catch((error) => { setter(error) })
   }
+  let fetchData = ()=>{
+    getData(userDeatailUrl, AuthData.token.access, setUserDetail, userDeatailParams)
+    getData(siteCategorieslUrl, AuthData.token.access, setSiteCategories)
+    getData(recentPostsUrl, AuthData.token.access, setrecentPosts, recentPostsParams)
+    getData(myBlogsUrl, AuthData.token.access, setMyBlogs, myBlogsParams)
+    setRefetchTrigger(false)
+  }
+
+  useEffect(() => {
+    fetchData()
+  },[])
+
+  console.log(fetchTrigger,"FETCH STATUS");
+
+  useEffect(() => {
+    if (fetchTrigger) {
+      fetchData()
+    }
+  },[fetchTrigger])
 
   useEffect(() => {
     if (AuthData.token) {
       // console.log("profile fetch");
-      getData(userDeatailUrl, AuthData.token.access, setUserDetail, userDeatailParams)
-      getData(siteCategorieslUrl, AuthData.token.access, setSiteCategories)
-      getData(recentPostsUrl, AuthData.token.access, setrecentPosts, recentPostsParams)
-      getData(myBlogsUrl, AuthData.token.access, setMyBlogs, myBlogsParams)
+      
     }
   }, [])
 
@@ -138,9 +156,9 @@ export default function Profile() {
         </div>
 
       </div>
-      {myBlogs ? <Modal current_value={viewPostForm} set_value={setViewPostForm} target={<PostForm AuthData={AuthData} initialData={viewPostForm == true ? undefined : viewPostForm} ownedBlogs={myBlogs ? myBlogs.data : []}/>}/> : <></>}
-      {myBlogs && siteCategories ? <Modal current_value={viewBlogForm} set_value={setViewBlogForm} target={<BlogForm categories={siteCategories.data} AuthData={AuthData} />} /> : <></>}
-      <Modal current_value={viewSettingsForm} set_value={setViewSettingsForm} target={<AccountSettingsForm initialData={{ id, banner, profilePic, userName, firstName, lastName, email }} AuthData={AuthData} />} />
+      {myBlogs ? <Modal current_value={viewPostForm} set_value={setViewPostForm} target={<PostForm setViewPostForm={setViewPostForm} setRefetchTrigger={setRefetchTrigger} AuthData={AuthData} initialData={viewPostForm == true ? undefined : viewPostForm} ownedBlogs={myBlogs ? myBlogs.data : []}/>}/> : <></>}
+      {myBlogs && siteCategories ? <Modal current_value={viewBlogForm} set_value={setViewBlogForm} target={<BlogForm setRefetchTrigger={setRefetchTrigger} categories={siteCategories.data} AuthData={AuthData} />} /> : <></>}
+      <Modal current_value={viewSettingsForm} set_value={setViewSettingsForm} target={<AccountSettingsForm setRefetchTrigger={setRefetchTrigger} initialData={{ id, banner, profilePic, userName, firstName, lastName, email }} AuthData={AuthData} />} />
 
       <div className={styles.blogListContainer}>
         {myBlogs ? <BlogList style ={styles} data={myBlogs.data}/> : <p>no blogs</p>}
@@ -148,7 +166,7 @@ export default function Profile() {
 
       <div className={styles.content}>
         <div className={styles.myposts}>
-          {recentPosts && myBlogs? <PostList data={recentPosts.data} AuthData={AuthData} userData={userDatail.data[0] } ownedBlogs={myBlogs ? myBlogs.data : []}/> : <p>no posts</p>}
+          {recentPosts && myBlogs? <PostList setRefetchTrigger={setRefetchTrigger} data={recentPosts.data} AuthData={AuthData} userData={userDatail.data[0] } ownedBlogs={myBlogs ? myBlogs.data : []}/> : <p>no posts</p>}
         </div>
       </div>
 

@@ -19,6 +19,8 @@ import style from '@/components/blog_list/homeeman.module.css'
 export default function Home() {
   let AuthData = useContext(AuthContext);
 
+  const [fetchTrigger,setRefetchTrigger] = useState(false)
+
   const [postData, setPostData] = useState(null);
   const [blogData, setBlogData] = useState(null);
   const [friendsData, setFriendsData] = useState(null);
@@ -41,6 +43,8 @@ export default function Home() {
   const searchResultUrl = "http://127.0.0.1:8000/api/v1/blogs/search/"
   const searchResultParams = {blog_title:"Tech"}
 
+
+
   async function getData(url, token, setter, params){
     const config = {headers: {
       Authorization : `Bearer ${token}`},
@@ -50,15 +54,24 @@ export default function Home() {
     .catch((error)=>{setter(error)})
   }
 
+  let fetchData = ()=>{
+    getData(postsUrl,AuthData.token.access,setPostData,postsParams)
+    getData(blogsUrl,AuthData.token.access,setBlogData,blogsParams)
+    getData(friendsUrl,AuthData.token.access,setFriendsData,friendsParams)
+    getData(searchResultUrl,AuthData.token.access,setsearchResult,searchResultParams)
+    getData(userDeatailUrl, AuthData.token.access, setUserDetail, userDeatailParams)
+    setRefetchTrigger(false)
+  }
+
   useEffect(() => {
-    if (AuthData.token){
-      getData(postsUrl,AuthData.token.access,setPostData,postsParams)
-      getData(blogsUrl,AuthData.token.access,setBlogData,blogsParams)
-      getData(friendsUrl,AuthData.token.access,setFriendsData,friendsParams)
-      getData(searchResultUrl,AuthData.token.access,setsearchResult,searchResultParams)
-      getData(userDeatailUrl, AuthData.token.access, setUserDetail, userDeatailParams)
-    }
+    fetchData()
   },[])
+  console.log(fetchData,"FETCH STATUS");
+  useEffect(() => {
+    if (fetchTrigger) {
+      fetchData()
+    }
+  },[fetchTrigger])
 
 if (blogData){console.log("HOME BLOG DATA",blogData)}
 
@@ -77,7 +90,7 @@ const toggleFilter = () => {
       
       <div>
       <div onClick={toggleFilter}>
-      <input className={Styles.input1} />
+      <input className={Styles.CarouselSearch} />
         <Image className={Styles.glass} alt="glass" src="/glass.svg" width={6} height={6} />
       </div>
       {isFilterVisible && (
@@ -99,7 +112,7 @@ const toggleFilter = () => {
       <div className={Styles.mainContent}>
         {blogData?<BlogList style={style} data={blogData.data.map((object=>{return object.blog_id}))}/>:<p>no blogs</p>}
 
-        {(postData && userDatail)?<PostList className={Styles.postList} data={postData.data} AuthData={AuthData} userData={userDatail.data[0]}/>:<p>posts no valid</p>}
+        {(postData && userDatail)?<PostList className={Styles.postList} data={postData.data} AuthData={AuthData} userData={userDatail.data[0] } setRefetchTrigger={setRefetchTrigger}/>:<p>posts no valid</p>}
         {friendsData?<FriendList data={friendsData.data}/>:<>no friends</>}
       </div>
     </main>

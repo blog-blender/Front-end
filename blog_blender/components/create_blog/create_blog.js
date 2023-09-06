@@ -165,9 +165,9 @@ const BlogForm = (props) => {
     setSelectedCategories(selectedOptions);
   };
   return (
-    <div className="flex items-center justify-center min-h-screen p-4">
+    <div className="flex items-center justify-center   ">
       
-      <form className="w-full max-w-3xl border border-gray-300 rounded-lg p-10 bg-primary-500 max-h-[80vh] overflow-auto">
+      <form className="w-full max-w-3xl border border-gray-300 rounded-lg p-10 bg-primary-500 ">
       <div className="text-center mb-6">
       <label className="text-4xl font-medium leading-5 text-indigo-900">
         Creating Blog

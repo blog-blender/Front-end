@@ -39,13 +39,12 @@ function NavBar() {
               Profile
             </Link>
 
-             <Link
-              href="/"
+             <span
               onClick={()=>AuthData.logout()}
               className="text-[#687E8D] hover:bg-[#e5e7eb] hover:text-[#312E81] px-3 py-2 rounded-md text-base font-medium"
             >
               Logout
-            </Link>
+            </span>
 
              <Link
               href="/aboutPage/aboutus"

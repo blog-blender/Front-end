@@ -9,35 +9,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 export default function Post(props) {
-    // {
-    //     "id": 22,
-    //     "Auther_id": {
-    //         "username": "Ibraheem",
-    //         "profile_pic": "http://127.0.0.1:8000/media/profile_pics/TNGRRLUMA-U04PA8EC6ET-3c0112671aa0-512.jpg"
-    //     },
-    //     "title": "The Power of Literature: How Reading Enhances Empathy",
-    //     "content": "Explore the link between reading and empathy. This post discusses how books can broaden our perspective, increase our understanding of others, and ultimately make us more compassionate individuals.",
-    //     "blog_id": 8,
-    //     "comments": [],
-    //     "photo": [
-    //         {
-    //             "id": 66,
-    //             "data": "http://127.0.0.1:8000/media/post_picture/22-1.jfif",
-    //             "post_id": 22
-    //         },
-    //         {
-    //             "id": 67,
-    //             "data": "http://127.0.0.1:8000/media/post_picture/22-2.jfif",
-    //             "post_id": 22
-    //         },
-    //         {
-    //             "id": 68,
-    //             "data": "http://127.0.0.1:8000/media/post_picture/22-3.webp",
-    //             "post_id": 22
-    //         }
-    //     ],
-    //     "likes": []
-    // },
+   
     const [postData, setPostData] = useState(props.data);
     // console.log(props,"POST PROPS");
     let AuthData = props.AuthData
@@ -144,6 +116,8 @@ export default function Post(props) {
             axios.delete(url,config)
             .then(function (response) {
                 console.log(response); 
+                props.setRefetchTrigger(true)
+                console.log(props.setRefetchTrigger,"FETCH STATUS");
                 Swal.fire(
                     'Deleted!',
                     'Your file has been deleted.',
