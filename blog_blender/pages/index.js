@@ -32,13 +32,13 @@ export default function Home() {
   const userDeatailParams = { username: AuthData.user.username,}
 
   const postsUrl = `http://127.0.0.1:8000/api/v1/posts/home/`
-  const postsParams = {}
+  const postsParams = {user_id:AuthData.user.id}
 
   const blogsUrl = 'http://127.0.0.1:8000/api/v1/blogs/userfollowing/'
-  const blogsParams = {user_id:3}
+  const blogsParams = {user_id:AuthData.user.id}
 
   const friendsUrl = "http://127.0.0.1:8000/api/v1/blogs/user_friends/"
-  const friendsParams = {user_id:1}
+  const friendsParams = {user_id:AuthData.user.id}
 
   const searchResultUrl = "http://127.0.0.1:8000/api/v1/blogs/search/"
   const searchResultParams = {blog_title:"Tech"}
@@ -51,7 +51,7 @@ export default function Home() {
       params : params,};
     axios.get(url ,config)
     .then((response)=>{console.log(response);setter(response)})
-    .catch((error)=>{setter(error)})
+    .catch((error)=>{console.log(error,"error");setter(error)})
   }
 
   let fetchData = ()=>{
@@ -73,14 +73,14 @@ export default function Home() {
     }
   },[fetchTrigger])
 
-if (blogData){console.log("HOME BLOG DATA",blogData)}
+if (friendsData){console.log("HOME FREIND DATA",friendsData)}
 
 
 const [isFilterVisible, setIsFilterVisible] = useState(false);
 const toggleFilter = () => {
   setIsFilterVisible(!isFilterVisible);
 };
-
+  console.log(friendsData);
   return (
     <main>
       <div className="overlay-container">
@@ -110,10 +110,11 @@ const toggleFilter = () => {
     </div>
       
       <div className={Styles.mainContent}>
-        {blogData?<BlogList style={style} data={blogData.data.map((object=>{return object.blog_id}))}/>:<p>no blogs</p>}
+        {blogData?<BlogList style={style} data={blogData.data.map((object=>{return object.blog_id}))}/>:<></>}
 
         {(postData && userDatail)?<PostList className={Styles.postList} data={postData.data} AuthData={AuthData} userData={userDatail.data[0] } setRefetchTrigger={setRefetchTrigger}/>:<p>posts no valid</p>}
-        {friendsData?<FriendList data={friendsData.data}/>:<>no friends</>}
+        {/* {(friendsData)?(friendsData.status != 500 ?<FriendList data={friendsData.data}/>:<>no friends</>):<></>} */}
+        {(friendsData)?(friendsData.response.status != 500 ?<FriendList data={friendsData.data}/>:<></>):<></>}
       </div>
     </main>
   )

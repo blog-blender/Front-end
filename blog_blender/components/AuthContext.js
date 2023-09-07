@@ -72,12 +72,10 @@ export function AuthProvider(props){
         }
         setState(prevState=> ({...prevState,... newState}));
         localStorage.setItem("authData",JSON.stringify(state))
-        console.log("LOGGING OUT");
     }
 
     // TODO add token refresh function
     useEffect(()=>{
-        console.log("AAAA");
         const authDataLocal = localStorage.getItem("authData")
         if(authDataLocal)
             {

@@ -80,11 +80,12 @@ export default function PostDetailPage() {
       },
       params: params,
     };
+    console.log(config,4444444444444444);
     axios.get(url, config)
       .then((response) => { console.log(response); setter(response.data) })
       .catch((error) => { setter(error) });
   }
-
+  
   useEffect(() => {
     if (AuthData.token) {
       getData(userDetailUrl, AuthData.token.access, setPostDetail, userDetailParams);
