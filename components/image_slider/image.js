@@ -49,7 +49,7 @@ const Photo = ({ photos }) => {
                     <div className="w-full overflow-hidden rounded-lg shadow">
                         <img
                             className="object-contain  h-full"
-                            src={photo.data}
+                            src= {`http://res.cloudinary.com/dhaem8m4p/${photo.data}`} 
                             alt={`Photo ${index + 1}`}
                         />
                     </div>
