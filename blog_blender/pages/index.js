@@ -111,7 +111,7 @@ const toggleFilter = () => {
     </div>
       
       <div className={Styles.mainContent}>
-        {blogData?<BlogList style={style} data={blogData.data.map((object=>{return object.blog_id}))}/>:<></>}
+        {(blogData && blogData!= [] )?<BlogList style={style} data={blogData.data.map((object=>{return object.blog_id}))}/>:<></>}
 
         {(postData && userDatail && typeof(postData.data)!= "string")?<PostList className={Styles.postList} data={postData.data} AuthData={AuthData} userData={userDatail.data[0] } setRefetchTrigger={setRefetchTrigger}/>:<p>please follow some blogs to see there posts</p>}
         {/* {(friendsData)?(friendsData.status != 500 ?<FriendList data={friendsData.data}/>:<>no friends</>):<></>} */}

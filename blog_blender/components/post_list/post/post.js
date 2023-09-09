@@ -160,7 +160,7 @@ export default function Post(props) {
             <div className={styles.leftButtonsContainer}>
                 <div className="imgName">
                 <div className={styles.user_infoPost}>
-                    <img className={styles.user_photoPost} src={postData.Auther_id.profile_pic} alt="User Photo" />
+                    <img className={styles.user_photoPost} src={`http://res.cloudinary.com/dhaem8m4p/${postData.Auther_id.profile_pic}`} alt="User Photo" />
                     <ul className="flex-container nowrap">
                         <li className={styles.namePost}>{postData.Auther_id.first_name + " " + postData.Auther_id.last_name}</li>
                         <li className={styles.usernamePost}>@{postData.Auther_id.username}</li>

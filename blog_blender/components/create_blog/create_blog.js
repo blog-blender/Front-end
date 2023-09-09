@@ -237,7 +237,7 @@ const BlogForm = (props) => {
                     Click to Change
                   </label>
                   <img
-                    src={blogImages.blogPhoto.display}
+                    src={`http://res.cloudinary.com/dhaem8m4p/${blogImages.blogPhoto.display}`}
                     alt="Blog Photo"
                     className="w-full h-full rounded-md border border-gray-300"
                   />
@@ -287,7 +287,7 @@ const BlogForm = (props) => {
                     Click to Change
                   </label>
                   <img
-                    src={blogImages.coverPhoto.display}
+                    src={`http://res.cloudinary.com/dhaem8m4p/${blogImages.coverPhoto.display}`}
                     alt="Cover Photo"
                     className="w-full h-full rounded-md border border-gray-300"
                   />

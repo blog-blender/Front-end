@@ -71,7 +71,7 @@ export default function BlogDetail({ blog, AuthData, posts}) {
         <div
           className="absolute  top-0 w-full h-full bg-center bg-cover"
           style={{
-            backgroundImage: `url(${blog.banner})`,
+            backgroundImage: `url(http://res.cloudinary.com/dhaem8m4p/${blog.banner})`,
           }}
         >
           <span
@@ -90,7 +90,7 @@ export default function BlogDetail({ blog, AuthData, posts}) {
                   <div className="relative">
                     <img
                       alt="..."
-                      src={blog.blog_pic}
+                      src={`http://res.cloudinary.com/dhaem8m4p/${blog.blog_pic}`}
                       className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16"
                       style={{ maxWidth: "150px" }}
                     />

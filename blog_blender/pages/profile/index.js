@@ -99,11 +99,11 @@ export default function Profile() {
       {/* Profile Data */}
       <div className={styles.header}>
 
-        <img className={styles.banner} src={banner || 'https://nichemedia.co.nz/wp-content/uploads/2023/03/placeholder-banner.png'} alt="User Banner" />
+        <img className={styles.banner} src={`http://res.cloudinary.com/dhaem8m4p/${banner}` || 'https://nichemedia.co.nz/wp-content/uploads/2023/03/placeholder-banner.png'} alt="User Banner" />
 
 
         <div className={styles.user_info}>
-          <img className={styles.user_photo} src={profilePic || 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541'} alt="User Photo" />
+          <img className={styles.user_photo} src={ `http://res.cloudinary.com/dhaem8m4p/${profilePic}`|| 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541'} alt="User Photo" />
           <ul className="flex-container nowrap">
             <li className={styles.name}>{firstName + " " + lastName}</li>
             <li className={styles.username}>@{userName}</li>

@@ -67,7 +67,7 @@ export default function CommentForm(props) {
     
     <section class="w-full flex px-3 py-2">
       <div class="mr-2">
-        <img className="rounded-full w-10 h-10" src={props.userPic} alt="Profile Picture"/>
+        <img className="rounded-full w-10 h-10" src={`http://res.cloudinary.com/dhaem8m4p/${props.userPic}`} alt="Profile Picture"/>
       </div>
       <div class="flex-1">
         <textarea class="w-full p-1/5 bg-transparent outline-none placeholder-gray-600 text-black resize-none overflow-auto max-h-screen" onChange={update} rows="4" placeholder="Write your comment here">{commentContent}</textarea>

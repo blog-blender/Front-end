@@ -10,7 +10,7 @@ export default function Blog(props) {
         }
     };
     const divStyle = {
-        backgroundImage: `url(${props.data.banner})`,
+        backgroundImage: `url(http://res.cloudinary.com/dhaem8m4p/${props.data.banner})`,
         backgroundSize: 'cover',
         WebkitFilter: 'invert(8%) opacity(81%)',
         filter: 'invert(8%) opacity(81%)',
