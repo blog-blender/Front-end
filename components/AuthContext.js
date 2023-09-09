@@ -10,14 +10,7 @@ import Swal from "sweetalert2";
 export const AuthContext = createContext();
 
 
-export function ueAuth(){
-    const auth = useContext(AuthContext)
-    if (!auth){
-        return(null)
 
-    }
-    return auth // {token, user, login}
-}
 //////////////////////
 const baseUrl = process.env.NEXT_PUBLIC_URL
 

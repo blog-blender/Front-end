@@ -14,7 +14,7 @@ export default function FriendList(props){
     <div className="flow-root">
         <ul role="list" className="divide-y divide-gray-200 dark:divide-gray-700">
             {props.data.map((freind, index) => (
-                <Friend data={freind}/>
+                <Friend key = {index} data={freind}/>
             ))}
         </ul>
     </div>

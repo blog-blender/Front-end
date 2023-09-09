@@ -4,8 +4,8 @@ export default function CommentList(props) {
   console.log(props,"COMMENT LIST")
     return(
     <div>
-      {props.data?.map((commentData) =>(
-        <><Comment data={commentData} />
+      {props.data?.map((commentData , index) =>(
+        <><Comment key = {index} data={commentData} />
         {/* <CommentForm AuthData={props.AuthData} postId={props.postId} blogId={props.blogId} userPic={props.userPic} initialData={commentData}/> */}
         </>
         ))}
