@@ -3,15 +3,16 @@ import Modal from 'react-modal';
 
 const Photo = ({ photos }) => {
     // console.log(photos,"photot list");
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+    const [activeIndicator, setActiveIndicator] = useState(0);
     if (!photos) {
         return<></>
     }
     if (photos.length == 0) {
         return<></>
     }
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
-    const [activeIndicator, setActiveIndicator] = useState(0);
 
     const openModal = (index) => {
         setIsModalOpen(true);

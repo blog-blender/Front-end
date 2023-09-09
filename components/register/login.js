@@ -63,7 +63,7 @@ const LoginPage = (props) => {
 
 
                             <div className={styles.div4}>
-                                <span onClick={()=>{props.setViewState("register")}}>Don't have an account?</span>
+                                <span onClick={()=>{props.setViewState("register")}}>Don`&apos;`t have an account?</span>
                             </div>
                         </div>
 
