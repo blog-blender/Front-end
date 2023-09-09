@@ -13,6 +13,7 @@ import Image from "next/image";
 
 
 import style from '@/components/blog_list/homeeman.module.css'
+import { string } from 'i/lib/util';
 
 
 
@@ -112,9 +113,9 @@ const toggleFilter = () => {
       <div className={Styles.mainContent}>
         {blogData?<BlogList style={style} data={blogData.data.map((object=>{return object.blog_id}))}/>:<></>}
 
-        {(postData && userDatail)?<PostList className={Styles.postList} data={postData.data} AuthData={AuthData} userData={userDatail.data[0] } setRefetchTrigger={setRefetchTrigger}/>:<p>posts no valid</p>}
+        {(postData && userDatail && typeof(postData.data)!= "string")?<PostList className={Styles.postList} data={postData.data} AuthData={AuthData} userData={userDatail.data[0] } setRefetchTrigger={setRefetchTrigger}/>:<p>please follow some blogs to see there posts</p>}
         {/* {(friendsData)?(friendsData.status != 500 ?<FriendList data={friendsData.data}/>:<>no friends</>):<></>} */}
-        {(friendsData)?(friendsData.response.status != 500 ?<FriendList data={friendsData.data}/>:<></>):<></>}
+        {/* (friendsData)?(friendsData.response.status != 500 ?<FriendList data={friendsData.data}/>:<></>):<></>*/}
       </div>
     </main>
   )
