@@ -1,0 +1,116 @@
+.container {
+  background-color: #f2f2f2;
+  font-family: "RobotoDraft", "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 25px; 
+  height: 110vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
+
+
+.h5 {
+  margin: 0px;
+  font-size: 1.4em;
+  font-weight: 700;
+}
+
+.p {
+  font-size: 12px;
+}
+
+
+
+
+.propertycard {
+  height: 19em;
+  width: 8em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  -webkit-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -o-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  border-radius: 16px;
+  overflow: hidden;
+  -webkit-box-shadow: 15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
+  box-shadow: 15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
+  flex: 0 0 calc(33.3333% - 100px); 
+  padding: 3px;
+}
+
+.propertyimage {
+  height: 100%;
+  width: 100%;
+  position: Absolute;
+  top: 0px;
+  -webkit-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -o-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+.propertydescription {
+  background-color: #c2c7c9;
+  height: 25%;
+  width: 100%;
+  position: absolute;
+  bottom: 0em;
+  -webkit-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -o-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  padding: 0.5em 1em;
+  text-align: center;
+}
+
+
+
+.propertycard:hover .propertydescription {
+  height: 0em;
+  padding: 0px 1em;
+}
+.propertycard:hover .propertyimage {
+  height: 18em;
+}
+
+.propertycard:hover .propertysocialicons {
+  background-color: white;
+}
+
+.propertycard:hover .propertysocialicons:hover {
+  background-color: blue;
+  cursor: pointer;
+}
+
+
+.property-image-title
+{
+text-align:center;
+position:Relative;
+top:30%;
+opacity:0;
+transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1) 0.2s;
+color:black;
+font-size:1.2em;
+}
+
+.property-card:hover .property-image-title
+{
+opacity:1;
+}

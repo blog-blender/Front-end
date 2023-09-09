@@ -1,0 +1,310 @@
+.post_summary {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    /* margin-bottom: 5px; */
+    border-bottom: 2px solid #ddd;
+    padding: 5px;
+    width: 95%;
+    margin-left: 2.5%;
+  }
+  
+  .post_interactions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  
+  
+  }
+  
+  .user_photoPost {
+    width: 6%;
+    height: 6%;
+    border-radius: 50%;
+    /* position: relative;  */
+    top: -65px;
+    margin-bottom: 3%;
+    justify-content: space-between;
+  
+  }
+  
+  .user_infoPost {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-top: 1%;
+  
+  }
+  
+  .namePost {
+    font-weight: bold;
+    font-size: 20px;
+  
+  }
+  
+  
+  
+  .usernamePost {
+    font-weight: lighter;
+    margin-right: 100%;
+    font-size: 10px;
+    color: #333333;
+  }
+  
+  .card-title {
+    color: #2e2929;
+    font-size: 1.5em;
+    line-height: normal;
+    font-weight: 700;
+    margin-bottom: 0.5em;
+    text-align: left;
+  }
+  
+  .small-desc {
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1.5em;
+    color: #333333;
+    line-height: 1.45;
+    letter-spacing: 1px;
+    word-spacing: 1px;
+    text-align: left;
+    text-decoration: none;
+    text-transform: none;
+    margin-bottom: 2%;
+  }
+  
+  .go-corner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 2em;
+    height: 2em;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    background: linear-gradient(135deg, #687E8D, #C2BCA0);
+    border-radius: 0 4px 0 32px;
+  }
+  
+  .go-arrow {
+    /* margin-top: -4px; */
+    margin-right: -4px;
+    color: white;
+    font-family: courier, sans;
+  }
+  
+  .card {
+    display: block;
+    position: relative;
+    max-width: 100%;
+    max-height: 35%;
+    border-radius: 10px;
+    padding: 2em 1.2em;
+    margin: 16px;
+    text-decoration: none;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #FFFFFF, #DAE3EB);
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-bottom: 1%;
+  
+  }
+  
+  .card:before {
+    content: '';
+    position: absolute;
+    top: -16px;
+    right: -16px;
+    background: linear-gradient(135deg, #C2BCA0, #93B1A6);
+    height: 32px;
+    width: 32px;
+    border-radius: 32px;
+    transform: scale(1);
+    transform-origin: 50% 75%;
+    transition: transform 0.35s ease-out;
+  }
+  
+  .card:hover:before {
+    transform: scale(28);
+  }
+  
+  /* .card:hover .small-desc {
+      transition: all 0.5s ease-out;
+      color: rgba(255, 255, 255, 0.8);
+      color: #000000;
+      line-height: 1.45;
+      letter-spacing: 4px;
+      word-spacing: 3px;
+      text-align: left;
+      text-decoration: none;
+      text-transform: none;
+    } */
+  .card:hover .card-title {
+    transition: all 0.5s ease-out;
+    color: #5C8374;
+  }
+  
+  .photocontainer {
+    display: flex;
+    gap: 10px;
+  
+  }
+  
+  .postbanner {
+    flex-grow: 1;
+    min-width: 0;
+    height: auto;
+    border-radius: 5%;
+    color: #2e2929;
+    font-size: 1.1em;
+    line-height: normal;
+    font-weight: 500;
+    margin-bottom: 0.5em;
+    text-align: left;
+  }
+  
+  .small-desc {
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1.5em;
+    color: #333333;
+    line-height: 1.45;
+    letter-spacing: 1px;
+    word-spacing: 1px;
+    text-align: left;
+    text-decoration: none;
+    text-transform: none;
+    margin-bottom: 2%;
+  }
+  
+  .go-corner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 2em;
+    height: 2em;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    background: linear-gradient(135deg, #687E8D, #C2BCA0);
+    border-radius: 0 4px 0 32px;
+  }
+  
+  .go-arrow {
+    margin-top: -4px;
+    margin-right: -4px;
+    color: white;
+    font-family: courier, sans;
+  }
+  
+  .card {
+    display: block;
+    position: relative;
+    max-width: 100%;
+    max-height: 35%;
+    border-radius: 10px;
+    padding: 1em 1em;
+    /* margin: 12px; */
+    text-decoration: none;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #FFFFFF, #DAE3EB);
+    font-family: 'Times New Roman', Times, serif;
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-bottom: 1%;
+    font-size: 20px;
+    color: #000000;
+  
+  }
+  
+  .card:before {
+    content: '';
+    position: absolute;
+    z-index:-1;
+    top: -16px;
+    right: -16px;
+    background: linear-gradient(135deg, #C2BCA0, #93B1A6);
+    height: 32px;
+    width: 32px;
+    border-radius: 32px;
+    transform: scale(1);
+    transform-origin: 50% 75%;
+    transition: transform 0.35s ease-out;
+  }
+  
+  .card:hover:before {
+    transform: scale(28);
+  }
+  
+  .card:hover .card-title {
+    transition: all 0.5s ease-out;
+    color: #5C8374;
+  }
+  
+  .photocontainer {
+    display: flex;
+    gap: 10px;
+  
+  }
+  
+  .postbanner {
+    flex-grow: 1;
+    min-width: 0;
+    height: auto;
+    border-radius: 5%;
+  
+  }
+  
+  /* .buttons{
+  
+      margin-bottom: 20px;
+      border-radius: 3px;
+      padding: 1px;
+      width: 25%;   
+      margin-left: 1px; 
+    } */
+  .numbers {
+    display: flex;
+    margin-bottom: 1%;
+    margin-right: 10px;
+  }
+  
+  .leftButtonsContainer {
+    margin-left: 10px;
+  }
+  
+  .user_infoPost .icondiv {
+    margin-left: 50%;
+    padding: 20;
+    display: flex;
+    margin-right: 1%;
+  
+  }
+  
+  .icondiv button {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 1px;
+    margin-left: 5px;
+  
+  
+  }
+  
+  
+  
+  
+  .post_interactions button {
+    margin-left: 1%;
+  
+  }
+  
+  .user_photoPost {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
