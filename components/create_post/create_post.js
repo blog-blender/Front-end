@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 export default function PostForm({ initialData, ownedBlogs, AuthData, setRefetchTrigger, setViewPostForm }) {
-  console.log("POST FORM", initialData, ownedBlogs, AuthData);
+  // console.log("POST FORM", initialData, ownedBlogs, AuthData);
   const [postImages, setPostImages] = useState({
     upload: [],
     display: initialData ? initialData.photo.map((object) => { return object.data }) : [],
@@ -10,16 +10,42 @@ export default function PostForm({ initialData, ownedBlogs, AuthData, setRefetch
 
   const [postData, setInitialData] = useState(initialData ? initialData : {});
 
-
   const imageChangeHandler = (event) => {
     const uploadedImage = event.target.files[0];
     if (!uploadedImage) return;
     const imageUrl = URL.createObjectURL(uploadedImage);
+    // console.log(imageUrl,imageUrl.includes(window.location.hostname),window.location.hostname,"IMAGE URL");
+    
     setPostImages({
       upload: [...postImages.upload, uploadedImage],
       display: [...postImages.display, imageUrl],
     });
   };
+
+  const urlToFile = async (url) => {
+    if (url) {
+      let response = await fetch(`${process.env.NEXT_PUBLIC_IMAGE_SERVER_URL}${url}`);
+      let blob = await response.blob();
+      let resFile = new File([blob], `image.${url.split("/").slice(-1)}`, { type: blob.type })
+      // console.log(resFile,url);
+      return resFile
+    }
+  };
+
+  async function setup() {
+    let temp = {
+      upload: [],
+      display: [...postImages.display],
+    }
+    for (let index = 0; index < temp.display.length; index++) {
+      temp.upload.push(await urlToFile(temp.display[index]))
+    }
+    setPostImages(temp);
+  }
+
+  useEffect(() => {
+    setup()
+  }, [])
 
   const imageDiscardHandler = (index) => {
     const newDisplayImages = postImages.display.filter((_, i) => i !== index);
@@ -36,17 +62,19 @@ export default function PostForm({ initialData, ownedBlogs, AuthData, setRefetch
     newFormData[event.target.id] = event.target.value;
     setInitialData(newFormData);
   };
-
+  
+  // console.log(postImages,"POST FORM IMAGES");
   const submitHandler = async (event) => {
     event.preventDefault();
-    console.log("EVENT CREATE POST SUBMIT",event);
+    
+    // console.log("EVENT CREATE POST SUBMIT", event);
     const formData = new FormData();
     const payload = {
       title: postData.title,
       Auther_id: AuthData.user.id,
       content: postData.content,
       blog_id: postData.blog_id,
-      photos: postImages.upload.length > 0 ? postImages.upload : initialData ? initialData.photo : null,
+      photos: postImages.upload.length > 0 ? postImages.upload : null,
     };
     formData.append("title", payload.title);
     formData.append("Auther_id", AuthData.user.id);
@@ -67,12 +95,12 @@ export default function PostForm({ initialData, ownedBlogs, AuthData, setRefetch
       },
       params: params
     };
-    const createUrl = 'https://back-end-git-ibraheem-deploy-blog-blender.vercel.app/api/v1/posts/create/';
-    const updateUrl = `https://back-end-git-ibraheem-deploy-blog-blender.vercel.app/api/v1/posts/update/`;
+    const createUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}api/v1/posts/create/`;
+    const updateUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}api/v1/posts/update/`;
     const resultUrl = initialData ? updateUrl : createUrl;
     const method = initialData ? "put" : "post";
     const data = await axios[method](resultUrl, formData, config);
-    console.log("closing");
+    // console.log("closing");
     setRefetchTrigger(true)
     setViewPostForm(false)
   };
@@ -87,15 +115,15 @@ export default function PostForm({ initialData, ownedBlogs, AuthData, setRefetch
     <div className="flex items-center justify-center ">
       <form className="w-full max-w-3xl border border-gray-300 rounded-lg p-10 bg-primary-500  overflow-x-visible">
         <div className="text-center mb-6">
-          <label className="text-4xl font-medium leading-5 text-indigo-900">
-            Creating Post
-          </label>
-          <div>
+          {!initialData?<label className="text-4xl font-medium leading-5 text-indigo-900">
+            Create Post
+          </label>:<></> }
+          {!initialData? <div>
             <label htmlFor="content" className="block text-2xl font-medium leading-5 text-primary-100 py-2">Choose Blog:</label>
             <div className="relative">
               <select onChange={textChangeHandler} id="blog_id" className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
                 <option>BLOG NAME</option>
-                {ownedBlogs.map((object , index) => { return <option key = {index} value={object.id}>{object.title}</option> })}
+                {ownedBlogs.map((object, index) => { return <option key={index} value={object.id}>{object.title}</option> })}
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -103,9 +131,9 @@ export default function PostForm({ initialData, ownedBlogs, AuthData, setRefetch
                 </svg>
               </div>
             </div>
-          </div>
+          </div>:<></> }
         </div>
-
+            
         <div className="mb-6">
           <label htmlFor="title" className="block text-2xl font-medium leading-5 text-primary-100 py-2">
             Title:
@@ -180,7 +208,7 @@ export default function PostForm({ initialData, ownedBlogs, AuthData, setRefetch
 
                     >Click to Change</label>
                     <img
-                      src={imageUrl}
+                      src={`${!imageUrl.includes(window.location.hostname)?process.env.NEXT_PUBLIC_IMAGE_SERVER_URL:""}${imageUrl}`}
                       alt={`Preview ${index}`}
                       className="max-w-xs max-h-32 rounded-md border border-gray-300"
                     />

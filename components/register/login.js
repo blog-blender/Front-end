@@ -14,12 +14,12 @@ const LoginPage = (props) => {
         const newFormData = {...formData}
         newFormData[event.target.id] = event.target.value
         setFormData(newFormData)
-        console.log(formData);
+        // console.log(formData);
       };
 
     const submitHandler = (event) => {
         event.preventDefault();
-        console.log(formData,"submitted");
+        // console.log(formData,"submitted");
         props.AuthData.login(formData.username, formData.password)
     };
 
@@ -63,7 +63,7 @@ const LoginPage = (props) => {
 
 
                             <div className={styles.div4}>
-                                <span onClick={()=>{props.setViewState("register")}}>Don`&apos;`t have an account?</span>
+                                <span onClick={()=>{props.setViewState("register")}}>Don&apos;t have an account?</span>
                             </div>
                         </div>
 

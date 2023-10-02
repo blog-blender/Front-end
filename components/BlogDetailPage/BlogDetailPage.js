@@ -3,48 +3,13 @@ import axios from 'axios';
 import PostList from "../post_list/post_list";
 
 
-// {
-//   "id": 7,
-//   "owner": {
-//       "username": "Ibraheem",
-//       "profile_pic": "https://back-end-git-ibraheem-deploy-blog-blender.vercel.app/media/profile_pics/TNGRRLUMA-U04PA8EC6ET-3c0112671aa0-512.jpg",
-//       "id": 3,
-//       "first_name": "Ibraheem",
-//       "last_name": "areeda",
-//       "email": "Ibraheem@gmail.com"
-//   },
-//   "title": "Sustainable Living Insights",
-//   "banner": "https://back-end-git-ibraheem-deploy-blog-blender.vercel.app/media/blog_banner/7-1.jfif",
-//   "blog_pic": "https://back-end-git-ibraheem-deploy-blog-blender.vercel.app/media/blog_pic/7-2.jpg",
-//   "description": "",
-//   "Category_associates": [
-//       {
-//           "id": 45,
-//           "category_name": "Wellness",
-//           "blog_id": 7
-//       }
-//   ],
-//   "followers": [
-//       {
-//           "id": 7,
-//           "user_id": {
-//               "username": "Ibraheem",
-//               "profile_pic": "https://back-end-git-ibraheem-deploy-blog-blender.vercel.app/media/profile_pics/TNGRRLUMA-U04PA8EC6ET-3c0112671aa0-512.jpg",
-//               "id": 3,
-//               "first_name": "Ibraheem",
-//               "last_name": "areeda",
-//               "email": "Ibraheem@gmail.com"
-//           },
-//           "blog_id": 7
-//       }
-//   ]
-// }
-
-
-export default function BlogDetail({ blog, AuthData, posts}) {
+export default function BlogDetail({ blog, AuthData, posts, ownedBlogs, setRefetchTrigger }) {
   const [userDatail, setUserDetail] = useState(null);
-  const userDeatailUrl = 'https://back-end-git-ibraheem-deploy-blog-blender.vercel.app/api/v1/accounts/users'
-  const userDeatailParams = { username: AuthData.user.username,}
+  const userDeatailUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}api/v1/accounts/users`
+  const userDeatailParams = { username: AuthData.user.username, }
+  let followersIds = blog.followers.map(obj => { return obj.user_id.id })
+  const [follwed, setFollowed] = useState(followersIds.includes(AuthData.user.id));
+  let dark = false
 
   async function getData(url, token, setter, params) {
     const config = {
@@ -58,20 +23,84 @@ export default function BlogDetail({ blog, AuthData, posts}) {
       .catch((error) => { setter(error) })
   }
 
+
+  // console.log("USER DETAIL", userDatail);
+
+  async function followOnClick(event) {
+    event.preventDefault();
+    let url, method, payload
+
+    if (follwed) {
+      method = "delete"
+      url = `${process.env.NEXT_PUBLIC_BACKEND_URL}api/v1/blogs/unfollow/${blog.id}/`
+      payload = {
+      }
+    }
+    else {
+      method = "post"
+      url = `${process.env.NEXT_PUBLIC_BACKEND_URL}api/v1/blogs/follow/`
+      payload = { blog_id: blog.id }
+    }
+
+    const config = {
+      headers: { Authorization: `Bearer ${AuthData.token.access}`, },
+    };
+
+    if (method == "post") {
+      axios[method](url, payload, config)
+        .then(function (response) {
+          console.log(response);
+          if (follwed) {
+            // let temp = { ...postData }
+            // temp.likes = postData.likes.filter((object) => { return object.user_id != AuthData.user.id })
+            // setPostData(temp)
+          }
+          else {
+            // let temp = { ...postData }
+            // temp.likes.push(response.data)
+            // setPostData(temp)
+          }
+          setFollowed(!follwed)
+        })
+        .catch(function (error) {
+          // console.log(error);
+        });
+    }
+    else {
+      axios[method](url, config)
+        .then(function (response) {
+          console.log(response);
+          if (follwed) {
+            // let temp = { ...postData }
+            // temp.likes = postData.likes.filter((object) => { return object.user_id != AuthData.user.id })
+            // setPostData(temp)
+          }
+          else {
+            // let temp = { ...postData }
+            // temp.likes.push(response.data)
+            // setPostData(temp)
+          }
+          setFollowed(!follwed)
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+  }
+  // console.log(follwed);
   useEffect(() => {
     if (AuthData.token) {
       getData(userDeatailUrl, AuthData.token.access, setUserDetail, userDeatailParams)
     }
   }, [])
-  let dark = false
-  console.log("USER DETAIL",userDatail);
+
   return (
-    <main className={`profile-page ${dark?"bg-[BAC7CD]":"bg-[0000FF]"}`}>
+    <main className={`profile-page ${dark ? "bg-[BAC7CD]" : "bg-[0000FF]"}`}>
       <section className="relative block" style={{ height: "500px" }}>
         <div
           className="absolute  top-0 w-full h-full bg-center bg-cover"
           style={{
-            backgroundImage: `url(http://res.cloudinary.com/dhaem8m4p/${blog.banner})`,
+            backgroundImage: `url(${process.env.NEXT_PUBLIC_IMAGE_SERVER_URL}${blog.banner})`,
           }}
         >
           <span
@@ -83,14 +112,14 @@ export default function BlogDetail({ blog, AuthData, posts}) {
       </section>
       <section className=" relative py-16 ">
         <div className=" container mx-auto px-4">
-          <div className={` ${dark?"bg-[#5a5a5a]":"bg-[#f2f2f2]"} relative flex flex-col min-w-0 break-words  w-full mb-6 shadow-xl rounded-lg -mt-64`}>
+          <div className={` ${dark ? "bg-[#5a5a5a]" : "bg-[#f2f2f2]"} relative flex flex-col min-w-0 break-words  w-full mb-6 shadow-xl rounded-lg -mt-64`}>
             <div className="px-6">
               <div className="flex flex-wrap justify-center">
                 <div className="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
                   <div className="relative">
                     <img
                       alt="..."
-                      src={`http://res.cloudinary.com/dhaem8m4p/${blog.blog_pic}`}
+                      src={`${process.env.NEXT_PUBLIC_IMAGE_SERVER_URL}${blog.blog_pic}`}
                       className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16"
                       style={{ maxWidth: "150px" }}
                     />
@@ -102,8 +131,9 @@ export default function BlogDetail({ blog, AuthData, posts}) {
                       className="bg-green-700 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
                       type="button"
                       style={{ transition: "all .15s ease" }}
+                      onClick={followOnClick}
                     >
-                      Follow
+                      {follwed?"Unfollow":"Follow"}
                     </button>
                   </div>
                 </div>
@@ -180,7 +210,7 @@ export default function BlogDetail({ blog, AuthData, posts}) {
         </div>
       </section>
       <section className="relative block" style={{ height: "500px" }}>
-        {(posts && userDatail)?<PostList data={posts} AuthData={AuthData} userData={userDatail.data[0]}/>:<p>posts no valid</p>}
+        {(posts && userDatail) ? <PostList setRefetchTrigger={setRefetchTrigger} ownedBlogs={ownedBlogs} data={posts} AuthData={AuthData} userData={userDatail.data[0]} /> : <p>posts no valid</p>}
       </section>
     </main>
 

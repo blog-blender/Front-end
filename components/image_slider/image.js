@@ -49,7 +49,7 @@ const Photo = ({ photos }) => {
                     <div className="w-full overflow-hidden rounded-lg shadow">
                         <img
                             className="object-contain  h-full"
-                            src= {`http://res.cloudinary.com/dhaem8m4p/${photo.data}`} 
+                            src= {`${process.env.NEXT_PUBLIC_IMAGE_SERVER_URL}${photo.data}`} 
                             alt={`Photo ${index + 1}`}
                         />
                     </div>
@@ -98,7 +98,7 @@ const Photo = ({ photos }) => {
                 <img
                     className="h-full w-auto"
                     style={{ maxHeight: '100vh', maxWidth: '100vw' }}
-                    src={photos[currentPhotoIndex].data}
+                    src={`${process.env.NEXT_PUBLIC_IMAGE_SERVER_URL}${photos[currentPhotoIndex].data}`}
                     alt={`Photo ${currentPhotoIndex + 1}`}
                 />
                 <button

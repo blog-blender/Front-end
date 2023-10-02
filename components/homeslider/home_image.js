@@ -25,8 +25,8 @@ const Carousel = () => {
   }, []);
 
     return (
-      <div className="relative">
-      <div className="w-full overflow-hidden" style={{ width: '100%', height: '500px' }}>
+      <div className="relative w-full">
+      <div className="w-full overflow-hidden h-fit max-h-[32rem]">
         {images.map((image, index) => (
           <div
             key={index}
@@ -34,10 +34,10 @@ const Carousel = () => {
               index === currentIndex ? '' : 'hidden'
             }`}
           >
-            <img src={image} className="block" alt={`Image ${index}`} />
+            <img src={image} className="object-cover h-full w-full object-center" alt={`Image ${index}`} />
           </div>
         ))}
-        <div className="absolute inset-0 bg-black opacity-60 transition-opacity duration-600 ease-in-out motion-reduce:transition-none"></div>
+        <div className="absolute inset-0 bg-black opacity-40 transition-opacity duration-600 ease-in-out motion-reduce:transition-none"></div>
       </div>
     </div>
       );

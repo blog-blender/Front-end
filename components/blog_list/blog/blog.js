@@ -2,7 +2,6 @@ import React from 'react';
 import styles from '@/pages/profile/profile.module.css'
 
 
-
 export default function Blog(props) {
     const handleBlogClick = () => {
         if (props.onClick) {
@@ -10,7 +9,7 @@ export default function Blog(props) {
         }
     };
     const divStyle = {
-        backgroundImage: `url(http://res.cloudinary.com/dhaem8m4p/${props.data.banner})`,
+        backgroundImage: `url(${process.env.NEXT_PUBLIC_IMAGE_SERVER_URL}${props.data.banner})`,
         backgroundSize: 'cover',
         WebkitFilter: 'invert(8%) opacity(81%)',
         filter: 'invert(8%) opacity(81%)',
@@ -23,7 +22,6 @@ export default function Blog(props) {
       };
       
     return (
-        
         <div className={styles.cards} onClick={handleBlogClick}>
         <div className={styles.cardo} style={divStyle}>
           <p style= {text}>{props.data.title}</p>
@@ -31,6 +29,3 @@ export default function Blog(props) {
       </div>
     );
 }
-
-
-

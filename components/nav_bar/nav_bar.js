@@ -47,7 +47,7 @@ function NavBar() {
             </span>
 
              <Link
-              href="/aboutPage/aboutus"
+              href="/about"
               className="text-[#687E8D] hover:bg-[#e5e7eb] hover:text-[#312E81] px-3 py-2 rounded-md text-base font-medium"
             >
               About Us
@@ -89,13 +89,14 @@ function NavBar() {
       {/* Mobile Menu */}
       <div
         className={`${
-          isMenuOpen ? "block" : "hidden"
+          isMenuOpen ? "absolute z-[60] w-full bg-[#E5E7EB]" : "hidden"
         } md:hidden bg-[#e5e7eb]`}
       >
         <div className="px-2 pt-2 pb-3 space-y-1">
           <Link
             href="/"
-            className="text-[#0D9488] block px-3 py-2 rounded-md text-base font-medium"
+            className="text-[#0D9488] hover:bg-gray-600 block px-3 py-2 rounded-md text-base font-medium"
+            onClick={()=>{setIsMenuOpen(false)}}
           >
             Home
           </Link>
@@ -103,13 +104,14 @@ function NavBar() {
           <Link
             href="/profile"
             className="text-[#0D9488] hover:bg-gray-600 hover:text-[#0D9488] block px-3 py-2 rounded-md text-base font-medium"
+            onClick={()=>{setIsMenuOpen(false)}}
           >
             Profile
           </Link>
 
           <Link
             href="/"
-            onClick={()=>AuthData.logout()}
+            onClick={()=>{AuthData.logout();setIsMenuOpen(false)}}
             className="text-[#0D9488] hover:bg-gray-600 hover:text-[#0D9488] block px-3 py-2 rounded-md text-base font-medium"
           >
             Logout

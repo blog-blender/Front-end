@@ -1,9 +1,7 @@
 import Link from 'next/link'
 import { useState, useContext, useEffect } from 'react'
 import PostList from '@/components/post_list/post_list';
-// import PostList from '@/components/post_list/home_post/home_post_list';
 import BlogList from '@/components/blog_list/blog_list';
-// import BlogList from '@/components/blog_list/home/home_blog_list';
 import styles from './profile.module.css'
 import AccountSettingsForm from '@/components/setting/setting';
 import Modal from '@/components/modal';
@@ -15,27 +13,26 @@ import axios from 'axios';
 export default function Profile() {
   let banner, profilePic, userName, firstName, lastName, email, id
 
-  const [fetchTrigger,setRefetchTrigger] = useState(false)
+  const [fetchTrigger,setRefetchTrigger] = useState(false);
   const [viewSettingsForm, setViewSettingsForm] = useState(false);
   const [viewPostForm, setViewPostForm] = useState(null);
   const [viewBlogForm, setViewBlogForm] = useState(null);
   let AuthData = useContext(AuthContext);
-  console.log(AuthData,"FORM AUTH DATA");
+  // console.log(AuthData,"FORM AUTH DATA");
   const [siteCategories, setSiteCategories] = useState(null);
-  const siteCategorieslUrl = 'https://back-end-git-ibraheem-deploy-blog-blender.vercel.app/api/v1/blogs/categories'
+  const siteCategorieslUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}api/v1/blogs/categories/`
 
   const [userDatail, setUserDetail] = useState(null);
-  const userDeatailUrl = 'https://back-end-git-ibraheem-deploy-blog-blender.vercel.app/api/v1/accounts/users'
+  const userDeatailUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}api/v1/accounts/users`
   const userDeatailParams = { username: AuthData.user.username, }
 
   const [recentPosts, setrecentPosts] = useState(null);
-  const recentPostsUrl = 'https://back-end-git-ibraheem-deploy-blog-blender.vercel.app/api/v1/posts/recent'
+  const recentPostsUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}api/v1/posts/recent`
   // const recentPostsParams = { user_id:3, num_of_posts:10 }
   const recentPostsParams = { user_id: AuthData.user.id, num_of_posts: 10 }
 
   const [myBlogs, setMyBlogs] = useState(null);
-  const myBlogsUrl = 'https://back-end-git-ibraheem-deploy-blog-blender.vercel.app/api/v1/blogs'
-  // const myBlogsParams = { owner:3}
+  const myBlogsUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}api/v1/blogs`
   const myBlogsParams = { owner: AuthData.user.id }
 
 
@@ -50,7 +47,8 @@ export default function Profile() {
       .then((response) => { console.log(response); setter(response) })
       .catch((error) => { setter(error) })
   }
-  let fetchData = ()=>{
+  let fetchData = async ()=>{
+    await AuthData.keepConnectionValid(AuthData.token.access, AuthData.token.refresh)
     getData(userDeatailUrl, AuthData.token.access, setUserDetail, userDeatailParams)
     getData(siteCategorieslUrl, AuthData.token.access, setSiteCategories)
     getData(recentPostsUrl, AuthData.token.access, setrecentPosts, recentPostsParams)
@@ -58,11 +56,12 @@ export default function Profile() {
     setRefetchTrigger(false)
   }
 
+  console.log(fetchTrigger,"FETCH STATUS");
+
   useEffect(() => {
     fetchData()
   },[])
 
-  console.log(fetchTrigger,"FETCH STATUS");
 
   useEffect(() => {
     if (fetchTrigger) {
@@ -70,12 +69,7 @@ export default function Profile() {
     }
   },[fetchTrigger])
 
-  useEffect(() => {
-    if (AuthData.token) {
-      // console.log("profile fetch");
-      
-    }
-  }, [])
+  
 
   if (userDatail) {
 
@@ -93,17 +87,17 @@ export default function Profile() {
 
 
   if (myBlogs)
-    console.log(myBlogs.data, "MY BLOGS");
+    // console.log(myBlogs.data, "MY BLOGS");
   return (
     <div className={styles.container}>
       {/* Profile Data */}
       <div className={styles.header}>
 
-        <img className={styles.banner} src={`http://res.cloudinary.com/dhaem8m4p/${banner}` || 'https://nichemedia.co.nz/wp-content/uploads/2023/03/placeholder-banner.png'} alt="User Banner" />
+        <img className={styles.banner} src={banner?`${process.env.NEXT_PUBLIC_IMAGE_SERVER_URL}${banner}`:'https://nichemedia.co.nz/wp-content/uploads/2023/03/placeholder-banner.png'} alt="User Banner" />
 
 
         <div className={styles.user_info}>
-          <img className={styles.user_photo} src={ `http://res.cloudinary.com/dhaem8m4p/${profilePic}`|| 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541'} alt="User Photo" />
+          <img className={styles.user_photo} src={profilePic?`${process.env.NEXT_PUBLIC_IMAGE_SERVER_URL}${profilePic}`:'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541'} alt="User Photo" />
           <ul className="flex-container nowrap">
             <li className={styles.name}>{firstName + " " + lastName}</li>
             <li className={styles.username}>@{userName}</li>
@@ -140,16 +134,16 @@ export default function Profile() {
           {/* <a href="http://localhost:3000/post"> */}
             <div className={styles.container2}>
               <div className={styles.box}>
-                <span className={styles.title} onClick={(event)=>{event.preventDefault();setViewPostForm(true)}}> + Create Post</span>
+                <span className={styles.title} onClick={(event)=>{event.preventDefault();setViewPostForm(true)}}> + Post</span>
               </div>
             </div>
           {/* </a> */}
         </div>
         <div className={styles.glassdivsec}>
           {/* <a href="http://localhost:3000/post"> */}
-            <div className={styles.container2sec}>
+            <div className={styles.container2}>
               <div className={styles.box}>
-                <span className={styles.title} onClick={(event)=>{event.preventDefault();setViewBlogForm(true)}}> + Create Blog</span>
+                <span className={styles.title} onClick={(event)=>{event.preventDefault();setViewBlogForm(true)}}> + Blog</span>
               </div>
             </div>
           {/* </a> */}
@@ -166,7 +160,7 @@ export default function Profile() {
 
       <div className={styles.content}>
         <div className={styles.myposts}>
-          {recentPosts && myBlogs? <PostList setRefetchTrigger={setRefetchTrigger} data={recentPosts.data} AuthData={AuthData} userData={userDatail.data[0] } ownedBlogs={myBlogs ? myBlogs.data : []}/> : <p>no posts</p>}
+          {recentPosts && myBlogs? <PostList className="w-[95%]" setRefetchTrigger={setRefetchTrigger} data={recentPosts.data} AuthData={AuthData} userData={userDatail.data[0] } ownedBlogs={myBlogs ? myBlogs.data : []}/> : <p>no posts</p>}
         </div>
       </div>
 

@@ -16,26 +16,29 @@
   
   
   }
-  
   .user_photoPost {
-    width: 6%;
-    height: 6%;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    /* position: relative;  */
-    top: -65px;
-    margin-bottom: 3%;
-    justify-content: space-between;
-  
+    margin-right: 10px;
+    object-fit: cover;
   }
+  
   
   .user_infoPost {
     display: flex;
-    flex-wrap: wrap;
     flex-direction: row;
     margin-top: 1%;
-  
+    justify-content: space-between;
   }
   
+  .user_infoPost .icondiv {
+    padding: 20;
+    display: flex;
+    margin-right: 1%;
+    align-self: center;
+  }
+
   .namePost {
     font-weight: bold;
     font-size: 20px;
@@ -93,27 +96,6 @@
     margin-right: -4px;
     color: white;
     font-family: courier, sans;
-  }
-  
-  .card {
-     box-shadow: -8px -8px 16px rgba(0, 0, 0, 0.2);
-    display: block;
-    position: relative;
-    max-width: 100%;
-    max-height: 35%;
-    border-radius: 10px;
-    padding: 2em 1.2em;
-    margin: 16px;
-    text-decoration: none;
-    z-index: 0;
-    overflow: hidden;
-    background: linear-gradient(to bottom, #FFFFFF, #DAE3EB);
-    font-family: Arial, Helvetica, sans-serif;
-    margin-left: 4%;
-    /* margin-top: 4px; */
-    margin-right: 4%;
-    margin-bottom: 1%;
-  
   }
   
   .card:before {
@@ -206,28 +188,23 @@
   }
   
   .card {
+    box-shadow: -8px -8px 16px rgba(0, 0, 0, 0.2);
     display: block;
     position: relative;
-    max-width: 100%;
-    max-height: 35%;
+    width: 100%;
     border-radius: 10px;
-    padding: 1em 1em;
-    /* margin: 12px; */
+    padding: 2em 1.2em;
     text-decoration: none;
     z-index: 0;
     overflow: hidden;
     background: linear-gradient(to bottom, #FFFFFF, #DAE3EB);
-    font-family: 'Times New Roman', Times, serif;
-    margin-left: 4%;
-    margin-right: 4%;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
     margin-bottom: 1%;
-    font-size: 20px;
-    color: #000000;
-  
+    
   }
   
   .card:before {
-    content: '';
     position: absolute;
     z-index: -1;
     top: -16px;
@@ -282,13 +259,7 @@
     margin-left: 10px;
   }
   
-  .user_infoPost .icondiv {
-    margin-left: 84%;
-    padding: 20;
-    display: flex;
-    margin-right: 1%;
   
-  }
   
   .icondiv button {
     display: flex;
@@ -308,9 +279,4 @@
   
   }
   
-  .user_photoPost {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
+  

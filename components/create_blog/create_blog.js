@@ -7,7 +7,7 @@ const BlogForm = (props) => {
   // const urlToFile = async (url, callBack, callBackParams, setter)=>{
   //   let result = null
   //   if(url){
-  //     console.log("acepted");
+  //     // console.log("acepted");
   //     result = await fetch(url)
   //     .then(res => res.blob())
   //     .then(blob => {
@@ -86,7 +86,7 @@ const BlogForm = (props) => {
       blogPhoto: blogImages.blogPhoto.upload,
       coverPhoto: blogImages.coverPhoto.upload,
     };
-    console.log(formData);
+    // console.log(formData);
   };
 
 
@@ -104,7 +104,7 @@ const BlogForm = (props) => {
   
     if (props.initialData) {
       method = "put";
-      url = `https://back-end-git-ibraheem-deploy-blog-blender.vercel.app/api/v1/blogs/update/`;
+      url = `${process.env.NEXT_PUBLIC_BACKEND_URL}api/v1/blogs/update/`;
       payload = {
         title: blogDetail.title,
         description: blogDetail.description,
@@ -114,7 +114,7 @@ const BlogForm = (props) => {
       config.params = { blog_id: props.initialData.id };
     } else {
       method = "post";
-      url = 'https://back-end-git-ibraheem-deploy-blog-blender.vercel.app/api/v1/blogs/createblog/';
+      url = `${process.env.NEXT_PUBLIC_BACKEND_URL}api/v1/blogs/createblog/`;
       payload = {
         title: blogDetail.title,
         description: blogDetail.description,
@@ -128,14 +128,14 @@ const BlogForm = (props) => {
     formData.append("description", payload.description);
     formData.append("owner", props.AuthData.user.id);
     const categoryNames = selectedCategories.map((category) => category.name);
-    console.log("Category Names:", categoryNames);
+    // console.log("Category Names:", categoryNames);
     
     if (payload.banner) {
-      console.log("BANNER");
+      // console.log("BANNER");
       formData.append("banner", payload.banner);
     }
     if (payload.blogPic) {
-      console.log("PIC");
+      // console.log("PIC");
       formData.append("blog_pic", payload.blogPic);
     }
     formData.append("category_names", categoryNames.join(", "));;
@@ -150,7 +150,7 @@ const BlogForm = (props) => {
     formDataObject[key] = value;
   });
 
-  console.log("Form Data Object:", formDataObject);
+  // console.log("Form Data Object:", formDataObject);
 
   axios[method](url, formData, config)
     .then(function (response) {
@@ -170,7 +170,7 @@ const BlogForm = (props) => {
       <form className="w-full max-w-3xl border border-gray-300 rounded-lg p-10 bg-primary-500 ">
       <div className="text-center mb-6">
       <label className="text-4xl font-medium leading-5 text-indigo-900">
-        Creating Blog
+        Create Blog
       </label>
     </div>
         <div className="mb-6">
@@ -237,7 +237,7 @@ const BlogForm = (props) => {
                     Click to Change
                   </label>
                   <img
-                    src={`http://res.cloudinary.com/dhaem8m4p/${blogImages.blogPhoto.display}`}
+                    src={`${process.env.NEXT_PUBLIC_IMAGE_SERVER_URL}${blogImages.blogPhoto.display}`}
                     alt="Blog Photo"
                     className="w-full h-full rounded-md border border-gray-300"
                   />
@@ -287,7 +287,7 @@ const BlogForm = (props) => {
                     Click to Change
                   </label>
                   <img
-                    src={`http://res.cloudinary.com/dhaem8m4p/${blogImages.coverPhoto.display}`}
+                    src={`${process.env.NEXT_PUBLIC_IMAGE_SERVER_URL}${blogImages.coverPhoto.display}`}
                     alt="Cover Photo"
                     className="w-full h-full rounded-md border border-gray-300"
                   />
